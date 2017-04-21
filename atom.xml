@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>浮游Bar</title>
+  <subtitle>一段编码，一片情</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://maHouse.github.io/"/>
+  <updated>2017-04-21T05:22:20.198Z</updated>
+  <id>http://maHouse.github.io/</id>
+  
+  <author>
+    <name>小码哥</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>尝试中进步</title>
+    <link href="http://maHouse.github.io/2017/04/21/new-post/"/>
+    <id>http://maHouse.github.io/2017/04/21/new-post/</id>
+    <published>2017-04-21T05:20:45.000Z</published>
+    <updated>2017-04-21T05:22:20.198Z</updated>
+    
+    <content type="html"><![CDATA[<p>这应该是第三次了吧</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这应该是第三次了吧&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
