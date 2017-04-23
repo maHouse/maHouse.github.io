@@ -3,6 +3,30 @@
   
     
     <entry>
+      <title></title>
+      <url>/2017/04/23/my-blog/</url>
+      <content type="html"><![CDATA[<hr>
+<p>title: Hexo+github+Nodejs搭建自己的博客<br>date: 2017-04-23 20:40:05<br>tags:/blog<br>—<strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
+<pre><code>（一）
+</code></pre><ol>
+<li>先下载必备的东西Git，通过它把文件托管到本地和github上，必须下载，<a href="https://git-scm.com" title="下载地址" target="_blank" rel="external">https://git-scm.com</a>。<br><img src="img/g.png" alt="">,右下角的这个位置，注意：电脑系统版本</li>
+<li>下载Nodejs去，同样是官网<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>，<img src="img/g2.png" alt="最好是最新版本的"></li>
+<li>工具已经准备完成，下面就开始操刀吧！</li>
+</ol>
+<p><strong>首先</strong>，安装Hexo，这里安装的时候可以在nodejs里安装，也可以在Git里安装：</p>
+<p>nodejs里：<strong>npm install -g hexo</strong> 或者<strong>npm install hexo-cli -g</strong></p>
+<p><img src="img/nodejs.png" alt=""><br>检测安装成功与否，用<strong>hexo -v</strong> ,出现版本号说明成功</p>
+<p>Git里的执行命令是一样的，注意：应该在Git Bash Here里执行同样命令</p>
+<p><strong>第二步</strong>，在你建立的blog文件夹下，点击右键出现如下<img src="img/git.png" alt=""> </p>
+<p>执行命令 <strong>hexo init</strong> 自动在目标文件夹建立网站所需要的所有文件。</p>
+<p>然后执行<strong>npm install</strong> 安装依赖包<br><strong>第三步</strong>，这一步就是验证以上的操作效果如何了，先执行<strong>hexo g</strong>,这是用于生成静态文件，再执行<strong>hexo s</strong>，这是启动服务器，<img src="img/dis.png" alt="">,执行之后就按图片去看看默认的效果吧！<img src="img/re.png" alt="">,出现这个效果就完成了初步目的</p>
+<p>最后，我们应该知道我们访问的东西是用localhost:4000访问得到的，下一步我们就用域名来获得这个页面，明天见！</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[gggg]]></title>
       <url>/2017/04/21/article/</url>
       <content type="html"></content>
