@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-04-26T09:37:00.198Z</updated>
+  <updated>2017-04-26T10:11:36.011Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,94 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人简历</title>
+    <link href="http://maHouse.github.io/2017/04/26/resume/"/>
+    <id>http://maHouse.github.io/2017/04/26/resume/</id>
+    <published>2017-04-26T10:10:13.000Z</published>
+    <updated>2017-04-26T10:11:36.011Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>姓名：</strong>马帅旗       </p>
+<p><strong>籍贯：</strong>河南商丘 </p>
+<p><strong>职业：</strong>人生工程师</p>
+<p><strong>技能：</strong>精通HTML、CSS、JS 等</p>
+<p><strong>座右铭：</strong>爱计算机的工商管理专业兄弟！没事咱们也可以一起聊聊马刺或者一起来个长途骑行！  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;姓名：&lt;/strong&gt;马帅旗       &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;籍贯：&lt;/strong&gt;河南商丘 &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;职业：&lt;/strong&gt;人生工程师&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技能：&lt;/strong&gt;精通HTML、CSS、JS
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>sublime设置自己的浏览器方法</title>
+    <link href="http://maHouse.github.io/2017/04/26/sublime/"/>
+    <id>http://maHouse.github.io/2017/04/26/sublime/</id>
+    <published>2017-04-26T10:04:00.000Z</published>
+    <updated>2017-04-26T10:44:59.175Z</updated>
+    
+    <content type="html"><![CDATA[<p>sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 </p>
+<p><img src="/image/s.png" alt=""></p>
+<p>这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏览器是IE，当然我想在Chrome里看看效果，并调试一下，怎么设置呢？</p>
+<p>点击深绿色的Preferences栏</p>
+<p><img src="/image/s2.png" alt=""></p>
+<p>看到了Key Bindings 点进去进到如下界面：</p>
+<p><img src="/image/s3.png" alt=""></p>
+<p>你的是没有红色部分及下面的内容的，这里就是我自己设置的了，你就直接把我的代码放进去就可以了，你能 <strong>随意改</strong> 的是 keys这里的快捷键，再有就是application里的内容，你是要必须改的，换成你的浏览器位置的路径</p>
+<p><img src="/image/s4.png" alt=""></p>
+<p><strong>注意：</strong>这里的斜杠是怎么写的一定要注意</p>
+<p>你要用的代码：<br>//chorme</p>
+<p>{</p>
+<pre><code>&quot;keys&quot;:[&quot;f6&quot;],
+
+&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
+
+&quot;args&quot;:{
+
+    &quot;paths&quot;:[],
+
+    &quot;application&quot;:&quot;C:\\Users\\asus\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe&quot;,
+
+    &quot;extensions&quot;:&quot;.*&quot;
+</code></pre><p>}</p>
+<p>},<br>//Firefox</p>
+<p>{</p>
+<pre><code>&quot;keys&quot;:[&quot;f7&quot;],
+
+&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
+
+&quot;args&quot;:{
+
+    &quot;paths&quot;:[],
+
+    &quot;application&quot;:&quot;C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe&quot;,
+
+    &quot;extensions&quot;:&quot;.*&quot;
+</code></pre><p>}</p>
+<p>}</p>
+<p>到了这一步了，你可能会说，我怎么获得我的浏览器的位置呢，ok！在你的桌面上<strong>把鼠标悬浮到你要设置的浏览器上，并点击右键</strong>，会有# <strong>打开文件所在的位置</strong> #这个命令，点击进去，会到这个页面</p>
+<p><img src="/image/s5.png" alt=""></p>
+<p>找到了，点击上面红色的路径，粘贴到application里去，记得加上后面的chrome.exe，这样就设置好了，以后用的时候直接用快捷键就行了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/s.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo搭建博客（二）</title>
