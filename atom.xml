@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-04-26T07:51:22.405Z</updated>
+  <updated>2017-04-26T07:54:43.903Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo2</title>
+    <link href="http://maHouse.github.io/2017/04/26/hexo2/"/>
+    <id>http://maHouse.github.io/2017/04/26/hexo2/</id>
+    <published>2017-04-26T07:54:43.000Z</published>
+    <updated>2017-04-26T07:54:43.903Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>hexo搭建博客（一）</title>

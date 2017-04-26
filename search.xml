@@ -3,6 +3,14 @@
   
     
     <entry>
+      <title><![CDATA[hexo2]]></title>
+      <url>/2017/04/26/hexo2/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[hexo搭建博客（一）]]></title>
       <url>/2017/04/23/myblog/</url>
       <content type="html"><![CDATA[<p><strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
