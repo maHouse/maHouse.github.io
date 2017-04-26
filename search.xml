@@ -3,15 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[Hexo搭建自己的博客]]></title>
-      <url>/2017/04/24/article-1/</url>
-      <content type="html"><![CDATA[<p>不不不</p>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[hexo搭建博客]]></title>
       <url>/2017/04/23/myblog/</url>
       <content type="html"><![CDATA[<p><strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
@@ -30,14 +21,6 @@
 <p>然后执行<strong>npm install</strong> 安装依赖包<br><strong>第三步</strong>，这一步就是验证以上的操作效果如何了，先执行<strong>hexo g</strong>,这是用于生成静态文件，再执行<strong>hexo s</strong>，这是启动服务器，<img src="img/dis.png" alt="">,执行之后就按图片去看看默认的效果吧！<img src="/image/re.png" alt="">,出现这个效果就完成了初步目的</p>
 <p>最后，我们应该知道我们访问的东西是用localhost:4000访问得到的，下一步我们就用域名来获得这个页面，明天见！</p>
 ]]></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[gggg]]></title>
-      <url>/2017/04/21/article/</url>
-      <content type="html"></content>
       
         
     </entry>
