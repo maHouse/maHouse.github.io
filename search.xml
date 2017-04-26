@@ -3,19 +3,18 @@
   
     
     <entry>
-      <title><![CDATA[hello world]]></title>
+      <title><![CDATA[Hexo搭建自己的博客]]></title>
       <url>/2017/04/24/article-1/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>不不不</p>
+]]></content>
       
         
     </entry>
     
     <entry>
-      <title></title>
-      <url>/2017/04/23/my-blog/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: # hexo搭建博客 #<br>date: 2017-04-23 20:40:05<br>tags:</p>
-<p>—<strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
+      <title><![CDATA[hexo搭建博客]]></title>
+      <url>/2017/04/23/myblog/</url>
+      <content type="html"><![CDATA[<p><strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
 <pre><code>（一）
 </code></pre><ol>
 <li>先下载必备的东西Git，通过它把文件托管到本地和github上，必须下载，<a href="https://git-scm.com" title="下载地址" target="_blank" rel="external">https://git-scm.com</a>。<br><img src="/image/g.png" alt="">,右下角的这个位置，注意：电脑系统版本</li>
