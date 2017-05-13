@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-04-29T15:04:06.943Z</updated>
+  <updated>2017-05-13T15:10:16.964Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -16,13 +16,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title> computer </title>
-    <link href="http://maHouse.github.io/2017/04/29/computer/"/>
-    <id>http://maHouse.github.io/2017/04/29/computer/</id>
-    <published>2017-04-29T15:04:06.000Z</published>
-    <updated>2017-04-29T15:04:06.943Z</updated>
+    <title>Javascript 诞生记</title>
+    <link href="http://maHouse.github.io/2017/05/13/javascript-txt/"/>
+    <id>http://maHouse.github.io/2017/05/13/javascript-txt/</id>
+    <published>2017-05-13T14:54:48.000Z</published>
+    <updated>2017-05-13T15:10:16.964Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>十八世纪英国文学家约翰逊博士对JavaScript说过一句很好的话，它的优秀之处并非原创，它的原创之处并不优秀。</strong></p>
+<p>多么牛叉的一句话啊！那为什么这么说呢？我们看看JavaScript是怎么诞生的。</p>
+<p>1994年，网景公司发布了第一个比较成熟的网络浏览器，但它仅仅支持浏览文件，就是你只能看，不能进行页面之间的互动，多么尴尬啊！页面之间的互动怎么进行呢？需要一种页面脚本语言，使得网页之间通过浏览器进行互动。</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;十八世纪英国文学家约翰逊博士对JavaScript说过一句很好的话，它的优秀之处并非原创，它的原创之处并不优秀。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;多么牛叉的一句话啊！那为什么这么说呢？我们看看JavaScript是怎么诞生的。&lt;/p&gt;
+&lt;p&gt;1994年，网景
     
     </summary>
     
