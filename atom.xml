@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-05-14T16:05:45.607Z</updated>
+  <updated>2017-05-14T16:16:18.772Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>markdownpad快捷键分享</title>
+    <link href="http://maHouse.github.io/2017/05/15/markdownpad/"/>
+    <id>http://maHouse.github.io/2017/05/15/markdownpad/</id>
+    <published>2017-05-14T16:09:20.000Z</published>
+    <updated>2017-05-14T16:16:18.772Z</updated>
+    
+    <content type="html"><![CDATA[<p>Markdownpad是你编写博客的利器，使用的时候你可以用鼠标去为句子或者词语加粗、加链接、加图片等，但是快捷键的魅力之处就是一个词—快，快的不要不要的。</p>
+<p>Ctrl + I ： 斜体</p>
+<p>Ctrl + B ： 粗体</p>
+<p>Ctrl + G ： 图片</p>
+<p>Ctrl + Q ： 引用</p>
+<p><strong>Ctrl + 1 ： 标题 1</strong></p>
+<p><strong>Ctrl + 2 ： 标题 2</strong></p>
+<p><strong>Ctrl + 3 ： 标题 3</strong></p>
+<p><strong>Ctrl + K ： 代码块</strong></p>
+<p><strong>Ctrl + L ： 超链接</strong></p>
+<p><strong>Ctrl + T ： 时间戳</strong></p>
+<p><strong>Ctrl + U ： 无序列表</strong></p>
+<p><strong>Ctrl + R ： 水平标尺</strong></p>
+<p><strong>F4 ： 启用水平布局</strong></p>
+<p><strong>F5 ： 启用实时预览</strong></p>
+<p><strong>F6 ： 在浏览器中预览</strong></p>
+<p><strong>Ctrl + Shift + O ： 有序列表</strong></p>
+<p>Ok！大家如果有更好的好玩的工具，分享给我哟！谢谢你们了！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Markdownpad是你编写博客的利器，使用的时候你可以用鼠标去为句子或者词语加粗、加链接、加图片等，但是快捷键的魅力之处就是一个词—快，快的不要不要的。&lt;/p&gt;
+&lt;p&gt;Ctrl + I ： 斜体&lt;/p&gt;
+&lt;p&gt;Ctrl + B ： 粗体&lt;/p&gt;
+&lt;p&gt;Ctrl + G 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Javascript 诞生记</title>
