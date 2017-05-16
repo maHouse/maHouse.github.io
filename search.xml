@@ -24,7 +24,7 @@
 <p>在域名解析里，这个域名是我添加进来了，你要添加进来，点击进来</p>
 <p><img src="/image/www4.png" alt=""></p>
 <p>圈子里的是你照搬的，这个是github的IP地址，不用的话是找不到你的网页的。<br>而最下面的主机记录:www,记录类型:CNAME,记录值是你的github网址，OK了！<br>一切准备就绪！千万记得，hexo g和hexo d命令，把你的修改给布置到页面上来！</p>
-<p>欢迎大家来践踏我的博文mashuaiqi.com，，，，欢迎！</p>
+<p>欢迎大家来践踏我的博文<a href="mashuaiqi.com">mashuaiqi.com</a>，，，，欢迎！</p>
 ]]></content>
       
         
