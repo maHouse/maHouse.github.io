@@ -3,6 +3,49 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript的数据类型]]></title>
+      <url>/2017/05/18/JS-data-type/</url>
+      <content type="html"><![CDATA[<p>JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。</p>
+<p>原始数据类型：<strong>数字（number）</strong>、<strong>字符串（string）</strong>、<strong>布尔值（Boolean）</strong>、<strong>null</strong>和<strong>undefined</strong>。</p>
+<p>对象类型：<strong>Math（数字）</strong>、<strong>Date（日期）</strong>、<strong>Array（数组）</strong>、<strong>Function（函数）</strong>、<strong>RegExp（正则表达式）</strong>，这几种基础数据类型，先说第一个number吧！</p>
+<h2 id="1-数字（number）"><a href="#1-数字（number）" class="headerlink" title="1.数字（number）"></a>1.数字（number）</h2><p>没啥意思，这个表示的就是数字，而数字中又分为整型和浮点型，就是整数和小数或分数。不好意思的是，JavaScript中没有具体的再区分它们两个，而是就用浮点型表示数字：1 == 1.0，这个是成立的。</p>
+<p>运算符：+（加）、-（减）、*（乘）、/（除）、%（取余），运算也就是这个几个或者是几个的复合运算。</p>
+<p>JavaScript数字的几个概念</p>
+<p>无穷大（infinity），一个忒大的数字，出现了溢出（overflow），上溢出；</p>
+<p>负无穷（-infinity），一个忒小的数字，出现了下溢出（underflow）；</p>
+<p>除此之外，还有个中特别的存在就是非数字（not-a-number既NaN)，NaN是非数字的意思，情况有几种：无穷大除以无穷大、负数开平方、非数字或者不能获得数字的运算符进行了运算，这几种情况都是出现NaN。</p>
+<p>NaN是个孤独的游魂，他没有伙伴，我们只能证明一个值不是NaN，而不能证明一个值是NaN，表达式是：</p>
+<p> x != NaN,不能写作 x == NaN(后者是个错误的存在)。</p>
+<p>上面的仅仅是数字的相关知识，还有Math对象对于数字的操作运算，这个下次再做分析。</p>
+<h2 id="2-字符串（string）"><a href="#2-字符串（string）" class="headerlink" title="2.字符串（string）"></a>2.字符串（string）</h2><p>字符串就是个有次数的不可改变的16位值的序列，字符串的表现形式就是把值放到单引号’’或者双引号””里面，或者是个空值也可以。</p>
+<p>因为JavaScript是用UTF-16编码的Unicode字符集，所以JavaScript的所有字符都是16位的。次序就是在字符串中相同字符也是有不同的索引的，不可改变就从字符串的所有方法看吧！</p>
+<p>方法一是获取相关值</p>
+<p>s.charAt();//用数字获取相关位置的值，因此里面填的是数字</p>
+<p>s.substring(a,b);//两个数字，包前不包后</p>
+<p>s.slice(a,b)；//同上</p>
+<p>s.indexOf();//里面的字符串值，出现的就是这个字符的首次出现的位置的索引</p>
+<p>s.lastIndexOf();//方法类似于上面</p>
+<p>s.split();//以什么作为分割点</p>
+<p>s.replace();//两个字符，前面的用后面的值来代替</p>
+<p>s.toUpperCase();//变为大写</p>
+<p>下面就用代码来实现一下，证实一下原字符串是不是不可改变的：</p>
+<pre><code>var s = &quot;hello world&quot;;
+
+console.log(s.indexOf(&apos;o&apos;));
+console.log(s.lastIndexOf(&apos;o&apos;));
+console.log(s.charAt(2));
+console.log(s.toUpperCase());
+console.log(s.substring(0,3));//同样是包前不包后
+console.log(s.slice(2));//包前不包后，因为2后面没有结尾意思就是到最后
+console.log(s.replace(&apos;w&apos;,&apos;W&apos;));
+console.log(s.split(&apos;v&apos;));//这个就是字符串里没有的话，可以说是没有用的
+console.log(s.split(&apos; &apos;));
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo中域名的配置]]></title>
       <url>/2017/05/16/my-domain/</url>
       <content type="html"><![CDATA[<p>这个时候，你的.io的github网站是可以使用的了，接下来就是怎么使用自己的域名去搞定一切了！OK,我们开始吧！</p>

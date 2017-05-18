@@ -79,6 +79,90 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型" itemprop="url">JavaScript的数据类型</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-18T13:37:23.000Z" itemprop="datePublished"> 发表于 2017-05-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。</p>
+<p>原始数据类型：<strong>数字（number）</strong>、<strong>字符串（string）</strong>、<strong>布尔值（Boolean）</strong>、<strong>null</strong>和<strong>undefined</strong>。</p>
+<p>对象类型：<strong>Math（数字）</strong>、<strong>Date（日期）</strong>、<strong>Array（数组）</strong>、<strong>Function（函数）</strong>、<strong>RegExp（正则表达式）</strong>，这几种基础数据类型，先说第一个number吧！</p>
+<h2 id="1-数字（number）"><a href="#1-数字（number）" class="headerlink" title="1.数字（number）"></a>1.数字（number）</h2><p>没啥意思，这个表示的就是数字，而数字中又分为整型和浮点型，就是整数和小数或分数。不好意思的是，JavaScript中没有具体的再区分它们两个，而是就用浮点型表示数字：1 == 1.0，这个是成立的。</p>
+<p>运算符：+（加）、-（减）、*（乘）、/（除）、%（取余），运算也就是这个几个或者是几个的复合运算。</p>
+<p>JavaScript数字的几个概念</p>
+<p>无穷大（infinity），一个忒大的数字，出现了溢出（overflow），上溢出；</p>
+<p>负无穷（-infinity），一个忒小的数字，出现了下溢出（underflow）；</p>
+<p>除此之外，还有个中特别的存在就是非数字（not-a-number既NaN)，NaN是非数字的意思，情况有几种：无穷大除以无穷大、负数开平方、非数字或者不能获得数字的运算符进行了运算，这几种情况都是出现NaN。</p>
+<p>NaN是个孤独的游魂，他没有伙伴，我们只能证明一个值不是NaN，而不能证明一个值是NaN，表达式是：</p>
+<p> x != NaN,不能写作 x == NaN(后者是个错误的存在)。</p>
+<p>上面的仅仅是数字的相关知识，还有Math对象对于数字的操作运算，这个下次再做分析。</p>
+<h2 id="2-字符串（string）"><a href="#2-字符串（string）" class="headerlink" title="2.字符串（string）"></a>2.字符串（string）</h2><p>字符串就是个有次数的不可改变的16位值的序列，字符串的表现形式就是把值放到单引号’’或者双引号””里面，或者是个空值也可以。</p>
+<p>因为JavaScript是用UTF-16编码的Unicode字符集，所以JavaScript的所有字符都是16位的。次序就是在字符串中相同字符也是有不同的索引的，不可改变就从字符串的所有方法看吧！</p>
+<p>方法一是获取相关值</p>
+<p>s.charAt();//用数字获取相关位置的值，因此里面填的是数字</p>
+<p>s.substring(a,b);//两个数字，包前不包后</p>
+<p>s.slice(a,b)；//同上</p>
+<p>s.indexOf();//里面的字符串值，出现的就是这个字符的首次出现的位置的索引</p>
+<p>s.lastIndexOf();//方法类似于上面</p>
+<p>s.split();//以什么作为分割点</p>
+<p>s.replace();//两个字符，前面的用后面的值来代替</p>
+<p>s.toUpperCase();//变为大写</p>
+<p>下面就用代码来实现一下，证实一下原字符串是不是不可改变的：</p>
+<pre><code>var s = &quot;hello world&quot;;
+
+console.log(s.indexOf(&apos;o&apos;));
+console.log(s.lastIndexOf(&apos;o&apos;));
+console.log(s.charAt(2));
+console.log(s.toUpperCase());
+console.log(s.substring(0,3));//同样是包前不包后
+console.log(s.slice(2));//包前不包后，因为2后面没有结尾意思就是到最后
+console.log(s.replace(&apos;w&apos;,&apos;W&apos;));
+console.log(s.split(&apos;v&apos;));//这个就是字符串里没有的话，可以说是没有用的
+console.log(s.split(&apos; &apos;));
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/16/my-domain/" title="Hexo中域名的配置" itemprop="url">Hexo中域名的配置</a>
   </h1>
   <p class="article-author">By
@@ -698,69 +782,10 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/23/myblog/" title="hexo搭建博客（一）" itemprop="url">hexo搭建博客（一）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-23T12:40:05.000Z" itemprop="datePublished"> 发表于 2017-04-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
-<ol>
-<li>先下载必备的东西Git，通过它把文件托管到本地和github上，必须下载，<a href="https://git-scm.com" title="下载地址" target="_blank" rel="external">https://git-scm.com</a>。<br><img src="/image/g.png" alt="">,右下角的这个位置，注意：电脑系统版本</li>
-<li>下载Nodejs去，同样是官网<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>，<img src="/image/g2.png" alt="最好是最新版本的"></li>
-<li>工具已经准备完成，下面就开始操刀吧！</li>
-</ol>
-<p><strong>首先</strong>，安装Hexo，这里安装的时候可以在nodejs里安装，也可以在Git里安装：</p>
-<p>nodejs里：<strong>npm install -g hexo</strong> 或者<strong>npm install hexo-cli -g</strong></p>
-<p><img src="/image/nodejs.png" alt=""><br>检测安装成功与否，用<strong>hexo -v</strong> ,出现版本号说明成功</p>
-<p>Git里的执行命令是一样的，注意：应该在Git Bash Here里执行同样命令</p>
-<p><strong>第二步</strong>，在你建立的blog文件夹下，点击右键出现如下<img src="/image/git.png" alt=""> </p>
-<p>执行命令 <strong>hexo init</strong> 自动在目标文件夹建立网站所需要的所有文件。</p>
-<p>然后执行<strong>npm install</strong> 安装依赖包<br><strong>第三步</strong>，这一步就是验证以上的操作效果如何了，先执行<strong>hexo g</strong>,这是用于生成静态文件，再执行<strong>hexo s</strong>，这是启动服务器，<img src="img/dis.png" alt="">,执行之后就按图片去看看默认的效果吧！<img src="/image/re.png" alt="">,出现这个效果就完成了初步目的</p>
-<p>最后，我们应该知道我们访问的东西是用localhost:4000访问得到的，下一步我们就用域名来获得这个页面，明天见！</p>
 
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
 
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>

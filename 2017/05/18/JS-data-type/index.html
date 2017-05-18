@@ -4,29 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo中域名的配置 | 浮游Bar</title>
+    <title>JavaScript的数据类型 | 浮游Bar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小码哥">
     
 
     
-    <meta name="description" content="这个时候，你的.io的github网站是可以使用的了，接下来就是怎么使用自己的域名去搞定一切了！OK,我们开始吧！ http://www.szhot.com/我的是在万维网申请的，在万维网你要做几件事： 1.申请一个域名，花多少钱，就看你自己个了！这一步就是给自己的网站起了个名字。 2.购买一个虚拟主机，花多少钱看你自己，有了名字但没有IP地址，就是服务器端没有你的空间，这一步就是在服务器端有个你">
+    <meta name="description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo中域名的配置">
-<meta property="og:url" content="http://maHouse.github.io/2017/05/16/my-domain/index.html">
+<meta property="og:title" content="JavaScript的数据类型">
+<meta property="og:url" content="http://maHouse.github.io/2017/05/18/JS-data-type/index.html">
 <meta property="og:site_name" content="浮游Bar">
-<meta property="og:description" content="这个时候，你的.io的github网站是可以使用的了，接下来就是怎么使用自己的域名去搞定一切了！OK,我们开始吧！ http://www.szhot.com/我的是在万维网申请的，在万维网你要做几件事： 1.申请一个域名，花多少钱，就看你自己个了！这一步就是给自己的网站起了个名字。 2.购买一个虚拟主机，花多少钱看你自己，有了名字但没有IP地址，就是服务器端没有你的空间，这一步就是在服务器端有个你">
-<meta property="og:image" content="http://mahouse.github.io/image/www.png">
-<meta property="og:image" content="http://mahouse.github.io/image/kwww2.jpg">
-<meta property="og:image" content="http://mahouse.github.io/image/www3.png">
-<meta property="og:image" content="http://mahouse.github.io/image/www4.png">
-<meta property="og:updated_time" content="2017-05-16T14:00:24.977Z">
+<meta property="og:description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
+<meta property="og:updated_time" content="2017-05-18T15:19:02.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo中域名的配置">
-<meta name="twitter:description" content="这个时候，你的.io的github网站是可以使用的了，接下来就是怎么使用自己的域名去搞定一切了！OK,我们开始吧！ http://www.szhot.com/我的是在万维网申请的，在万维网你要做几件事： 1.申请一个域名，花多少钱，就看你自己个了！这一步就是给自己的网站起了个名字。 2.购买一个虚拟主机，花多少钱看你自己，有了名字但没有IP地址，就是服务器端没有你的空间，这一步就是在服务器端有个你">
-<meta name="twitter:image" content="http://mahouse.github.io/image/www.png">
+<meta name="twitter:title" content="JavaScript的数据类型">
+<meta name="twitter:description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
 
     
     <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
@@ -84,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/16/my-domain/" title="Hexo中域名的配置" itemprop="url">Hexo中域名的配置</a>
+      <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型" itemprop="url">JavaScript的数据类型</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-16T13:06:34.000Z" itemprop="datePublished"> 发表于 2017-05-16</time>
+    <time datetime="2017-05-18T13:37:23.000Z" itemprop="datePublished"> 发表于 2017-05-18</time>
     
   </p>
 </header>
@@ -100,31 +95,46 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li></ol>
 		
 		</div>
 		
-		<p>这个时候，你的.io的github网站是可以使用的了，接下来就是怎么使用自己的域名去搞定一切了！OK,我们开始吧！</p>
-<p><a href="http://www.szhot.com/" target="_blank" rel="external">http://www.szhot.com/</a>我的是在万维网申请的，在万维网你要做几件事：</p>
-<p>1.申请一个域名，花多少钱，就看你自己个了！这一步就是给自己的网站起了个名字。</p>
-<p>2.购买一个虚拟主机，花多少钱看你自己，有了名字但没有IP地址，就是服务器端没有你的空间，这一步就是在服务器端有个你的位置。</p>
-<p>3.OK！为了顺利完成工作，你还要做：</p>
-<p>①</p>
-<p><img src="/image/www.png" alt=""></p>
-<p>切记这三部分是必须完成的，光标点亮后才能进行下一步的工作；</p>
-<p>②身份证正反面复印件，必须在一面上，还要有你的签名，按要求做吧；</p>
-<p>③</p>
-<p><img src="/image/kwww2.jpg" alt=""></p>
-<p>这里还有一步关键，在你的E:\blog\source里，就是你的文件路径里配置个CNAME文件，没有后缀，在里面写上你的域名（不加www的域名）。这个下面就要用到了。</p>
-<p><strong>按这个步骤进行操作</strong>圈子里的我们改成这个样子的，不要会错了意！！！</p>
-<p>把这个搞好后就开始进行在dnspod上的修改，选择dnspod的原因是稳定！<a href="https://www.dnspod.cn/" target="_blank" rel="external">https://www.dnspod.cn/</a></p>
-<p>修改的地方在哪里呢？请看：</p>
-<p><img src="/image/www3.png" alt=""></p>
-<p>在域名解析里，这个域名是我添加进来了，你要添加进来，点击进来</p>
-<p><img src="/image/www4.png" alt=""></p>
-<p>圈子里的是你照搬的，这个是github的IP地址，不用的话是找不到你的网页的。<br>而最下面的主机记录:www,记录类型:CNAME,记录值是你的github网址，OK了！<br>一切准备就绪！千万记得，hexo g和hexo d命令，把你的修改给布置到页面上来！</p>
-<p>欢迎大家来践踏我的博文<a href="mashuaiqi.com">mashuaiqi.com</a>，，，，欢迎！</p>
-  
+		<p>JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。</p>
+<p>原始数据类型：<strong>数字（number）</strong>、<strong>字符串（string）</strong>、<strong>布尔值（Boolean）</strong>、<strong>null</strong>和<strong>undefined</strong>。</p>
+<p>对象类型：<strong>Math（数字）</strong>、<strong>Date（日期）</strong>、<strong>Array（数组）</strong>、<strong>Function（函数）</strong>、<strong>RegExp（正则表达式）</strong>，这几种基础数据类型，先说第一个number吧！</p>
+<h2 id="1-数字（number）"><a href="#1-数字（number）" class="headerlink" title="1.数字（number）"></a>1.数字（number）</h2><p>没啥意思，这个表示的就是数字，而数字中又分为整型和浮点型，就是整数和小数或分数。不好意思的是，JavaScript中没有具体的再区分它们两个，而是就用浮点型表示数字：1 == 1.0，这个是成立的。</p>
+<p>运算符：+（加）、-（减）、*（乘）、/（除）、%（取余），运算也就是这个几个或者是几个的复合运算。</p>
+<p>JavaScript数字的几个概念</p>
+<p>无穷大（infinity），一个忒大的数字，出现了溢出（overflow），上溢出；</p>
+<p>负无穷（-infinity），一个忒小的数字，出现了下溢出（underflow）；</p>
+<p>除此之外，还有个中特别的存在就是非数字（not-a-number既NaN)，NaN是非数字的意思，情况有几种：无穷大除以无穷大、负数开平方、非数字或者不能获得数字的运算符进行了运算，这几种情况都是出现NaN。</p>
+<p>NaN是个孤独的游魂，他没有伙伴，我们只能证明一个值不是NaN，而不能证明一个值是NaN，表达式是：</p>
+<p> x != NaN,不能写作 x == NaN(后者是个错误的存在)。</p>
+<p>上面的仅仅是数字的相关知识，还有Math对象对于数字的操作运算，这个下次再做分析。</p>
+<h2 id="2-字符串（string）"><a href="#2-字符串（string）" class="headerlink" title="2.字符串（string）"></a>2.字符串（string）</h2><p>字符串就是个有次数的不可改变的16位值的序列，字符串的表现形式就是把值放到单引号’’或者双引号””里面，或者是个空值也可以。</p>
+<p>因为JavaScript是用UTF-16编码的Unicode字符集，所以JavaScript的所有字符都是16位的。次序就是在字符串中相同字符也是有不同的索引的，不可改变就从字符串的所有方法看吧！</p>
+<p>方法一是获取相关值</p>
+<p>s.charAt();//用数字获取相关位置的值，因此里面填的是数字</p>
+<p>s.substring(a,b);//两个数字，包前不包后</p>
+<p>s.slice(a,b)；//同上</p>
+<p>s.indexOf();//里面的字符串值，出现的就是这个字符的首次出现的位置的索引</p>
+<p>s.lastIndexOf();//方法类似于上面</p>
+<p>s.split();//以什么作为分割点</p>
+<p>s.replace();//两个字符，前面的用后面的值来代替</p>
+<p>s.toUpperCase();//变为大写</p>
+<p>下面就用代码来实现一下，证实一下原字符串是不是不可改变的：</p>
+<pre><code>var s = &quot;hello world&quot;;
+
+console.log(s.indexOf(&apos;o&apos;));
+console.log(s.lastIndexOf(&apos;o&apos;));
+console.log(s.charAt(2));
+console.log(s.toUpperCase());
+console.log(s.substring(0,3));//同样是包前不包后
+console.log(s.slice(2));//包前不包后，因为2后面没有结尾意思就是到最后
+console.log(s.replace(&apos;w&apos;,&apos;W&apos;));
+console.log(s.split(&apos;v&apos;));//这个就是字符串里没有的话，可以说是没有用的
+console.log(s.split(&apos; &apos;));
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -136,7 +146,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://maHouse.github.io/2017/05/16/my-domain/" data-title="Hexo中域名的配置 | 浮游Bar" data-tsina="null" class="share clearfix">
+	  <div data-url="http://maHouse.github.io/2017/05/18/JS-data-type/" data-title="JavaScript的数据类型 | 浮游Bar" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -150,21 +160,13 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/15/markdownpad/" title="markdownpad快捷键分享">
+ <a href="/2017/05/16/my-domain/" title="Hexo中域名的配置">
   <strong>上一篇：</strong><br/>
   <span>
-  markdownpad快捷键分享</span>
+  Hexo中域名的配置</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2017/05/18/JS-data-type/"  title="JavaScript的数据类型">
- <strong>下一篇：</strong><br/> 
- <span>JavaScript的数据类型
-</span>
-</a>
-</div>
 
 </nav>
 
@@ -176,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li></ol>
  
   </div>
 
