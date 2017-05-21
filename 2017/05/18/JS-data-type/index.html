@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://maHouse.github.io/2017/05/18/JS-data-type/index.html">
 <meta property="og:site_name" content="浮游Bar">
 <meta property="og:description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
-<meta property="og:updated_time" content="2017-05-18T15:19:02.142Z">
+<meta property="og:updated_time" content="2017-05-21T15:16:29.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的数据类型">
 <meta name="twitter:description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
@@ -95,7 +95,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-布尔值（boolean）"><span class="toc-number">3.</span> <span class="toc-text">3.布尔值（boolean）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-null和undefined"><span class="toc-number">4.</span> <span class="toc-text">4.null和undefined</span></a></li></ol>
 		
 		</div>
 		
@@ -134,7 +134,31 @@ console.log(s.slice(2));//包前不包后，因为2后面没有结尾意思就�
 console.log(s.replace(&apos;w&apos;,&apos;W&apos;));
 console.log(s.split(&apos;v&apos;));//这个就是字符串里没有的话，可以说是没有用的
 console.log(s.split(&apos; &apos;));
-</code></pre>  
+</code></pre><h2 id="3-布尔值（boolean）"><a href="#3-布尔值（boolean）" class="headerlink" title="3.布尔值（boolean）"></a>3.布尔值（boolean）</h2><p>布尔值代表的意思是真或假、开或关、是或否，多用于控制结构的比较语句中，这个类型只有两个值：true、false。</p>
+<p>JavaScript中的任意值都能转换成布尔值，下面的这些值能转换成false：undefined、null、0、-0、””(空字符串)、NaN，所有其他值包括对象（数组）则被转换成true。</p>
+<p>用个例子：声明个变量o,<strong>if(o ！== null)</strong>再有一个<strong>if(o)</strong>,前个例子是证明变量o是不是null值，不是的话会执行下去，后一个变量是意思是为真（o不是false、null和undefined）的时候会执行下去。</p>
+<p>关于布尔值的在有的话就是运算符的运用了！AND（&amp;&amp;）、OR（||）、非（NOT既！）。</p>
+<h2 id="4-null和undefined"><a href="#4-null和undefined" class="headerlink" title="4.null和undefined"></a>4.null和undefined</h2><p>null就是程序级别的，不是系统报错报出来的，是我们可以写出来的，我们可以写作参数的；undefined是系统报错的，我们不期望遇到，遇到的原因大概有三：</p>
+<p>①我们声明了变量，但是没有给变量赋值</p>
+<p>如：    </p>
+<pre><code>var a;
+
+console.log(a);//这里打印出来的就是undefined
+</code></pre><p>②参数的形式参数的引用了却没有实参</p>
+<p>如：</p>
+<pre><code> function a (b,c,d){
+
+    console.log(b + c);
+
+    console.log(d);//这里打印出来的就是undefined
+  }
+
+a(1,0);
+</code></pre><p>好玩的是如果console.log(b + c + d);这里打印出来的值是NaN，你想想一个数字加undefined，结果就是NaN。</p>
+<p>③再有一个现象就是对象里，我们有3个值，你非要找第四个值，那是没有了，只会报出undefined。</p>
+<p>为了避免出现undefined的现象，我们一定要注意几个原因，声明变量的时候，</p>
+<p>如：newHtml = “”;//不要只声明了不初始化值。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -178,7 +202,7 @@ console.log(s.split(&apos; &apos;));
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-布尔值（boolean）"><span class="toc-number">3.</span> <span class="toc-text">3.布尔值（boolean）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-null和undefined"><span class="toc-number">4.</span> <span class="toc-text">4.null和undefined</span></a></li></ol>
  
   </div>
 
