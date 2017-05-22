@@ -79,6 +79,86 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/21/object/" title="对象" itemprop="url">对象</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-21T15:21:36.000Z" itemprop="datePublished"> 发表于 2017-05-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>1.全局对象：</strong></p>
+<p>全局属性：undefined、NaN、infinity</p>
+<p>全局函数：isNaN()、parseInt()、eval()</p>
+<p>全局对象：Math、JSON</p>
+<p>构造函数：Date（）、RegExp()、String（）、Object（）、Array（）</p>
+<p><strong>2.包装对象</strong></p>
+<p>JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？</p>
+<p>那我们就先从说对象说起，对象是一系列属性名和属性值的集合体。对象要引用属性值就用”.”加上属性名来引用；对象里的方法是用函数表示的，引用的时候用o.m()来表示。</p>
+<p>不同的是，原始值里的字符串、数字和布尔值的属性和方法是不能被定义新的值的，而对象里面是能改变的。</p>
+<p>在例子中：</p>
+<pre><code>var s = &apos;test&apos;;
+s.len = 4;
+s.indexOf(&apos;t&apos;) = 0;
+</code></pre><p>在上面的例子中s是字符串，但是具有自己的属性和方法，它的实现方式是在s引用自己的属性和方法时，就会通过new String(s)创建一个临时对象，这个对象会继承s的特点。这个临时对象在用到的时候会被创建出来，一旦不用就会被销毁。</p>
+<p>例如：</p>
+<pre><code>var s = &apos;test&apos;;
+s.len = 4;//这里是设置的新的属性值
+var t = s.len;
+console.log(t);//undefined
+</code></pre><p>在s.len = 4;使用完后，这个属性就被销毁了，不会在往下传递了，所以打印的结果是undefined；不是length哟！代码测试如果用下面的代码：<br>    var s = ‘test’;<br>    s.length = 4;<br>    var t = s.length;<br>    console.log(t);//这个结果就是4了</p>
+<p>可以运用构造函数来显示的创建包装对象，</p>
+<pre><code>var s = &apos;test&apos;,n = 1,b = true;
+var S = new String(s);
+var N = new Number(n);
+var B = new Boolean(b);
+</code></pre><p>如果我们用’ == ‘来判断s与S、n与N、b与B的话，结果是true；如果用’ === ‘恒等式来判断的话，就不是这个结果了。</p>
+<p>JavaScript中的值的类型会根据需要字型转变，无论进行什么运算，共同的值类型是每个单独的值都能转换过去的，转换的又隐式转换和显式转换</p>
+<p>例如： </p>
+<p>‘5’<em>‘6</em>;//30,//改变就是从字符串变化到了数字类型</p>
+<p> 30 + ‘object’;//这里就只能转变为字符串了</p>
+<p>parseInt() =&gt;意思是把值转换为16进制的，目前就是这么多了！不足的话就再加补充。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型" itemprop="url">JavaScript的数据类型</a>
   </h1>
   <p class="article-author">By
@@ -713,69 +793,6 @@ a(1,0);
 <p>到了这一步了，你可能会说，我怎么获得我的浏览器的位置呢，ok！在你的桌面上<strong>把鼠标悬浮到你要设置的浏览器上，并点击右键</strong>，会有# <strong>打开文件所在的位置</strong> #这个命令，点击进去，会到这个页面</p>
 <p><img src="/image/s5.png" alt=""></p>
 <p>找到了，点击上面红色的路径，粘贴到application里去，记得加上后面的chrome.exe，这样就设置好了，以后用的时候直接用快捷键就行了</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/26/hexo2/" title="Hexo搭建博客（二）" itemprop="url">Hexo搭建博客（二）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-26T07:54:43.000Z" itemprop="datePublished"> 发表于 2017-04-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>上次说到会用网址访问页面，细想了一下，你只要能按我发的那个链接走的话就能很好的出现效果，下面就说说一些必要的注意事项。</p>
-<p>1.下载Markdownpad,<a href="http://markdownpad.com/" target="_blank" rel="external">http://markdownpad.com/</a>，这里在windows10里会有个小问题，需要配置个什么小玩意，你自己去搞定啦！</p>
-<p>再有就是下载个Notepad++，<a href="https://notepad-plus-plus.org/" target="_blank" rel="external">https://notepad-plus-plus.org/</a>，目的是避免以后你编辑的东西会因为字符集的问题而不能正常使用</p>
-<p>2.下载完成后，就按链接里前辈的路子走吧！以下几个命令是常用的，它们执行后的样子是啥样的</p>
-<p><strong>hexo g</strong> ##目的是把你修改的东西变成静态文件，每次修改后都要在Git里执行一次这个命令，成功的样子是</p>
-<p><img src="/image/12.png" alt=""></p>
-<p><strong>hexo s</strong> ##启动服务器，当你想在把东西放到网页上前检查一下的时候用</p>
-<p><img src="/image/13.png" alt=""></p>
-<p>localhost:4000在这个时候使用，要执行其他的命令就要用Ctrl+C快捷键停止这一步</p>
-<p><strong>hexo d</strong> ##把文件部署到github,这一步有意思的东西多，部署成功的标志是，命令执行完后，成功标志</p>
-<p><img src="/image/14.png" alt=""></p>
-<p>其他的均属未成功，解决方案：重新登录github网站，能进去的话，就把你所遇到的问题粘贴到网上搜索答案，不能进去的话，一个方法就是等到能进去的时候在执行这个命令。</p>
-<p>3.主题的配置，当你把Hexo下载完后，是一个默认的主题，后面的主题，你就可以自己去选择了，你可以选择和前辈一样的主题，也可以自己寻找实验，找到更适合你的，安装方法就是去看主题制作者的Readme里面有详细的步骤</p>
-<p><strong>注：</strong>有什么不会的我们可以共同讨论，这个主题就先到这里了</p>
 
         
         

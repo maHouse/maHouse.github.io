@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JavaScript的数据类型 | 浮游Bar</title>
+    <title>对象 | 浮游Bar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小码哥">
     
 
     
-    <meta name="description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
+    <meta name="description" content="1.全局对象： 全局属性：undefined、NaN、infinity 全局函数：isNaN()、parseInt()、eval() 全局对象：Math、JSON 构造函数：Date（）、RegExp()、String（）、Object（）、Array（） 2.包装对象 JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript的数据类型">
-<meta property="og:url" content="http://maHouse.github.io/2017/05/18/JS-data-type/index.html">
+<meta property="og:title" content="对象">
+<meta property="og:url" content="http://maHouse.github.io/2017/05/21/object/index.html">
 <meta property="og:site_name" content="浮游Bar">
-<meta property="og:description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
-<meta property="og:updated_time" content="2017-05-21T15:16:29.480Z">
+<meta property="og:description" content="1.全局对象： 全局属性：undefined、NaN、infinity 全局函数：isNaN()、parseInt()、eval() 全局对象：Math、JSON 构造函数：Date（）、RegExp()、String（）、Object（）、Array（） 2.包装对象 JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？">
+<meta property="og:updated_time" content="2017-05-22T14:21:06.236Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript的数据类型">
-<meta name="twitter:description" content="JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。 原始数据类型：数字（number）、字符串（string）、布尔值（Boolean）、null和undefined。 对象类型：Math（数字）、Date（日期）、Array（数组）、Functi">
+<meta name="twitter:title" content="对象">
+<meta name="twitter:description" content="1.全局对象： 全局属性：undefined、NaN、infinity 全局函数：isNaN()、parseInt()、eval() 全局对象：Math、JSON 构造函数：Date（）、RegExp()、String（）、Object（）、Array（） 2.包装对象 JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？">
 
     
     <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
@@ -79,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型" itemprop="url">JavaScript的数据类型</a>
+      <a href="/2017/05/21/object/" title="对象" itemprop="url">对象</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-18T13:37:23.000Z" itemprop="datePublished"> 发表于 2017-05-18</time>
+    <time datetime="2017-05-21T15:21:36.000Z" itemprop="datePublished"> 发表于 2017-05-21</time>
     
   </p>
 </header>
@@ -95,69 +95,41 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-布尔值（boolean）"><span class="toc-number">3.</span> <span class="toc-text">3.布尔值（boolean）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-null和undefined"><span class="toc-number">4.</span> <span class="toc-text">4.null和undefined</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。</p>
-<p>原始数据类型：<strong>数字（number）</strong>、<strong>字符串（string）</strong>、<strong>布尔值（Boolean）</strong>、<strong>null</strong>和<strong>undefined</strong>。</p>
-<p>对象类型：<strong>Math（数字）</strong>、<strong>Date（日期）</strong>、<strong>Array（数组）</strong>、<strong>Function（函数）</strong>、<strong>RegExp（正则表达式）</strong>，这几种基础数据类型，先说第一个number吧！</p>
-<h2 id="1-数字（number）"><a href="#1-数字（number）" class="headerlink" title="1.数字（number）"></a>1.数字（number）</h2><p>没啥意思，这个表示的就是数字，而数字中又分为整型和浮点型，就是整数和小数或分数。不好意思的是，JavaScript中没有具体的再区分它们两个，而是就用浮点型表示数字：1 == 1.0，这个是成立的。</p>
-<p>运算符：+（加）、-（减）、*（乘）、/（除）、%（取余），运算也就是这个几个或者是几个的复合运算。</p>
-<p>JavaScript数字的几个概念</p>
-<p>无穷大（infinity），一个忒大的数字，出现了溢出（overflow），上溢出；</p>
-<p>负无穷（-infinity），一个忒小的数字，出现了下溢出（underflow）；</p>
-<p>除此之外，还有个中特别的存在就是非数字（not-a-number既NaN)，NaN是非数字的意思，情况有几种：无穷大除以无穷大、负数开平方、非数字或者不能获得数字的运算符进行了运算，这几种情况都是出现NaN。</p>
-<p>NaN是个孤独的游魂，他没有伙伴，我们只能证明一个值不是NaN，而不能证明一个值是NaN，表达式是：</p>
-<p> x != NaN,不能写作 x == NaN(后者是个错误的存在)。</p>
-<p>上面的仅仅是数字的相关知识，还有Math对象对于数字的操作运算，这个下次再做分析。</p>
-<h2 id="2-字符串（string）"><a href="#2-字符串（string）" class="headerlink" title="2.字符串（string）"></a>2.字符串（string）</h2><p>字符串就是个有次数的不可改变的16位值的序列，字符串的表现形式就是把值放到单引号’’或者双引号””里面，或者是个空值也可以。</p>
-<p>因为JavaScript是用UTF-16编码的Unicode字符集，所以JavaScript的所有字符都是16位的。次序就是在字符串中相同字符也是有不同的索引的，不可改变就从字符串的所有方法看吧！</p>
-<p>方法一是获取相关值</p>
-<p>s.charAt();//用数字获取相关位置的值，因此里面填的是数字</p>
-<p>s.substring(a,b);//两个数字，包前不包后</p>
-<p>s.slice(a,b)；//同上</p>
-<p>s.indexOf();//里面的字符串值，出现的就是这个字符的首次出现的位置的索引</p>
-<p>s.lastIndexOf();//方法类似于上面</p>
-<p>s.split();//以什么作为分割点</p>
-<p>s.replace();//两个字符，前面的用后面的值来代替</p>
-<p>s.toUpperCase();//变为大写</p>
-<p>下面就用代码来实现一下，证实一下原字符串是不是不可改变的：</p>
-<pre><code>var s = &quot;hello world&quot;;
-
-console.log(s.indexOf(&apos;o&apos;));
-console.log(s.lastIndexOf(&apos;o&apos;));
-console.log(s.charAt(2));
-console.log(s.toUpperCase());
-console.log(s.substring(0,3));//同样是包前不包后
-console.log(s.slice(2));//包前不包后，因为2后面没有结尾意思就是到最后
-console.log(s.replace(&apos;w&apos;,&apos;W&apos;));
-console.log(s.split(&apos;v&apos;));//这个就是字符串里没有的话，可以说是没有用的
-console.log(s.split(&apos; &apos;));
-</code></pre><h2 id="3-布尔值（boolean）"><a href="#3-布尔值（boolean）" class="headerlink" title="3.布尔值（boolean）"></a>3.布尔值（boolean）</h2><p>布尔值代表的意思是真或假、开或关、是或否，多用于控制结构的比较语句中，这个类型只有两个值：true、false。</p>
-<p>JavaScript中的任意值都能转换成布尔值，下面的这些值能转换成false：undefined、null、0、-0、””(空字符串)、NaN，所有其他值包括对象（数组）则被转换成true。</p>
-<p>用个例子：声明个变量o,<strong>if(o ！== null)</strong>再有一个<strong>if(o)</strong>,前个例子是证明变量o是不是null值，不是的话会执行下去，后一个变量是意思是为真（o不是false、null和undefined）的时候会执行下去。</p>
-<p>关于布尔值的在有的话就是运算符的运用了！AND（&amp;&amp;）、OR（||）、非（NOT既！）。</p>
-<h2 id="4-null和undefined"><a href="#4-null和undefined" class="headerlink" title="4.null和undefined"></a>4.null和undefined</h2><p>null就是程序级别的，不是系统报错报出来的，是我们可以写出来的，我们可以写作参数的；undefined是系统报错的，我们不期望遇到，遇到的原因大概有三：</p>
-<p>①我们声明了变量，但是没有给变量赋值</p>
-<p>如：    </p>
-<pre><code>var a;
-
-console.log(a);//这里打印出来的就是undefined
-</code></pre><p>②参数的形式参数的引用了却没有实参</p>
-<p>如：</p>
-<pre><code> function a (b,c,d){
-
-    console.log(b + c);
-
-    console.log(d);//这里打印出来的就是undefined
-  }
-
-a(1,0);
-</code></pre><p>好玩的是如果console.log(b + c + d);这里打印出来的值是NaN，你想想一个数字加undefined，结果就是NaN。</p>
-<p>③再有一个现象就是对象里，我们有3个值，你非要找第四个值，那是没有了，只会报出undefined。</p>
-<p>为了避免出现undefined的现象，我们一定要注意几个原因，声明变量的时候，</p>
-<p>如：newHtml = “”;//不要只声明了不初始化值。</p>
+		<p><strong>1.全局对象：</strong></p>
+<p>全局属性：undefined、NaN、infinity</p>
+<p>全局函数：isNaN()、parseInt()、eval()</p>
+<p>全局对象：Math、JSON</p>
+<p>构造函数：Date（）、RegExp()、String（）、Object（）、Array（）</p>
+<p><strong>2.包装对象</strong></p>
+<p>JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？</p>
+<p>那我们就先从说对象说起，对象是一系列属性名和属性值的集合体。对象要引用属性值就用”.”加上属性名来引用；对象里的方法是用函数表示的，引用的时候用o.m()来表示。</p>
+<p>不同的是，原始值里的字符串、数字和布尔值的属性和方法是不能被定义新的值的，而对象里面是能改变的。</p>
+<p>在例子中：</p>
+<pre><code>var s = &apos;test&apos;;
+s.len = 4;
+s.indexOf(&apos;t&apos;) = 0;
+</code></pre><p>在上面的例子中s是字符串，但是具有自己的属性和方法，它的实现方式是在s引用自己的属性和方法时，就会通过new String(s)创建一个临时对象，这个对象会继承s的特点。这个临时对象在用到的时候会被创建出来，一旦不用就会被销毁。</p>
+<p>例如：</p>
+<pre><code>var s = &apos;test&apos;;
+s.len = 4;//这里是设置的新的属性值
+var t = s.len;
+console.log(t);//undefined
+</code></pre><p>在s.len = 4;使用完后，这个属性就被销毁了，不会在往下传递了，所以打印的结果是undefined；不是length哟！代码测试如果用下面的代码：<br>    var s = ‘test’;<br>    s.length = 4;<br>    var t = s.length;<br>    console.log(t);//这个结果就是4了</p>
+<p>可以运用构造函数来显示的创建包装对象，</p>
+<pre><code>var s = &apos;test&apos;,n = 1,b = true;
+var S = new String(s);
+var N = new Number(n);
+var B = new Boolean(b);
+</code></pre><p>如果我们用’ == ‘来判断s与S、n与N、b与B的话，结果是true；如果用’ === ‘恒等式来判断的话，就不是这个结果了。</p>
+<p>JavaScript中的值的类型会根据需要字型转变，无论进行什么运算，共同的值类型是每个单独的值都能转换过去的，转换的又隐式转换和显式转换</p>
+<p>例如： </p>
+<p>‘5’<em>‘6</em>;//30,//改变就是从字符串变化到了数字类型</p>
+<p> 30 + ‘object’;//这里就只能转变为字符串了</p>
+<p>parseInt() =&gt;意思是把值转换为16进制的，目前就是这么多了！不足的话就再加补充。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -170,7 +142,7 @@ a(1,0);
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://maHouse.github.io/2017/05/18/JS-data-type/" data-title="JavaScript的数据类型 | 浮游Bar" data-tsina="null" class="share clearfix">
+	  <div data-url="http://maHouse.github.io/2017/05/21/object/" data-title="对象 | 浮游Bar" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -184,21 +156,13 @@ a(1,0);
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/16/my-domain/" title="Hexo中域名的配置">
+ <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型">
   <strong>上一篇：</strong><br/>
   <span>
-  Hexo中域名的配置</span>
+  JavaScript的数据类型</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2017/05/21/object/"  title="对象">
- <strong>下一篇：</strong><br/> 
- <span>对象
-</span>
-</a>
-</div>
 
 </nav>
 
@@ -210,7 +174,7 @@ a(1,0);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数字（number）"><span class="toc-number">1.</span> <span class="toc-text">1.数字（number）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串（string）"><span class="toc-number">2.</span> <span class="toc-text">2.字符串（string）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-布尔值（boolean）"><span class="toc-number">3.</span> <span class="toc-text">3.布尔值（boolean）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-null和undefined"><span class="toc-number">4.</span> <span class="toc-text">4.null和undefined</span></a></li></ol>
+ 
  
   </div>
 
