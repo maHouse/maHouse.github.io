@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>对象 | 浮游Bar</title>
+    <title>变量声明及作用域 | 浮游Bar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小码哥">
     
 
     
-    <meta name="description" content="1.全局对象： 全局属性：undefined、NaN、infinity 全局函数：isNaN()、parseInt()、eval() 全局对象：Math、JSON 构造函数：Date（）、RegExp()、String（）、Object（）、Array（） 2.包装对象 JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？">
+    <meta name="description" content="变量声明有两种方式一是用var关键词再有就是用function关键词，声明使代码具有了语义。 var关键词声明变量在函数体内是局部变量在函数体外是全局变量，不用var声明变量无论在函数体内还是函数体外都是全局变量，后种方式声明的变量是可以用运算符delete删除掉声明的变量的，var关键词声明的变量不能被删除掉。 作用域就是变量能发生作用的范围，JavaScript不像C那样：变量在声明它们的代码">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对象">
-<meta property="og:url" content="http://maHouse.github.io/2017/05/21/object/index.html">
+<meta property="og:title" content="变量声明及作用域">
+<meta property="og:url" content="http://maHouse.github.io/2017/05/22/variable-key/index.html">
 <meta property="og:site_name" content="浮游Bar">
-<meta property="og:description" content="1.全局对象： 全局属性：undefined、NaN、infinity 全局函数：isNaN()、parseInt()、eval() 全局对象：Math、JSON 构造函数：Date（）、RegExp()、String（）、Object（）、Array（） 2.包装对象 JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？">
-<meta property="og:updated_time" content="2017-05-22T14:21:06.236Z">
+<meta property="og:description" content="变量声明有两种方式一是用var关键词再有就是用function关键词，声明使代码具有了语义。 var关键词声明变量在函数体内是局部变量在函数体外是全局变量，不用var声明变量无论在函数体内还是函数体外都是全局变量，后种方式声明的变量是可以用运算符delete删除掉声明的变量的，var关键词声明的变量不能被删除掉。 作用域就是变量能发生作用的范围，JavaScript不像C那样：变量在声明它们的代码">
+<meta property="og:updated_time" content="2017-05-25T15:44:42.224Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对象">
-<meta name="twitter:description" content="1.全局对象： 全局属性：undefined、NaN、infinity 全局函数：isNaN()、parseInt()、eval() 全局对象：Math、JSON 构造函数：Date（）、RegExp()、String（）、Object（）、Array（） 2.包装对象 JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？">
+<meta name="twitter:title" content="变量声明及作用域">
+<meta name="twitter:description" content="变量声明有两种方式一是用var关键词再有就是用function关键词，声明使代码具有了语义。 var关键词声明变量在函数体内是局部变量在函数体外是全局变量，不用var声明变量无论在函数体内还是函数体外都是全局变量，后种方式声明的变量是可以用运算符delete删除掉声明的变量的，var关键词声明的变量不能被删除掉。 作用域就是变量能发生作用的范围，JavaScript不像C那样：变量在声明它们的代码">
 
     
     <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
@@ -79,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/21/object/" title="对象" itemprop="url">对象</a>
+      <a href="/2017/05/22/variable-key/" title="变量声明及作用域" itemprop="url">变量声明及作用域</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-21T15:21:36.000Z" itemprop="datePublished"> 发表于 2017-05-21</time>
+    <time datetime="2017-05-22T14:32:52.000Z" itemprop="datePublished"> 发表于 2017-05-22</time>
     
   </p>
 </header>
@@ -99,37 +99,12 @@
 		
 		</div>
 		
-		<p><strong>1.全局对象：</strong></p>
-<p>全局属性：undefined、NaN、infinity</p>
-<p>全局函数：isNaN()、parseInt()、eval()</p>
-<p>全局对象：Math、JSON</p>
-<p>构造函数：Date（）、RegExp()、String（）、Object（）、Array（）</p>
-<p><strong>2.包装对象</strong></p>
-<p>JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？</p>
-<p>那我们就先从说对象说起，对象是一系列属性名和属性值的集合体。对象要引用属性值就用”.”加上属性名来引用；对象里的方法是用函数表示的，引用的时候用o.m()来表示。</p>
-<p>不同的是，原始值里的字符串、数字和布尔值的属性和方法是不能被定义新的值的，而对象里面是能改变的。</p>
-<p>在例子中：</p>
-<pre><code>var s = &apos;test&apos;;
-s.len = 4;
-s.indexOf(&apos;t&apos;) = 0;
-</code></pre><p>在上面的例子中s是字符串，但是具有自己的属性和方法，它的实现方式是在s引用自己的属性和方法时，就会通过new String(s)创建一个临时对象，这个对象会继承s的特点。这个临时对象在用到的时候会被创建出来，一旦不用就会被销毁。</p>
-<p>例如：</p>
-<pre><code>var s = &apos;test&apos;;
-s.len = 4;//这里是设置的新的属性值
-var t = s.len;
-console.log(t);//undefined
-</code></pre><p>在s.len = 4;使用完后，这个属性就被销毁了，不会在往下传递了，所以打印的结果是undefined；不是length哟！代码测试如果用下面的代码：<br>    var s = ‘test’;<br>    s.length = 4;<br>    var t = s.length;<br>    console.log(t);//这个结果就是4了</p>
-<p>可以运用构造函数来显示的创建包装对象，</p>
-<pre><code>var s = &apos;test&apos;,n = 1,b = true;
-var S = new String(s);
-var N = new Number(n);
-var B = new Boolean(b);
-</code></pre><p>如果我们用’ == ‘来判断s与S、n与N、b与B的话，结果是true；如果用’ === ‘恒等式来判断的话，就不是这个结果了。</p>
-<p>JavaScript中的值的类型会根据需要字型转变，无论进行什么运算，共同的值类型是每个单独的值都能转换过去的，转换的又隐式转换和显式转换</p>
-<p>例如： </p>
-<p>‘5’<em>‘6</em>;//30,//改变就是从字符串变化到了数字类型</p>
-<p> 30 + ‘object’;//这里就只能转变为字符串了</p>
-<p>parseInt() =&gt;意思是把值转换为16进制的，目前就是这么多了！不足的话就再加补充。</p>
+		<p>变量声明有两种方式一是用<strong>var</strong>关键词再有就是用<strong>function</strong>关键词，声明使代码具有了语义。</p>
+<p>var关键词声明变量在函数体内是局部变量在函数体外是全局变量，不用var声明变量无论在函数体内还是函数体外都是全局变量，后种方式声明的变量是可以用运算符delete删除掉声明的变量的，var关键词声明的变量不能被删除掉。</p>
+<p>作用域就是变量能发生作用的范围，JavaScript不像C那样：变量在声明它们的代码块之外是不可见的，C是块级作用域。而JavaScript的作用域是全局作用域和局部作用域，变量在声明他们的函数体内及函数体的嵌套函数体内都是可见的。</p>
+<p>变量在未声明之前是可以使用的，变量的生命提前使得变量的声明提前到函数体的顶部。</p>
+<p>下面说说作用域链，作用域链从把变量的声明当作对象的属性看待说起，作用域链就是个查找的过程了。在《JavaScript权威指南》里的原话放在这里，当定义一个函数时，它实际上保存一个<strong>作用域链</strong>，当调用这个函数时，他创建一个新的对象来存储他的<strong>局部变量</strong>，并将这个对象添加至保存的那个作用域链上，同时创建一个新的更长的表示函数调用作用的“链”。对于嵌套函数来说，事情变得更加有趣，每次<strong>调用外部函数</strong>时，<strong>内部函数又会重新定义一遍</strong>。因为每次<strong>调用外部函数的时候，作用域链都是不同的</strong>。内部函数在每次定义的时候都有微妙差别—在每次调用外部函数，内部函数的代码都是相同的，而关联这段代码的作用域不相同。</p>
+<p>调用外部函数的时候，内部函数重新定义，这是由于作用域链的不同。大致理解了它的原理。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -142,7 +117,7 @@ var B = new Boolean(b);
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://maHouse.github.io/2017/05/21/object/" data-title="对象 | 浮游Bar" data-tsina="null" class="share clearfix">
+	  <div data-url="http://maHouse.github.io/2017/05/22/variable-key/" data-title="变量声明及作用域 | 浮游Bar" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -156,21 +131,13 @@ var B = new Boolean(b);
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型">
+ <a href="/2017/05/21/object/" title="对象">
   <strong>上一篇：</strong><br/>
   <span>
-  JavaScript的数据类型</span>
+  对象</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2017/05/22/variable-key/"  title="变量声明及作用域">
- <strong>下一篇：</strong><br/> 
- <span>变量声明及作用域
-</span>
-</a>
-</div>
 
 </nav>
 
