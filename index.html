@@ -79,6 +79,72 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/25/部分运算符/" title="部分运算符" itemprop="url">部分运算符</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-25T15:48:22.000Z" itemprop="datePublished"> 发表于 2017-05-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>1.in运算符</strong></p>
+<p>in运算符左右有两个位置，左边的位置放的是字符串或者可以转化为字符串的值，右边的是对象，如：数组、对象。<br><img src="/image/in.jpg" alt=""></p>
+<p>一般情况是字符串匹配的是对象，字符串的内容是属性名；是数字的时候匹配的是数组，数字是索引。</p>
+<p><strong>2.instanceof运算符</strong></p>
+<p>这个运算符是区分对象的类的，这里多提一点，区分对象的类的方法还有通过class特性和constructor属性，这两种方式，instanceof和in运算符类似，有两个操作数，不同的是①的位置是个对象，②的位置是个对象的类。<br><img src="/image/instanceof.jpg" alt=""></p>
+<p>这个操作的返回值是个布尔值，如果①是②的实例化对象，则返回值是true，不是的话则返回值是false。这个寻找过程是：在原型链中找到①这个对象，再在①的原型链中找②.prototype,如果有的话就返回true，否则的话返回false。</p>
+<p><strong>3.typeof运算符</strong></p>
+<p>typeof运算符是我们经常用到的，我们用它来区分原始值和对象，typeof后面跟的可以是任意值。typeof是个一元运算符，我们要注意到和instanceof的不同。</p>
+<p>使用形式有两种方式：  </p>
+<pre><code>typeof &apos;hello world&apos;;//这里用到的是字符串
+</code></pre><p> OR </p>
+<pre><code>typeof (&apos;hello world&apos;);
+</code></pre><p><strong>注意：</strong>typeof将函数区别对待，返回值页特殊。</p>
+<p><strong>4.三元运算符</strong></p>
+<p><img src="/image/three.jpg" alt=""></p>
+<p>三元运算符有3个操作数，①的返回值是个布尔值，如果返回的是true，则执行②，并得出返回值，如果是false则执行③，这个比用if语句更加简洁。</p>
+<p>最后说eval(),里面放进去的是字符串，返回的是一个值，因为只有字符串才会被编译（parse），其他的值放进去只会被原封不动地返回来，它是动态的，实际中运用之处微乎极微，可以考虑不使用。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/22/variable-key/" title="变量声明及作用域" itemprop="url">变量声明及作用域</a>
   </h1>
   <p class="article-author">By
@@ -703,60 +769,6 @@ a(1,0);
 <p>对于面向对象方法学，这次就说一个方程就行了：</p>
 <h1 id="OO-objects-classes-inheritance-communication-with-messages"><a href="#OO-objects-classes-inheritance-communication-with-messages" class="headerlink" title="OO = objects + classes + inheritance + communication with messages"></a>OO = objects + classes + inheritance + communication with messages</h1><p>意思就是：面向对象就是既使用对象又使用类和继承等机制，而且对象之间仅能通过传递消息实现彼此通信。</p>
 <p>OK！下次细细讲解模块化和面向对象方法。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/26/resume/" title="个人简历" itemprop="url">个人简历</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-26T10:10:13.000Z" itemprop="datePublished"> 发表于 2017-04-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>姓名：</strong>马帅旗       </p>
-<p><strong>籍贯：</strong>河南商丘 </p>
-<p><strong>职业：</strong>人生工程师</p>
-<p><strong>技能：</strong>精通HTML、CSS、JS 等</p>
-<p><strong>座右铭：</strong>爱计算机的工商管理专业兄弟！没事咱们也可以一起聊聊马刺或者一起来个长途骑行！  </p>
 
         
         
