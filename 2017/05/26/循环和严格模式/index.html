@@ -4,28 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>部分运算符 | 浮游Bar</title>
+    <title>语句 | 浮游Bar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小码哥">
     
 
     
-    <meta name="description" content="1.in运算符 in运算符左右有两个位置，左边的位置放的是字符串或者可以转化为字符串的值，右边的是对象，如：数组、对象。 一般情况是字符串匹配的是对象，字符串的内容是属性名；是数字的时候匹配的是数组，数字是索引。 2.instanceof运算符 这个运算符是区分对象的类的，这里多提一点，区分对象的类的方法还有通过class特性和constructor属性，这两种方式，instanceof和in运算">
+    <meta name="description" content="一、表达式语句 表达式语句常见的就是两类：赋值语句和函数调用，声明语句有var声明和function声明。 二、条件语句 条件语句两种if语句和switch语句，这里就说说switch语句： switch(n){ case ①; //代码块 break； case ②； //代码块 break; default; //代码块 break; } 传进来参数与①、②、③进行匹配，如果n与某个值恒等时，">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="部分运算符">
-<meta property="og:url" content="http://maHouse.github.io/2017/05/25/部分运算符/index.html">
+<meta property="og:title" content="语句">
+<meta property="og:url" content="http://maHouse.github.io/2017/05/26/循环和严格模式/index.html">
 <meta property="og:site_name" content="浮游Bar">
-<meta property="og:description" content="1.in运算符 in运算符左右有两个位置，左边的位置放的是字符串或者可以转化为字符串的值，右边的是对象，如：数组、对象。 一般情况是字符串匹配的是对象，字符串的内容是属性名；是数字的时候匹配的是数组，数字是索引。 2.instanceof运算符 这个运算符是区分对象的类的，这里多提一点，区分对象的类的方法还有通过class特性和constructor属性，这两种方式，instanceof和in运算">
-<meta property="og:image" content="http://mahouse.github.io/image/in.jpg">
-<meta property="og:image" content="http://mahouse.github.io/image/instanceof.jpg">
-<meta property="og:image" content="http://mahouse.github.io/image/three.jpg">
-<meta property="og:updated_time" content="2017-05-26T01:17:59.490Z">
+<meta property="og:description" content="一、表达式语句 表达式语句常见的就是两类：赋值语句和函数调用，声明语句有var声明和function声明。 二、条件语句 条件语句两种if语句和switch语句，这里就说说switch语句： switch(n){ case ①; //代码块 break； case ②； //代码块 break; default; //代码块 break; } 传进来参数与①、②、③进行匹配，如果n与某个值恒等时，">
+<meta property="og:updated_time" content="2017-05-26T04:36:22.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="部分运算符">
-<meta name="twitter:description" content="1.in运算符 in运算符左右有两个位置，左边的位置放的是字符串或者可以转化为字符串的值，右边的是对象，如：数组、对象。 一般情况是字符串匹配的是对象，字符串的内容是属性名；是数字的时候匹配的是数组，数字是索引。 2.instanceof运算符 这个运算符是区分对象的类的，这里多提一点，区分对象的类的方法还有通过class特性和constructor属性，这两种方式，instanceof和in运算">
-<meta name="twitter:image" content="http://mahouse.github.io/image/in.jpg">
+<meta name="twitter:title" content="语句">
+<meta name="twitter:description" content="一、表达式语句 表达式语句常见的就是两类：赋值语句和函数调用，声明语句有var声明和function声明。 二、条件语句 条件语句两种if语句和switch语句，这里就说说switch语句： switch(n){ case ①; //代码块 break； case ②； //代码块 break; default; //代码块 break; } 传进来参数与①、②、③进行匹配，如果n与某个值恒等时，">
 
     
     <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
@@ -83,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/25/部分运算符/" title="部分运算符" itemprop="url">部分运算符</a>
+      <a href="/2017/05/26/循环和严格模式/" title="语句" itemprop="url">语句</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-25T15:48:22.000Z" itemprop="datePublished"> 发表于 2017-05-25</time>
+    <time datetime="2017-05-26T01:57:14.000Z" itemprop="datePublished"> 发表于 2017-05-26</time>
     
   </p>
 </header>
@@ -103,23 +99,39 @@
 		
 		</div>
 		
-		<p><strong>1.in运算符</strong></p>
-<p>in运算符左右有两个位置，左边的位置放的是字符串或者可以转化为字符串的值，右边的是对象，如：数组、对象。<br><img src="/image/in.jpg" alt=""></p>
-<p>一般情况是字符串匹配的是对象，字符串的内容是属性名；是数字的时候匹配的是数组，数字是索引。</p>
-<p><strong>2.instanceof运算符</strong></p>
-<p>这个运算符是区分对象的类的，这里多提一点，区分对象的类的方法还有通过class特性和constructor属性，这两种方式，instanceof和in运算符类似，有两个操作数，不同的是①的位置是个对象，②的位置是个对象的类。<br><img src="/image/instanceof.jpg" alt=""></p>
-<p>这个操作的返回值是个布尔值，如果①是②的实例化对象，则返回值是true，不是的话则返回值是false。这个寻找过程是：在原型链中找到①这个对象，再在①的原型链中找②.prototype,如果有的话就返回true，否则的话返回false。</p>
-<p><strong>3.typeof运算符</strong></p>
-<p>typeof运算符是我们经常用到的，我们用它来区分原始值和对象，typeof后面跟的可以是任意值。typeof是个一元运算符，我们要注意到和instanceof的不同。</p>
-<p>使用形式有两种方式：  </p>
-<pre><code>typeof &apos;hello world&apos;;//这里用到的是字符串
-</code></pre><p> OR </p>
-<pre><code>typeof (&apos;hello world&apos;);
-</code></pre><p><strong>注意：</strong>typeof将函数区别对待，返回值页特殊。</p>
-<p><strong>4.三元运算符</strong></p>
-<p><img src="/image/three.jpg" alt=""></p>
-<p>三元运算符有3个操作数，①的返回值是个布尔值，如果返回的是true，则执行②，并得出返回值，如果是false则执行③，这个比用if语句更加简洁。</p>
-<p>最后说eval(),里面放进去的是字符串，返回的是一个值，因为只有字符串才会被编译（parse），其他的值放进去只会被原封不动地返回来，它是动态的，实际中运用之处微乎极微，可以考虑不使用。</p>
+		<p><strong>一、表达式语句</strong></p>
+<p>表达式语句常见的就是两类：赋值语句和函数调用，声明语句有var声明和function声明。</p>
+<p><strong>二、条件语句</strong></p>
+<p>条件语句两种if语句和switch语句，这里就说说switch语句：</p>
+<pre><code>switch(n){
+case ①;
+//代码块
+break；
+case ②；
+//代码块
+break;
+default;
+//代码块
+break;
+}
+</code></pre><p>传进来参数与①、②、③进行匹配，如果n与某个值恒等时，就执行相应的代码块。</p>
+<p><strong>三、use strict（严格模式）与非严格模式的比较</strong></p>
+<p>use strict语句的目的是说明脚本或者函数体的后续代码将会解析为严格代码。如果放在顶层了，那么就是严格代码。</p>
+<p>use strict和普通语句的区别：</p>
+<p>1.不包含任何语言的关键字，对于JavaScript解释器来说，它只是一条没有副作用的表达式语句，什么也没有做。</p>
+<p>2.use strict只能出现在脚本代码的开始或者函数体的开始、任何实体语句之前。并不一定是出现在首行。</p>
+<p>严格模式与非严格模式的区别</p>
+<p>1.严格模式中禁止使用with语句；</p>
+<p>2.所有的变量都要先声明；</p>
+<p>3.严格模式中，调用的函数中的一个this值是undefined，非严格模式中调用的函数中的this值总是全局对象；</p>
+<p>4.严格模式中，通过call（）或者apply（）来调用函数时，其中的this值就是通过call（）或者apply()传入的第一个参数（非严格模式中，null和undefined值被全局对象和转换为对象的非对象所代替）；</p>
+<p>5.严格模式中，给只读属性赋值和给不可扩展的对象创建新成员时，会抛出一个类型错误的异常，在非中仅仅是操作失败；</p>
+<p>6.严格模式中，函数的arguments对象拥有传入函数值的静态副本，非中arguments的数组和函数都是指向同一个值的引用；</p>
+<p>7.严格模式中，当delete运算符后跟随非法的标识符（变量、函数、函数参数）时，会抛出语法错误，非严格模式中，delete什么也没有做，返回false；</p>
+<p>8.严格模式中，在一个函数直接量中定义两个或多个同名属性将产生一个语法错误；</p>
+<p>9.严格模式中，函数声明中存在两个或多个同名参数将产生一个语法错误，非中不会报错；</p>
+<p>10.严格模式中，标识符eval和arguments当作关键字，它们的值是不能更改的。不能赋值、声明为变量、用作函数名、用作函数参数或者用作catch块的标识符；</p>
+<p>11.严格模式中限制了对调用栈的检测能力，arguments.caller和arguments.callee都会抛出一个类型错误异常。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -132,7 +144,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://maHouse.github.io/2017/05/25/部分运算符/" data-title="部分运算符 | 浮游Bar" data-tsina="null" class="share clearfix">
+	  <div data-url="http://maHouse.github.io/2017/05/26/循环和严格模式/" data-title="语句 | 浮游Bar" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,21 +158,13 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/22/variable-key/" title="变量声明及作用域">
+ <a href="/2017/05/25/部分运算符/" title="部分运算符">
   <strong>上一篇：</strong><br/>
   <span>
-  变量声明及作用域</span>
+  部分运算符</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2017/05/26/循环和严格模式/"  title="语句">
- <strong>下一篇：</strong><br/> 
- <span>语句
-</span>
-</a>
-</div>
 
 </nav>
 
