@@ -104,20 +104,6 @@ revers.sort(function(x,y) {
   </entry>
   
   <entry>
-    <title>数组基础知识</title>
-    <link href="http://maHouse.github.io/2017/06/03/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>http://maHouse.github.io/2017/06/03/数组基础知识/</id>
-    <published>2017-06-03T08:26:21.000Z</published>
-    <updated>2017-06-03T08:26:21.618Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>语句</title>
     <link href="http://maHouse.github.io/2017/05/26/%E5%BE%AA%E7%8E%AF%E5%92%8C%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"/>
     <id>http://maHouse.github.io/2017/05/26/循环和严格模式/</id>

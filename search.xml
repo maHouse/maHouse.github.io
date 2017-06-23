@@ -81,14 +81,6 @@ revers.sort(function(x,y) {
     </entry>
     
     <entry>
-      <title><![CDATA[数组基础知识]]></title>
-      <url>/2017/06/03/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-      <content type="html"></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[语句]]></title>
       <url>/2017/05/26/%E5%BE%AA%E7%8E%AF%E5%92%8C%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p><strong>一、表达式语句</strong></p>
