@@ -79,6 +79,174 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/06/23/Array/" title="数组基础知识" itemprop="url">数组基础知识</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-23T12:57:30.000Z" itemprop="datePublished"> 发表于 2017-06-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="我们得知道这节的主题是什么："><a href="#我们得知道这节的主题是什么：" class="headerlink" title="我们得知道这节的主题是什么："></a>我们得知道这节的主题是什么：</h1><p><strong>**一是</strong>数组是什么，长什么样子，我们看到了就能一眼认出来这个是不是数组；**</p>
+<p><strong>二我们怎么创建数组，讲解的是数组的声明方式；</strong></p>
+<p><strong>三是我们须知数组的一些属性和方法，因为数组不是你想怎么来就怎么来的，你必须按一定的套路走才是可行的；</strong></p>
+<p><strong>四是我们要知道数组与对象和字符串的关系，因为是近亲所以有更多有意思的事情。</strong></p>
+<p><strong>好了接下来一一说。</strong></p>
+<h3 id="一、数组的定义"><a href="#一、数组的定义" class="headerlink" title="一、数组的定义"></a>一、数组的定义</h3><p><strong>数组是一系列值（元素）的有序集合体。</strong>从这里我们来解读一下。</p>
+<p>①数组既然是个集合体，那么就有一个范围，来表示这就是一个数组单元，数组的开始和结束标识符就是”[]”,双引号里面的中括号就是一个数组的最基本的构成；</p>
+<p>for example1：</p>
+<pre><code>var a = [];
+var b = [,1,2,7,true,&apos;ww&apos;,{x:1},1];
+</code></pre><p>②数组里面的元素是什么，可以使任意数据类型的值的杂合，当然有时候杂合的东西的不容易操作。比如例子1里面的b数组就是个各种数据类型都有的杂合体，JSON无疑就是个数组里面加对象；</p>
+<p>③有序，数组里面的元素是有顺序的，顺序是从整数0开始排序的（也就是每个数组的元素都有个索引值，这个索引值就是从0开始的），因此数组b中的两个元素数字1，他们的索引是不一样的，明显的是第一个索引值小，第二个大。</p>
+<p>现在我们知道了数组的长相，能辨认数组了，那么接下来我们就看看怎么声明一个数组：</p>
+<h3 id="二、数组的声明"><a href="#二、数组的声明" class="headerlink" title="二、数组的声明"></a>二、数组的声明</h3><p>声明数组的方式总的来说有两种：</p>
+<p>①仿照对象的声明，通过数组直接量的形式，例子就是例子1；</p>
+<p>②就是用个关键字new 来声明：</p>
+<p>for example2：</p>
+<pre><code>var a = new Array(1,2,3,true,&apos;test&apos;);
+</code></pre><p>综合老看推荐的是使用数组直接量的方式来声明一个数组。</p>
+<p>这里我们在稍微的说点，稀松数组就是数组里存在一个空的元素，而多维数组就是几个数组的嵌套了，因为数组的元素不是固定的，所以可以有这效果。</p>
+<h3 id="数组的属性和方法"><a href="#数组的属性和方法" class="headerlink" title="数组的属性和方法"></a>数组的属性和方法</h3><p>数组知识的重点，就是这个数组的属性和方法，再有个重点就是数组与对象和字符串的关系。这次我们就先谈谈这个，分增、删、改、查4个方面来说。</p>
+<h4 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h4><p>增的意思是数组的元素增多了，这个增多可以是原来数组的值的增加，也可以是形成了一个新的数组，这就意味着数组的length是变大了。好！开始介绍方法。</p>
+<p>①、先来个不改变原来数组的:concat(),他的意思是把两个数组的元素给拼接起来,或者就是把元素添加到数组的元素中去：<br>for example4：</p>
+<pre><code>var d = [1,3];
+var dd = d.concat(&apos;1&apos;,2,4);//不改变原来的数组[1,3,&apos;1&apos;,2,4]
+var ddd = d.concat([1,3,5],[4,7]);//[1,3,1,3,5,4,7]
+</code></pre><p>②、通过索引为数组增加值，变化的是原来的数组：</p>
+<p>for example3：</p>
+<pre><code>var c = [];
+c[0] = 1;//c = [0]
+c[1] = 2;//c = [0,2]
+c[3] = &apos;test&apos;;//c = [0,2,&apos;test&apos;]
+</code></pre><p>③、push(),改变了原来的数组，意思是往原来的数组的末尾加一个或多个元素,这个和pop()组成了类似于栈的先进后出的感觉：</p>
+<p>for example4：</p>
+<pre><code>var pushes = [&apos;hello&apos;,&apos;2&apos;,22];
+    pushes.push(11,77);//这样既可[&apos;hello&apos;,&apos;2&apos;,22,11,77]
+</code></pre><p>④、unshift(),类似于push()，不过unshift()是把元素添加到了原数组元素的第一个位置：</p>
+<p>for example4：</p>
+<pre><code>var unshifted = [&apos;hello&apos;,&apos;2&apos;,22];
+    unshifted.unshift(11,77);//这样既可[11,77,&apos;hello&apos;,&apos;2&apos;,22]
+</code></pre><p>⑤、splice(),这个比较特殊，因为他能增加也能减少，同样的是他改变的也是原来的数组,splice()方法里有三个参数，第一个为必填的，后两个为可选的，第一个参数是数组的索引值，是个整数，第二个意思是从第一个索引值的位置开始要去掉几个元素,这个值可以为负值，最后一个参数意思是去掉了参数，我们用什么来填补，是我们要填补的元素,返回的值是删除元素组成的数组：</p>
+<p>for example5：</p>
+<pre><code>var s = [&apos;hello&apos;,&apos;2&apos;,22,11,77];
+    s.splice(0,3);//返回[&apos;hello&apos;,&apos;2&apos;,22]
+    s.splice(0,3，&apos;world&apos;,33);//返回[&apos;hello&apos;,&apos;2&apos;,22]
+</code></pre><p>以上就是增，下面说说删。</p>
+<h4 id="2-删"><a href="#2-删" class="headerlink" title="2.删"></a>2.删</h4><p>因为说过了增，删的部分大部分是对应的，所以我们就把那些不对应的讲解一下：</p>
+<p>①、delete，这是个运算符，他删除的是元素的值，至于数组的length是不变的，去掉的是数组的元素值，去不掉的是数组的属性。</p>
+<p>for example6：</p>
+<pre><code>var del = [1,2,3];
+delete del[2];//在原数组中就没有了元素3，但是数组的length仍旧是3
+</code></pre><p>②、pop(),对比push()去吧！</p>
+<p>③、shift(),对比unshift()去吧！</p>
+<p>④、splice()</p>
+<h4 id="3-改和查"><a href="#3-改和查" class="headerlink" title="3.改和查"></a>3.改和查</h4><p>把改和查放在一起，因为我们会感觉到他们是一体的。</p>
+<p>①、slice(),能接收两个参数，第一个参数是必须的，为整数值，第二个参数为可选的，为整数值，都可为负值，不改变原有的数组,截取的值包前不包后：</p>
+<p>for example7：</p>
+<pre><code>var sl = [1,2,3];
+sl.slice(0,1);//返回[1]
+</code></pre><p>②、reverse(),把数组的元素值给倒过来排序，改变了原来的数组元素的排序：</p>
+<p>for example7：</p>
+<pre><code>var revers = [1,2,3];
+revers.reverse();//返回[3,2,1]
+</code></pre><p>③、sort(),把数组的元素按英文字母的顺序进行排序，也就是ASC11的顺序，这个可以接受一个比较函数，进行更好运算：</p>
+<p>for example7：</p>
+<pre><code>var revers = [1,2,3,10];
+revers.sort();//返回[1,10,2,3]
+revers.sort(function(x,y) {
+        return x-y;
+    });//返回的就是按数字大小比较后的顺序的数组了
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/03/数组基础知识/" title="数组基础知识" itemprop="url">数组基础知识</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-03T08:26:21.000Z" itemprop="datePublished"> 发表于 2017-06-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/26/循环和严格模式/" title="语句" itemprop="url">语句</a>
   </h1>
   <p class="article-author">By
@@ -844,161 +1012,6 @@ a(1,0);
 </ol>
 <p>综上知：<strong>JavaScript = 简化的函数式编程 + 面向对象编程</strong>，这是多么愉快的决定啊！把Java作为JavaScript的设计原型，这是公司的决定，在既圆了公司管理层的决定，又有自己的决定在里面，这个东西本来就是一种迎合公司和自己的杂合物。</p>
 <p>在结束的时候回味一下约翰逊博士的话，应该能有所体悟吧！</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/27/oop/" title="面向对象方法" itemprop="url">面向对象方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-27T13:54:45.000Z" itemprop="datePublished"> 发表于 2017-04-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="一、-面向对象方法出现的原因"><a href="#一、-面向对象方法出现的原因" class="headerlink" title="一、 面向对象方法出现的原因"></a>一、 面向对象方法出现的原因</h2><p>传统软件工程方法的确给软件产业带来了巨大进步，但它仅在中小规模软件开发中获得了好成绩，在大型的软件开发中很少取得成功。因此，后来面向对象技术得到了开发者的青睐。</p>
-<h2 id="二、-面向对象方法的4个要点"><a href="#二、-面向对象方法的4个要点" class="headerlink" title="二、 面向对象方法的4个要点"></a>二、 面向对象方法的4个要点</h2><p><strong>1.</strong>树立对象意识，客观世界是有各种对象组成的，复杂的对象由简单的对象组成。因此，面向对象的软件系统是由对象组成的，软件中的任何元素都是对象，复杂的对象由简单的对象组成。与传统方法的区别是用对象分解代替了其功能分解。</p>
-<p><strong>2.</strong>把所有对象划分为各种对象类，每个类都定义了一组数据和方法。数据用于表示数据的静态属性，乃对象的静态属性，每当建立一个对象类的实例时，就按照对象类中对数据的定义，生成一组专用的数据。例如，荧光屏上不同位置显示的半径各不相同的圆，虽然都是Circle类的对象，但都有自己的专属数据，以便记录各自的圆心位置、半径等。</p>
-<p>类中定义的方法，是允许施加于该类对象上的操作，是该类所有对象共享的，并不需要为每个对象都复制操作的代码。因为过程是一样的或是类似的，我们把操作的流程（操作）给定义下来，就是一条流水线生产多种产品了。</p>
-<p><strong>3.</strong>按照子类与父类的关系，把若干对象类组成一个系统，下层的类与上层类的特性相同，这就是一种继承现象。同时也得晓得底层的类能屏蔽高层类的同名特性。</p>
-<p><strong>4.</strong>对象彼此之间仅能通过传递信息相互联系。这里也与传统方法的数据有本质的区别，它不是被动的等待外界世界对它施加操作，相反的是，它是进行操作的主体，不能直接从外部世界修改它的私有数据，所有的私有数据都是封装在对象类中，这就是封装性。</p>
-<h2 id="三、-面向对象方法的优点"><a href="#三、-面向对象方法的优点" class="headerlink" title="三、 面向对象方法的优点"></a>三、 面向对象方法的优点</h2><p><strong>1.</strong>符合人类的思维特点</p>
-<p>抽象为一般的特点，然后再说一个个个例的不同之处。例如，我们说动物，我们会把具有某些相似特征的生物划分为动物，ok！有了动物，那么我们还要更加细化，则在根据某些特征抽象出来，比如把人从动物里就可以抽象出来。</p>
-<p><strong>2.</strong>稳定性好</p>
-<p>功能发生改变，在传统方法里，因为功能分析和功能分解，如果功能需求发生改变，改变的是整个软件结构，这个量很大的。相反，在面向对象方法里，仅仅通过修改局部方法就可以，不必修改全部。</p>
-<p><strong>3.</strong>可重用性好</p>
-<p>可以用旧的零件做新的产品，重复使用一个对象类，创建新的实例或者在对象类里增加数据和方法，都是不影响原来的使用。</p>
-<p><strong>4.</strong>容易开发大型的软件</p>
-<p>原因就是，把大的软件产品分解为许多相互独立的小个体，技术难度降低、开发管理更容易。</p>
-<p><strong>5.</strong>可维护性好</p>
-<p>面向对象方法开发的软件稳定性好、易于修改、容易理解更加易于测试，总体就突出了它的可维护性好的特点。</p>
-<h2 id="四、-面向对象的概念介绍"><a href="#四、-面向对象的概念介绍" class="headerlink" title="四、 面向对象的概念介绍"></a>四、 面向对象的概念介绍</h2><p><strong>1.</strong>说说对象的特点</p>
-<p>①以数据为中心。因为数据是对象数据结构的一部分，是它的状态。</p>
-<p>②本质上具有并行性。不同对象各自独立处理自身数据，彼此通过发送消息传递信息完成通信。因此，具有并行工作的属性。</p>
-<p>③模块独立性好。模块与对象的关系，对象本身就是面向对象的软件的基本模块，模块讲究的内聚性和耦合性在对象上能充分体现出来。因为对象的数据和属性是在一个对象类里面的，操作也是在这里面的，作为一个基本的模块单元，它的内聚性很高。也因为这个原因，对象之间的关联很小，它们之间的耦合性很宽松。</p>
-<p><strong>2.</strong>其他的相关概念</p>
-<p>①类（class）</p>
-<p>古语讲，物以类聚，这个“类”说的也是某些特点的在一起，抽象出来了一群人。类是支持继承的抽象数据类型，而对象是类的实例。</p>
-<p>②实例（instance）</p>
-<p>实例就是类的个体化</p>
-<p>③消息（message）</p>
-<p>把消息传递进去就有个不同的实例</p>
-<p>④方法（method）</p>
-<p>对象所能执行的操作，能做什么事情</p>
-<p>⑤属性（attribute）</p>
-<p>类中定义圆的大小、半径、颜色就是对象的属性，就是对象的特点</p>
-<p>⑥封装（encapsulation）</p>
-<p>字面上说就是把一个事物包起来，使外界不知道该事物的具体内容，面向对象方法中，把表示对象状态的数据和对数据的操作放到对象内部，只把接口提供出来。因此，它有个清晰的边界，外界是看不到内部的；再有就是有确定的接口，这些接口就是对象能接受的消息，只能向对象发送消息使用它；受保护的内部实现。</p>
-<p>⑦继承（inheritance）</p>
-<p>广义地说，继承就是直接使用已有的性质和特征，而不必重复定义他们。一个类可以有自己的父类和子类，这就一定具有继承的特性，一个类直接继承其父类的全部描述（数据和操作）。</p>
-<p>OK！基本知识就到此了，不充足的会再补充。。。。。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/27/module-1/" title="模块" itemprop="url">模块</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-27T13:54:06.000Z" itemprop="datePublished"> 发表于 2017-04-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在开发阶段里总体设计的过程中，我们必须明确系统是“怎么做事情”的了。在软件的设计过程中有些原理和概念是我们必须遵循的，这就是与<strong>模块</strong>有关的知识了！</p>
-<h1 id="1-模块化"><a href="#1-模块化" class="headerlink" title="1.模块化"></a>1.模块化</h1><p>先说个有意思的规律：C(x) 定义问题X的复杂程度，函数E(x)定义解决X问题所需要的工作量。对于问题P1和P2，如果</p>
-<pre><code>C(P1) &gt; C(P2)
-</code></pre><p> 显然       </p>
-<pre><code>E(P1) &gt; E(P2)
-</code></pre><p>根据人类解决问题的一般经验，一个有意思的规律就是</p>
-<pre><code>C(P1+P2) &gt; C(P1)+C(P2)
-</code></pre><p>因此也就有了</p>
-<pre><code>E(P1+P2) &gt; E(P1)+E(P2)
-</code></pre><p>结论是什么呢？就是把复杂的问题给分解成容易解决的小问题，那么大问题就迎刃而解，这是模块化的根据。</p>
-<p>这就有个有意思的问题了，无限的分割软件，最后开发软件的工作量确实小的很多了。但模块间的接口的设计就在增多，你去脑洞吧，一个在减少工作量，一个在增加工作量，那模块量多少才是合适？（既是设计模块和模块接口的工作量合适，成本也合适），这个问题再说了！</p>
-<h1 id="2-抽象"><a href="#2-抽象" class="headerlink" title="2.抽象"></a>2.抽象</h1><p>抽象是现实世界的事物、状态、过程等相似方面的集中和概括，暂时忽略他们之间的差异，模块就是把抽象出来的某个层次用一定的方式描述出来。因为抽象是一层一层的，因此模块也是有其特点的。</p>
-<h1 id="3-逐步求精"><a href="#3-逐步求精" class="headerlink" title="3.逐步求精"></a>3.逐步求精</h1><p>人类认知过程中遵循个Miller法则：一个人在任何时候都只能把注意力集中到[5 9]个知识块上。</p>
-<p>因此，在抽象的过程中，有了不同的层次，不同的模块，那么就有了模块的不断地精化。</p>
-<h1 id="4-信息隐藏和局部化"><a href="#4-信息隐藏和局部化" class="headerlink" title="4.信息隐藏和局部化"></a>4.信息隐藏和局部化</h1><p>这里隐藏的不是有关模块的所有信息，而是模块之间还要交换那些为了完成系统功能而必须交换的信息，当然是仅仅交换这些信息。模块本身就体现了这一特质。</p>
-<h1 id="5-模块独立"><a href="#5-模块独立" class="headerlink" title="5.模块独立"></a>5.模块独立</h1><p>模块的独立是模块化、抽象、信息隐藏和局部化的直接结果。既容易开发又容易测试是模块独立的好处，然而模块之间还是要通信的，那评价模块独立的标准又是是什么呢？<strong>内聚</strong> 和<strong>耦合</strong>。</p>
-<p><strong>内聚</strong></p>
-<p>内聚说的是一个模块内的事情，从一个最底层的模块说会更容易理解，既然“大家伙”（模块内的各个元素）都是一个“团队”（模块）了，那么我们就要力向一处使（做好一件事情），也就是说模块里的兄弟姐妹们都是与这件事情极其相关的。所以说内聚就是说模块内的元素关系密切，不然放一块干嘛！同理就是模块的设计时，尽量做到模块内的元素关系密切，这才符合模块间的信息隐藏和局部化。</p>
-<p><strong>耦合</strong></p>
-<p>有了内聚做参考就知道了既然能做同一件事或者相关事情的元素都放到一块去了（成为了一个模块），那么模块之间的关系就是松散的耦合关系喽！因为模块之间不可能做到一点关系都没有，是吧？做到松散耦合就OK了！</p>
-<p>好了！以上就是关于模块的理论知识，以后在碰到关于模块的问题时不至于会一脸懵逼吧，，，</p>
 
         
         

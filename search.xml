@@ -3,6 +3,92 @@
   
     
     <entry>
+      <title><![CDATA[数组基础知识]]></title>
+      <url>/2017/06/23/Array/</url>
+      <content type="html"><![CDATA[<h1 id="我们得知道这节的主题是什么："><a href="#我们得知道这节的主题是什么：" class="headerlink" title="我们得知道这节的主题是什么："></a>我们得知道这节的主题是什么：</h1><p><strong>**一是</strong>数组是什么，长什么样子，我们看到了就能一眼认出来这个是不是数组；**</p>
+<p><strong>二我们怎么创建数组，讲解的是数组的声明方式；</strong></p>
+<p><strong>三是我们须知数组的一些属性和方法，因为数组不是你想怎么来就怎么来的，你必须按一定的套路走才是可行的；</strong></p>
+<p><strong>四是我们要知道数组与对象和字符串的关系，因为是近亲所以有更多有意思的事情。</strong></p>
+<p><strong>好了接下来一一说。</strong></p>
+<h3 id="一、数组的定义"><a href="#一、数组的定义" class="headerlink" title="一、数组的定义"></a>一、数组的定义</h3><p><strong>数组是一系列值（元素）的有序集合体。</strong>从这里我们来解读一下。</p>
+<p>①数组既然是个集合体，那么就有一个范围，来表示这就是一个数组单元，数组的开始和结束标识符就是”[]”,双引号里面的中括号就是一个数组的最基本的构成；</p>
+<p>for example1：</p>
+<pre><code>var a = [];
+var b = [,1,2,7,true,&apos;ww&apos;,{x:1},1];
+</code></pre><p>②数组里面的元素是什么，可以使任意数据类型的值的杂合，当然有时候杂合的东西的不容易操作。比如例子1里面的b数组就是个各种数据类型都有的杂合体，JSON无疑就是个数组里面加对象；</p>
+<p>③有序，数组里面的元素是有顺序的，顺序是从整数0开始排序的（也就是每个数组的元素都有个索引值，这个索引值就是从0开始的），因此数组b中的两个元素数字1，他们的索引是不一样的，明显的是第一个索引值小，第二个大。</p>
+<p>现在我们知道了数组的长相，能辨认数组了，那么接下来我们就看看怎么声明一个数组：</p>
+<h3 id="二、数组的声明"><a href="#二、数组的声明" class="headerlink" title="二、数组的声明"></a>二、数组的声明</h3><p>声明数组的方式总的来说有两种：</p>
+<p>①仿照对象的声明，通过数组直接量的形式，例子就是例子1；</p>
+<p>②就是用个关键字new 来声明：</p>
+<p>for example2：</p>
+<pre><code>var a = new Array(1,2,3,true,&apos;test&apos;);
+</code></pre><p>综合老看推荐的是使用数组直接量的方式来声明一个数组。</p>
+<p>这里我们在稍微的说点，稀松数组就是数组里存在一个空的元素，而多维数组就是几个数组的嵌套了，因为数组的元素不是固定的，所以可以有这效果。</p>
+<h3 id="数组的属性和方法"><a href="#数组的属性和方法" class="headerlink" title="数组的属性和方法"></a>数组的属性和方法</h3><p>数组知识的重点，就是这个数组的属性和方法，再有个重点就是数组与对象和字符串的关系。这次我们就先谈谈这个，分增、删、改、查4个方面来说。</p>
+<h4 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h4><p>增的意思是数组的元素增多了，这个增多可以是原来数组的值的增加，也可以是形成了一个新的数组，这就意味着数组的length是变大了。好！开始介绍方法。</p>
+<p>①、先来个不改变原来数组的:concat(),他的意思是把两个数组的元素给拼接起来,或者就是把元素添加到数组的元素中去：<br>for example4：</p>
+<pre><code>var d = [1,3];
+var dd = d.concat(&apos;1&apos;,2,4);//不改变原来的数组[1,3,&apos;1&apos;,2,4]
+var ddd = d.concat([1,3,5],[4,7]);//[1,3,1,3,5,4,7]
+</code></pre><p>②、通过索引为数组增加值，变化的是原来的数组：</p>
+<p>for example3：</p>
+<pre><code>var c = [];
+c[0] = 1;//c = [0]
+c[1] = 2;//c = [0,2]
+c[3] = &apos;test&apos;;//c = [0,2,&apos;test&apos;]
+</code></pre><p>③、push(),改变了原来的数组，意思是往原来的数组的末尾加一个或多个元素,这个和pop()组成了类似于栈的先进后出的感觉：</p>
+<p>for example4：</p>
+<pre><code>var pushes = [&apos;hello&apos;,&apos;2&apos;,22];
+    pushes.push(11,77);//这样既可[&apos;hello&apos;,&apos;2&apos;,22,11,77]
+</code></pre><p>④、unshift(),类似于push()，不过unshift()是把元素添加到了原数组元素的第一个位置：</p>
+<p>for example4：</p>
+<pre><code>var unshifted = [&apos;hello&apos;,&apos;2&apos;,22];
+    unshifted.unshift(11,77);//这样既可[11,77,&apos;hello&apos;,&apos;2&apos;,22]
+</code></pre><p>⑤、splice(),这个比较特殊，因为他能增加也能减少，同样的是他改变的也是原来的数组,splice()方法里有三个参数，第一个为必填的，后两个为可选的，第一个参数是数组的索引值，是个整数，第二个意思是从第一个索引值的位置开始要去掉几个元素,这个值可以为负值，最后一个参数意思是去掉了参数，我们用什么来填补，是我们要填补的元素,返回的值是删除元素组成的数组：</p>
+<p>for example5：</p>
+<pre><code>var s = [&apos;hello&apos;,&apos;2&apos;,22,11,77];
+    s.splice(0,3);//返回[&apos;hello&apos;,&apos;2&apos;,22]
+    s.splice(0,3，&apos;world&apos;,33);//返回[&apos;hello&apos;,&apos;2&apos;,22]
+</code></pre><p>以上就是增，下面说说删。</p>
+<h4 id="2-删"><a href="#2-删" class="headerlink" title="2.删"></a>2.删</h4><p>因为说过了增，删的部分大部分是对应的，所以我们就把那些不对应的讲解一下：</p>
+<p>①、delete，这是个运算符，他删除的是元素的值，至于数组的length是不变的，去掉的是数组的元素值，去不掉的是数组的属性。</p>
+<p>for example6：</p>
+<pre><code>var del = [1,2,3];
+delete del[2];//在原数组中就没有了元素3，但是数组的length仍旧是3
+</code></pre><p>②、pop(),对比push()去吧！</p>
+<p>③、shift(),对比unshift()去吧！</p>
+<p>④、splice()</p>
+<h4 id="3-改和查"><a href="#3-改和查" class="headerlink" title="3.改和查"></a>3.改和查</h4><p>把改和查放在一起，因为我们会感觉到他们是一体的。</p>
+<p>①、slice(),能接收两个参数，第一个参数是必须的，为整数值，第二个参数为可选的，为整数值，都可为负值，不改变原有的数组,截取的值包前不包后：</p>
+<p>for example7：</p>
+<pre><code>var sl = [1,2,3];
+sl.slice(0,1);//返回[1]
+</code></pre><p>②、reverse(),把数组的元素值给倒过来排序，改变了原来的数组元素的排序：</p>
+<p>for example7：</p>
+<pre><code>var revers = [1,2,3];
+revers.reverse();//返回[3,2,1]
+</code></pre><p>③、sort(),把数组的元素按英文字母的顺序进行排序，也就是ASC11的顺序，这个可以接受一个比较函数，进行更好运算：</p>
+<p>for example7：</p>
+<pre><code>var revers = [1,2,3,10];
+revers.sort();//返回[1,10,2,3]
+revers.sort(function(x,y) {
+        return x-y;
+    });//返回的就是按数字大小比较后的顺序的数组了
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数组基础知识]]></title>
+      <url>/2017/06/03/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[语句]]></title>
       <url>/2017/05/26/%E5%BE%AA%E7%8E%AF%E5%92%8C%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p><strong>一、表达式语句</strong></p>
