@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-06-24T05:52:17.736Z</updated>
+  <updated>2017-07-01T08:53:41.823Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>类和模模块</title>
+    <link href="http://maHouse.github.io/2017/07/01/%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%A8%A1%E5%9D%97/"/>
+    <id>http://maHouse.github.io/2017/07/01/类和模模块/</id>
+    <published>2017-07-01T08:53:41.000Z</published>
+    <updated>2017-07-01T08:53:41.823Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>函数基础知识学习</title>
+    <link href="http://maHouse.github.io/2017/06/29/function/"/>
+    <id>http://maHouse.github.io/2017/06/29/function/</id>
+    <published>2017-06-29T14:03:04.000Z</published>
+    <updated>2017-07-01T08:56:41.787Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="我们的主题是什么？"><a href="#我们的主题是什么？" class="headerlink" title="我们的主题是什么？"></a>我们的主题是什么？</h1><p>函数是一种特殊的对象，有自己的属性和方法，而这些个属性和方法是什么我们必须知道，什么样子是函数，函数的用处有哪些，这些是我们必须明确知晓的。</p>
+<h2 id="一、函数的结构"><a href="#一、函数的结构" class="headerlink" title="一、函数的结构"></a>一、函数的结构</h2><p>函数体的组成部分必须包括：关键字function、函数名、一对圆括号、一对花括号、参数；</p>
+<p>函数的声明方式有：函数语句式和函数定义式：</p>
+<p>for example 1：</p>
+<pre><code>① function  funcName() { //代码块} funcName();
+② var f = function() {//代码块}  f();
+</code></pre><p>注意第二种是把函数赋值给了一个函数，这里有和变量的声明一样的问题，就是声明提前的现象。</p>
+<p>参数有形参和实参两种形式，形参是函数定义的时候出现的，而实参是函数调用的时候出现的，形参类似于局部变量，实参是一种类数组对象，名称为arguments，通过下标就能访问实参元素。</p>
+<p>我们需要知道的是形参和实参的数量如果不相等的时候，若形参数量多于实参则属于undefined，如果实参多的话则会被自动省略掉。当然前面也说了实参列表是个类数组对象，我们可以用arguments来表达一个实参列表，这里就能用arguments来表示任意数量的实参个数了。</p>
+<p>函数从被定义开始到调用为止，定义是一次完事，而调用的话则可以被调用任意次数。定义已经说完，就说调用。</p>
+<h2 id="二、调用"><a href="#二、调用" class="headerlink" title="二、调用"></a>二、调用</h2><p>函数的调用有4中方式：函数调用、方法调用、构造函数调用和用call()和apply()的间接调用。</p>
+<h3 id="1、函数调用"><a href="#1、函数调用" class="headerlink" title="1、函数调用"></a>1、函数调用</h3><p>这是最普通的调用了，解释器到达结尾返回undefined，碰到return语句，返回其值，没有值的话返回undefined。</p>
+<p>注意的是，在非严格模式中，this返回的是全局对象不然就是undefined。</p>
+<h3 id="2、方法调用"><a href="#2、方法调用" class="headerlink" title="2、方法调用"></a>2、方法调用</h3><p>函数作为对象的一个方法被调用，与函数调用的最大区别就是this值的不同，方法调用的this值的上下文是函数所处的对象。</p>
+<p>当然，如果想要在函数调用中的this值是外部函数，则必须在外部函数的函数体内使用 <strong>var self = this</strong>，这样的话，就能达到this值就是外部函数了。</p>
+<h3 id="3、构造函数调用"><a href="#3、构造函数调用" class="headerlink" title="3、构造函数调用"></a>3、构造函数调用</h3><p>构造函数必须用到new关键字，构造函数初始化了一个对象，这个对象的属性继承于prototype属性，而且this值指向的就是这个初始化了的对象。</p>
+<p>构造函数调用允许省略实参列表和圆括号。</p>
+<h3 id="4、间接调用"><a href="#4、间接调用" class="headerlink" title="4、间接调用"></a>4、间接调用</h3><p>用call()和apply()来达到某个对象使用某个函数作为方法的目的，这两种方法里的第一个实参的this值是这个使用函数的对象。无论哪个对象都可以使用本身所不具备的函数作为方法。call()的后面的参数是实参列表，但是apply()方法的后面就是个数组形式的实参列表了。</p>
+<p>下面就说说作为一个整体的函数的情况吧，函数可以赋值给一个值，可以作为参数传给另外一个参数。</p>
+<h2 id="三、函数的整体使用"><a href="#三、函数的整体使用" class="headerlink" title="三、函数的整体使用"></a>三、函数的整体使用</h2><h3 id="1、嵌套函数"><a href="#1、嵌套函数" class="headerlink" title="1、嵌套函数"></a>1、嵌套函数</h3><p>这里就有个作用域规则的事情，任何变量都能在他的函数体内发生作用，因为函数体是嵌套的，所以就有了嵌套的作用域，就有了作用域链，虽然外部函数不能访问到内部函数，但是可以把内部函数作为返回值返回出来。这里就会涉及到一个叫做闭包的技术，意思就是函数体通过作用域链关联起来（外部函数和嵌套函数是有关系的），函数体内的变量可以保存在作用域内。</p>
+<h3 id="2、作为命名空间的函数"><a href="#2、作为命名空间的函数" class="headerlink" title="2、作为命名空间的函数"></a>2、作为命名空间的函数</h3><p>变量有全局变量，有局部变量。而我们不想让全局变量来污染全局作用域，那就必须用个函数来包括起来整个其他函数。方式有2：</p>
+<p>for example 2：</p>
+<pre><code>function func() {
+    //模块代码
+    //所有变量均为局部变量，不污染全局命名空间
+}
+func();//必须得调用
+</code></pre><p>再有一种方式：</p>
+<pre><code>(function(){
+
+//代码块}())//立即调用，这是个定义表达式
+</code></pre><h2 id="四、函数式编程"><a href="#四、函数式编程" class="headerlink" title="四、函数式编程"></a>四、函数式编程</h2><p>这个就是运用一些有一定含义的关键字来编写程序，比如可以用reduce()来计算数组合成一个数字的运算，而不用采取遍历计算的方式，等等吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;我们的主题是什么？&quot;&gt;&lt;a href=&quot;#我们的主题是什么？&quot; class=&quot;headerlink&quot; title=&quot;我们的主题是什么？&quot;&gt;&lt;/a&gt;我们的主题是什么？&lt;/h1&gt;&lt;p&gt;函数是一种特殊的对象，有自己的属性和方法，而这些个属性和方法是什么我们必须知道，什么
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>数组基础知识</title>

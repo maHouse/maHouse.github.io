@@ -1,0 +1,471 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>函数基础知识学习 | 浮游Bar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小码哥">
+    
+
+    
+    <meta name="description" content="我们的主题是什么？函数是一种特殊的对象，有自己的属性和方法，而这些个属性和方法是什么我们必须知道，什么样子是函数，函数的用处有哪些，这些是我们必须明确知晓的。 一、函数的结构函数体的组成部分必须包括：关键字function、函数名、一对圆括号、一对花括号、参数； 函数的声明方式有：函数语句式和函数定义式： for example 1： ① function  funcName() { //代码块}">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数基础知识学习">
+<meta property="og:url" content="http://maHouse.github.io/2017/06/29/function/index.html">
+<meta property="og:site_name" content="浮游Bar">
+<meta property="og:description" content="我们的主题是什么？函数是一种特殊的对象，有自己的属性和方法，而这些个属性和方法是什么我们必须知道，什么样子是函数，函数的用处有哪些，这些是我们必须明确知晓的。 一、函数的结构函数体的组成部分必须包括：关键字function、函数名、一对圆括号、一对花括号、参数； 函数的声明方式有：函数语句式和函数定义式： for example 1： ① function  funcName() { //代码块}">
+<meta property="og:updated_time" content="2017-07-01T08:56:41.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数基础知识学习">
+<meta name="twitter:description" content="我们的主题是什么？函数是一种特殊的对象，有自己的属性和方法，而这些个属性和方法是什么我们必须知道，什么样子是函数，函数的用处有哪些，这些是我们必须明确知晓的。 一、函数的结构函数体的组成部分必须包括：关键字function、函数名、一对圆括号、一对花括号、参数； 函数的声明方式有：函数语句式和函数定义式： for example 1： ① function  funcName() { //代码块}">
+
+    
+    <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
+    
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="浮游Bar" title="浮游Bar"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="浮游Bar">浮游Bar</a></h1>
+				<h2 class="blog-motto">道之所向，虽千万人吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:maHouse.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/29/function/" title="函数基础知识学习" itemprop="url">函数基础知识学习</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-29T14:03:04.000Z" itemprop="datePublished"> 发表于 2017-06-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#我们的主题是什么？"><span class="toc-number">1.</span> <span class="toc-text">我们的主题是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、函数的结构"><span class="toc-number">1.1.</span> <span class="toc-text">一、函数的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、调用"><span class="toc-number">1.2.</span> <span class="toc-text">二、调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、函数调用"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、方法调用"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、方法调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、构造函数调用"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、构造函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、间接调用"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、间接调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、函数的整体使用"><span class="toc-number">1.3.</span> <span class="toc-text">三、函数的整体使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、嵌套函数"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、嵌套函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、作为命名空间的函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、作为命名空间的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、函数式编程"><span class="toc-number">1.4.</span> <span class="toc-text">四、函数式编程</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="我们的主题是什么？"><a href="#我们的主题是什么？" class="headerlink" title="我们的主题是什么？"></a>我们的主题是什么？</h1><p>函数是一种特殊的对象，有自己的属性和方法，而这些个属性和方法是什么我们必须知道，什么样子是函数，函数的用处有哪些，这些是我们必须明确知晓的。</p>
+<h2 id="一、函数的结构"><a href="#一、函数的结构" class="headerlink" title="一、函数的结构"></a>一、函数的结构</h2><p>函数体的组成部分必须包括：关键字function、函数名、一对圆括号、一对花括号、参数；</p>
+<p>函数的声明方式有：函数语句式和函数定义式：</p>
+<p>for example 1：</p>
+<pre><code>① function  funcName() { //代码块} funcName();
+② var f = function() {//代码块}  f();
+</code></pre><p>注意第二种是把函数赋值给了一个函数，这里有和变量的声明一样的问题，就是声明提前的现象。</p>
+<p>参数有形参和实参两种形式，形参是函数定义的时候出现的，而实参是函数调用的时候出现的，形参类似于局部变量，实参是一种类数组对象，名称为arguments，通过下标就能访问实参元素。</p>
+<p>我们需要知道的是形参和实参的数量如果不相等的时候，若形参数量多于实参则属于undefined，如果实参多的话则会被自动省略掉。当然前面也说了实参列表是个类数组对象，我们可以用arguments来表达一个实参列表，这里就能用arguments来表示任意数量的实参个数了。</p>
+<p>函数从被定义开始到调用为止，定义是一次完事，而调用的话则可以被调用任意次数。定义已经说完，就说调用。</p>
+<h2 id="二、调用"><a href="#二、调用" class="headerlink" title="二、调用"></a>二、调用</h2><p>函数的调用有4中方式：函数调用、方法调用、构造函数调用和用call()和apply()的间接调用。</p>
+<h3 id="1、函数调用"><a href="#1、函数调用" class="headerlink" title="1、函数调用"></a>1、函数调用</h3><p>这是最普通的调用了，解释器到达结尾返回undefined，碰到return语句，返回其值，没有值的话返回undefined。</p>
+<p>注意的是，在非严格模式中，this返回的是全局对象不然就是undefined。</p>
+<h3 id="2、方法调用"><a href="#2、方法调用" class="headerlink" title="2、方法调用"></a>2、方法调用</h3><p>函数作为对象的一个方法被调用，与函数调用的最大区别就是this值的不同，方法调用的this值的上下文是函数所处的对象。</p>
+<p>当然，如果想要在函数调用中的this值是外部函数，则必须在外部函数的函数体内使用 <strong>var self = this</strong>，这样的话，就能达到this值就是外部函数了。</p>
+<h3 id="3、构造函数调用"><a href="#3、构造函数调用" class="headerlink" title="3、构造函数调用"></a>3、构造函数调用</h3><p>构造函数必须用到new关键字，构造函数初始化了一个对象，这个对象的属性继承于prototype属性，而且this值指向的就是这个初始化了的对象。</p>
+<p>构造函数调用允许省略实参列表和圆括号。</p>
+<h3 id="4、间接调用"><a href="#4、间接调用" class="headerlink" title="4、间接调用"></a>4、间接调用</h3><p>用call()和apply()来达到某个对象使用某个函数作为方法的目的，这两种方法里的第一个实参的this值是这个使用函数的对象。无论哪个对象都可以使用本身所不具备的函数作为方法。call()的后面的参数是实参列表，但是apply()方法的后面就是个数组形式的实参列表了。</p>
+<p>下面就说说作为一个整体的函数的情况吧，函数可以赋值给一个值，可以作为参数传给另外一个参数。</p>
+<h2 id="三、函数的整体使用"><a href="#三、函数的整体使用" class="headerlink" title="三、函数的整体使用"></a>三、函数的整体使用</h2><h3 id="1、嵌套函数"><a href="#1、嵌套函数" class="headerlink" title="1、嵌套函数"></a>1、嵌套函数</h3><p>这里就有个作用域规则的事情，任何变量都能在他的函数体内发生作用，因为函数体是嵌套的，所以就有了嵌套的作用域，就有了作用域链，虽然外部函数不能访问到内部函数，但是可以把内部函数作为返回值返回出来。这里就会涉及到一个叫做闭包的技术，意思就是函数体通过作用域链关联起来（外部函数和嵌套函数是有关系的），函数体内的变量可以保存在作用域内。</p>
+<h3 id="2、作为命名空间的函数"><a href="#2、作为命名空间的函数" class="headerlink" title="2、作为命名空间的函数"></a>2、作为命名空间的函数</h3><p>变量有全局变量，有局部变量。而我们不想让全局变量来污染全局作用域，那就必须用个函数来包括起来整个其他函数。方式有2：</p>
+<p>for example 2：</p>
+<pre><code>function func() {
+    //模块代码
+    //所有变量均为局部变量，不污染全局命名空间
+}
+func();//必须得调用
+</code></pre><p>再有一种方式：</p>
+<pre><code>(function(){
+
+//代码块}())//立即调用，这是个定义表达式
+</code></pre><h2 id="四、函数式编程"><a href="#四、函数式编程" class="headerlink" title="四、函数式编程"></a>四、函数式编程</h2><p>这个就是运用一些有一定含义的关键字来编写程序，比如可以用reduce()来计算数组合成一个数字的运算，而不用采取遍历计算的方式，等等吧。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://maHouse.github.io/2017/06/29/function/" data-title="函数基础知识学习 | 浮游Bar" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/06/23/Array/" title="数组基础知识">
+  <strong>上一篇：</strong><br/>
+  <span>
+  数组基础知识</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/07/01/类和模模块/"  title="类和模模块">
+ <strong>下一篇：</strong><br/> 
+ <span>类和模模块
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#我们的主题是什么？"><span class="toc-number">1.</span> <span class="toc-text">我们的主题是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、函数的结构"><span class="toc-number">1.1.</span> <span class="toc-text">一、函数的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、调用"><span class="toc-number">1.2.</span> <span class="toc-text">二、调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、函数调用"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、方法调用"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、方法调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、构造函数调用"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、构造函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、间接调用"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、间接调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、函数的整体使用"><span class="toc-number">1.3.</span> <span class="toc-text">三、函数的整体使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、嵌套函数"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、嵌套函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、作为命名空间的函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、作为命名空间的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、函数式编程"><span class="toc-number">1.4.</span> <span class="toc-text">四、函数式编程</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="https://github.com/maHouse" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 兄弟姐妹们，你们好！ <br/>
+			This is my blog,it will be better and better，welcome to come here！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5309319763" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/https://github.com/maHouse" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:1037243021@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="小码哥">小码哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
