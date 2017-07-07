@@ -3,6 +3,42 @@
   
     
     <entry>
+      <title><![CDATA[一键清理]]></title>
+      <url>/2017/07/07/%E4%B8%80%E9%94%AE%E6%B8%85%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>我是不愿意在自己的电脑上装个电脑管家、360卫士或者金山毒霸什么玩意的东西来清理我的电脑的，前两天在网上浏览到一个好玩的东西，你只要设置一下，花你几分钟的时间就能自己搞个清理器，不要钱还没有绑定的插件，效果还不错！<br>这个家伙长什么样子呢？</p>
+<p><strong>如图：</strong></p>
+<p><img src="image/clean.png" alt=""></p>
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><p>1.这个样子你直接点击就能进行清理工作了；</p>
+<p>2.这个文件的格式是.bat，这是必须改成这个样子；</p>
+<p>3.编辑的时候把如下代码粘贴进text文档就行了：</p>
+<pre><code>@echo off     
+echo 正在清除系统垃圾文件，请稍等......     
+del /f /s /q %systemdrive%\*.tmp     
+del /f /s /q %systemdrive%\*._mp     
+del /f /s /q %systemdrive%\*.log     
+del /f /s /q %systemdrive%\*.gid     
+del /f /s /q %systemdrive%\*.chk     
+del /f /s /q %systemdrive%\*.old     
+del /f /s /q %systemdrive%\recycled\*.*     
+del /f /s /q %windir%\*.bak     
+del /f /s /q %windir%\prefetch\*.*     
+rd /s /q %windir%\temp &amp; md %windir%\temp     
+del /f /q %userprofile%\COOKIES s\*.*     
+del /f /q %userprofile%\recent\*.*     
+del /f /s /q &quot;%userprofile%\Local Settings\Temporary Internet Files\*.*&quot;     
+del /f /s /q &quot;%userprofile%\Local Settings\Temp\*.*&quot;     
+del /f /s /q &quot;%userprofile%\recent\*.*&quot;     
+sfc /purgecache &apos;清理系统盘无用文件     
+defrag %systemdrive% -b &apos;优化预读信息     
+echo 清除系统LJ完成！     
+echo. &amp; pause  
+</code></pre><p>把上面的粘到txt文档后，修改改为.bat就能用了。</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[通过设置hosts文件来翻墙]]></title>
       <url>/2017/07/06/hosts%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><p>下面我们就分几个步骤来说，文章以win10系统为例，其他系统类似。</p>
