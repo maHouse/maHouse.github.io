@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://maHouse.github.io/2017/07/01/类和模模块/index.html">
 <meta property="og:site_name" content="浮游Bar">
 <meta property="og:description" content="这一节我们的主题是：类和模块JavaScript的对象是一个属性的集合体，相互之间没有任何的联系。然而有些时候对象与对象之间的属性相同的时候，为了不重复写代码，我们要定义一个类，这个类里面的属性和方法对于他的成员或者实例都是共享的。下面就是对类的知识的介绍。 1、类和原型在JavaScript中，类的实现是基于原型继承机制的，所有的实例对象都是从同一个原型对象上继承属性，因此原型对象是类的核心。如">
-<meta property="og:updated_time" content="2017-07-01T11:10:52.215Z">
+<meta property="og:updated_time" content="2017-07-08T14:51:15.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类和模块">
 <meta name="twitter:description" content="这一节我们的主题是：类和模块JavaScript的对象是一个属性的集合体，相互之间没有任何的联系。然而有些时候对象与对象之间的属性相同的时候，为了不重复写代码，我们要定义一个类，这个类里面的属性和方法对于他的成员或者实例都是共享的。下面就是对类的知识的介绍。 1、类和原型在JavaScript中，类的实现是基于原型继承机制的，所有的实例对象都是从同一个原型对象上继承属性，因此原型对象是类的核心。如">
@@ -95,7 +95,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这一节我们的主题是：类和模块"><span class="toc-number">1.</span> <span class="toc-text">这一节我们的主题是：类和模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、类和原型"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1、类和原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类和构造函数"><span class="toc-number">1.0.1.</span> <span class="toc-text">2、类和构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①、例子展示"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">①、例子展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②、构造函数和类的标识"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">②、构造函数和类的标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#③、constructor属性"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">③、constructor属性</span></a></li></ol></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这一节我们的主题是：类和模块"><span class="toc-number">1.</span> <span class="toc-text">这一节我们的主题是：类和模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、类和原型"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1、类和原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类和构造函数"><span class="toc-number">1.0.1.</span> <span class="toc-text">2、类和构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①、例子展示"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">①、例子展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②、构造函数和类的标识"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">②、构造函数和类的标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#③、constructor属性"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">③、constructor属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、JavaScript中Java式的类继承"><span class="toc-number">1.0.2.</span> <span class="toc-text">3、JavaScript中Java式的类继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、类的扩充"><span class="toc-number">1.0.3.</span> <span class="toc-text">4、类的扩充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、类和类型"><span class="toc-number">1.0.4.</span> <span class="toc-text">5、类和类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、JavaScript中的面向对象技术"><span class="toc-number">1.0.5.</span> <span class="toc-text">6、JavaScript中的面向对象技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①、集合类"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">①、集合类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②、枚举类型"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">②、枚举类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#③、标准转换方法"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">③、标准转换方法</span></a></li></ol></li></ol></li></ol></li></ol>
 		
 		</div>
 		
@@ -186,7 +186,247 @@ console.log(r);//输出（1...3）
 <p>构造函数是类的外在表现形式。构造函数的名字通常用作类名，我们通常用instanceOf运算符来检测对象是否属于某个类时会用到构造函数。假设有个对象r，我们想知道r是否是Range对象，我们可以这么做：</p>
 <pre><code>r instanceOf Range //如果r继承自Range.prototype,则返回true
 </code></pre><p>实际上，instanceOf不会检查r是否是由Range()构造函数初始化来的</p>
-<h4 id="③、constructor属性"><a href="#③、constructor属性" class="headerlink" title="③、constructor属性"></a>③、constructor属性</h4>  
+<h4 id="③、constructor属性"><a href="#③、constructor属性" class="headerlink" title="③、constructor属性"></a>③、constructor属性</h4><p>在上面的例子中，将Range.prototype定义为一个新的对象，这个对象包含了方法。其实在不创建一个新的对象的时候我们也可以做到，就是用对象直接量的属性就可以定义原型上的方法。JavaScript中几乎每个函数都自动拥有prototype属性。这个属性的值是个对象，这个对象也拥有一个不可枚举的属性constructor。</p>
+<p>for example 3：</p>
+<pre><code>var F = function() {};//这是个函数对象
+var p = F.prototype;//F的原型对象
+var c = p.constructor;//原型相关联的函数
+console.log(c === F);//true，这是成立的，原型和实例对象的constructor指向的是他们的构造函数
+</code></pre><p>既然如此，那我们怎么达到不用重新预定义Range.prototype对象呢。</p>
+<p>for example 4：</p>
+<p>①</p>
+<pre><code>Range.prototype = {
+    constructor:Range,//显式设置构造函数反向引用
+    includes:function (x) { return this.from &lt;= x &amp;&amp; x &lt;= this.to;},
+    foreach: function (f) {
+        for (var x = Math.ceil(this.from); x &lt;= this.to; x++) f(x);
+    },
+    tostring:function () {
+        return &quot;(&quot; + this.from + &quot;...&quot; + this.to +&quot;)&quot;;}
+};
+</code></pre><p>②这种方法是使用预定义的原型对象，预定义的原型对象包含constructor属性，然后给原型对象添加方法。</p>
+<pre><code>Range.prototype.includes:function (x) {
+     return this.from &lt;= x &amp;&amp; x &lt;= this.to;
+};
+Range.prototype.foreach: function (f) {
+        for (var x = Math.ceil(this.from); x &lt;= this.to; x++) f(x);
+    };
+Range.prototype.tostring:function () {
+        return &quot;(&quot; + this.from + &quot;...&quot; + this.to +&quot;)&quot;;
+};
+</code></pre><h3 id="3、JavaScript中Java式的类继承"><a href="#3、JavaScript中Java式的类继承" class="headerlink" title="3、JavaScript中Java式的类继承"></a>3、JavaScript中Java式的类继承</h3><p>JavaScript中定义类的步骤可以分为3步，首先是定义一个构造函数，并设置初始化新对象的实例属性。再者，就是给构造函数的prototype对象定义实例的方法。最后就是，给构造函数定义类字段和类属性。封装到一个defineClass()函数中为：</p>
+<pre><code>function defineClass(constructor,methods,statics) {
+    if (methods) extend(constructor.prototype,methods);//实例的方法复制到原型中
+    if (statics) extend(constructor,statics);//类属性，复制到构造函数中
+    return constructor;
+}
+</code></pre><h3 id="4、类的扩充"><a href="#4、类的扩充" class="headerlink" title="4、类的扩充"></a>4、类的扩充</h3><p>JavaScript里的类是可以扩充的，例如如果没有去掉字符串前后空格时，可以定义个trim()方法，没有bind()方法，我们可以定义一个bind()方法。直接给Object.prototype添加方法就可以了。</p>
+<p>for example 5：</p>
+<pre><code>String.prototype.trim = String.prototype.trim || function() {
+    return this.replace(/^\s+]\s+$/g);}
+</code></pre><h3 id="5、类和类型"><a href="#5、类和类型" class="headerlink" title="5、类和类型"></a>5、类和类型</h3><p>这节主要说的是，一个对象是否是属于一个类，我们通过什么去判断，前面我们多次提到过两种方法就是通过instanceOf()运算符，再有就是通过constructor属性。但是他们的局限是执行上下文多个场景时不灵光了。再有就是我们虽然能判断是不是属于一个类，但我们不能知道构造函数的名称。通过函数名称来判断的话，也有问题就是不是所有的函数都有名称。下面我们重点说的就是鸭式辩型，就是根据一个对象能做什么来做判断。根据定义我们可以判断一个会走路、游泳并且会发出嘎嘎叫的鸟就是鸭子，因此我们可以判断对象的属性和方法是不是能做同一个事情来做判断。鸭式辩型不能用在内置类上。</p>
+<p>for example 5：</p>
+<pre><code>//如果o实现了除第一个参数之外的参数所表示的方法，则返回true
+function quacks(o /*,..*/) {
+    for(var i = 1;i &lt; arguments.length;i++) {//返回遍历o后的所有参数
+    var arg = argiments[i];
+    switch (typeof arg) {//如果参数是
+        case &apos;string&apos;://直接用名字做检查
+            if(typeof o[arg] !== &quot;function&quot;) return false;
+            continue;
+        case &apos;function&apos;://function：检查函数的原型对象上的方法，如果实参是函数，则使用它的原型
+            arg = arg.prototype;
+        case &apos;object&apos;:
+            for( var m in arg) {
+                if(typeof arg[m] !== &quot;function&quot;) continue;//跳过不是方法的属性
+                if(typeof o[m] !== &quot;function&quot;) return false;
+            }
+        }
+    }
+    //如果程序运行到这里，说明o实现了所有的方法
+    return true;
+}
+</code></pre><h3 id="6、JavaScript中的面向对象技术"><a href="#6、JavaScript中的面向对象技术" class="headerlink" title="6、JavaScript中的面向对象技术"></a>6、JavaScript中的面向对象技术</h3><p>前面我们学习到了JavaScript中类的基础知识：原型对象的重要性、它和构造函数的关系、instanceof()运算符如何工作等，这次我们就用两个例子实战一下。</p>
+<h4 id="①、集合类"><a href="#①、集合类" class="headerlink" title="①、集合类"></a>①、集合类</h4><p>集合(set)是一种数据结构，来表示非重复值的无序集合。集合的基础方法有：添加值、检测值是否在集合中。下面的例子中一个更加通用的Set类，实现了从JavaScript值到唯一字符串的映射，然后将字符串用作属性名。</p>
+<p>for example 6：</p>
+<pre><code>//Set.js:值的任意集合
+function Set() {//这是个构造函数
+    this.values = {};//集合数据保存在对象的属性里
+    this.n = 0;//集合中值的个数
+    this.add.apply(this,arguments);//把所有的参数都添加到这个集合中
+};
+
+//将每个参数都添加到集合中
+Set.prototype.add = function() {
+    for(var i = 0;i &lt; arguments.length;i++) {//遍历每个参数
+        var val = arguments[i];//待添加到集合中的值
+        var str = Set._v2s(val);//把它转换为字符串
+        if(!this.value.hasOwnProperty(str)) {//如果不在集合中
+            this.value[str] = val;//将字符串和值对应起来
+            this.n++;//集合中的值计数加一
+        }
+    }
+    return this;//支持链式方法调用
+};
+
+//从集合删除元素，这些元素由参数指定
+Set.prototype.remove = function() {
+    for(var i = 0;i &lt; arguments.length;i++){
+        var str = Set._v2s(arguments[i]);
+        if(this.values.hasOwnProperty(str)){//如果它在集合中
+            delete this.values[str];//删除它
+            this.n--;
+        }
+    }
+    return this;
+};
+
+//如果集合包含这个值，则返回true，否则返回false
+Set.prototype.contains = function(value){
+    return this.values.hasOwnProperty(Set._v2s(value));
+};
+
+//返回集合的大小
+Set.prototype.size = function() {
+    return this.n;
+};
+
+//遍历集合中的所有元素，在指定的上下文中调用f
+Set.prototype.foreach = function (f,context) {
+    for(var s in this.values)//遍历集合中的所有字符串
+        if(this.values.hasOwnProperty(s))//忽略继承属性
+        f.call(context,this.values[s]);//调用f,传入value
+};
+
+//这是一个内部函数，用以将任意JavaScript值和唯一的字符串对应起来
+Set._v2s = function (val) {
+    switch (val) {
+        case undefined:  return &apos;u&apos;;//特殊的原始值
+        case null;  return &apos;n&apos;;//值只有一个字母
+        case true; return &apos;t&apos;;
+        case false; return &apos;f&apos;;
+        default:switch(typeof val) {
+            case&apos;number&apos;: return &apos;#&apos; + val;//数字都带有#前缀
+            case &apos;string&apos;:return &apos;&quot;&apos; + val;//字符串都带有&quot;前缀
+            default: return &apos;@&apos; + objectId(val);
+        }
+    }
+
+    //对任意对象来说，都会返回一个字符串
+    //针对不同的对象，这个函数会返回不同的字符串
+    //对于同一个对象的多次调用，总是返回相同的字符串
+    //为做到这一点，它给o创建了一个属性，在ES5中，这个属性是不可枚举且是只读的
+    function objectId(o) {
+        var prop = &quot;|**object**|&quot;;//私有属性，用以存放id
+        if(!o.hasOwnProperty(prop))//如果对象没有id
+            o[prop] = Set._v2s.next++;//将下一个值赋给它
+        return o[prop];//返回这个id
+    }
+};
+Set._v2s.next = 100;//设置初始id的值
+</code></pre><h4 id="②、枚举类型"><a href="#②、枚举类型" class="headerlink" title="②、枚举类型"></a>②、枚举类型</h4><p>枚举类型是一个类型，它是值的有限集合，如果值定义为这个类型则该值是可列出（可枚举）的。在C语言中，enum是个关键字，在JavaScript中它仅仅是个关键字，或许未来我们能看到它的身影。</p>
+<p>for example 7：</p>
+<pre><code>//这个函数创建一个新的枚举类型，实参对象表示类的每个实例的名字和值
+//返回值是一个构造函数，它标识这个新类
+//这个构造函数也会抛出异常，不能用它来创建该类型的新实例
+//返回的构造函数包含名/值对的映射表
+//包括由值组成的数组，以及一个foreach()迭代器函数
+function enumeration(namesToValues) {
+    //这个虚拟的构造函数是返回值
+    var enumeration = function () {
+        throw &quot;Can&apos;t Instantiate Enumerations&quot;;};
+
+    //枚举值继承这个对象
+    var proto = enumeration.prototype = {
+        constructor:enumeration,//标识类型
+        toString:function () { return this.name;},//返回名字
+        valueOf:function () { return this.value;},//返回值
+        toJSON:function () { return this.name}//转换为JSON
+    };
+
+    enumeration.values = [];//用以存放枚举对象的数组
+
+    //现在创建新类型的实例
+    for (name in namesToValues) {//遍历每个值
+        var e = inherit(proto);//创建一个代表它的对象
+        e.name = name;//给它一个名字
+        e.value = namesToValues[name];//给它一个值
+        enumeration[name] = e;//将它设置为构造函数的属性
+        enumeration.values.push(e);//将它储存到值数组中
+    }
+    //一个类方法，用来对类的实例进行迭代
+    enumeration.foreach = function (f,c) {
+        for (var i = 0;i &lt; this.values.length;i++) 
+            f.call(c,this.values[i]);
+    };
+
+    //返回标识这个新类型的构造函数
+    return enumeration;
+}
+</code></pre><p>for example 8（用枚举类型来表示一副扑克牌）：</p>
+<pre><code>//定义一个表示‘玩牌’的类
+function Card(suit,rank) {
+    this.suit = suit;//每张牌都有花色
+    this.rank = rank;//以及点数
+}
+
+//使用枚举类型定义花色和点数
+Card.Suit = enumeration({Clubs:1,Diamonds:2,Hearts:3,Spades:4});
+Card.Rank = enumeration({Two:2,Three:3,Four:4,Five:5,Six:6,Seven:7,Eight:8,Nine:9,Ten:10,Jack:11,Queen:12,King:13,Ace:14});
+
+//定义用以描述牌面的文本
+Card.prototype.toString = function () {
+    return this.rank.toString() + &quot;of&quot; + this.suit.toString();}
+//比较扑克牌中两张牌的大小
+Card.prototype.compareTo = function (that) {
+    if (this.rank &lt; that.rank) return -1;
+    if (this.rank &gt; that.rank) return 1;
+    return 0;
+};
+
+//以扑克牌的玩法规则对扑克牌进行排序的函数
+Card.orderByRank = function (a,b){ return a.compareTo(b);};
+
+//以桥牌的玩法规则对牌进行排序的函数
+Card.orderBySuit = function (a,b) {
+    if (a.suit &lt; b.suit) return -1;
+    if (a.suit &gt; b.suit) return 1;
+    if (a.rank &lt; b.rank) return -1;
+    if (a.rank &gt; b.rank) return 1;
+    return 0;
+};
+
+//定义用以表示一副扑克牌的类
+function Deck() {
+    var cards = this.cards = [];//一副牌就是由牌组成的数组
+    Card.Suit.foreach(function (s) {//初始化这个数组
+        Card.Rank.foreach(function (r) {
+            cards.push(new Card(s,r));
+        });
+    });
+}
+
+//洗牌的方法：重新洗牌并返回洗好的牌
+Deck.prototype.shuffle = function () {
+    //遍历数组中的每个元素，随机找出牌面中的最小元素，并与之交换
+    var deck = this.cards.len = deck.length;
+    for(var i = len - 1;i &gt; 0;i--) {
+        var r = Math.floor(Math.random()*(i+1)),temp;//随机数
+        temp = deck[i],deck[i] = deck[r],deck[r] = temp;//交换
+    }
+    return this;
+};
+
+//发牌的方法：返回牌的数组
+Deck.prototype.deal = function (n) {
+    if (this.cards.length &lt; n)  throw &quot;Out of cards&quot;;
+    return this.cards.splice(this.cards.length - n,n);
+};
+
+//创建一副新扑克牌，洗牌并发牌
+var deck = (new Deck()).shuffle();
+var hand = deck.deal(13).sort(Card.orderBySuit);
+</code></pre><h4 id="③、标准转换方法"><a href="#③、标准转换方法" class="headerlink" title="③、标准转换方法"></a>③、标准转换方法</h4>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -238,7 +478,7 @@ console.log(r);//输出（1...3）
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这一节我们的主题是：类和模块"><span class="toc-number">1.</span> <span class="toc-text">这一节我们的主题是：类和模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、类和原型"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1、类和原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类和构造函数"><span class="toc-number">1.0.1.</span> <span class="toc-text">2、类和构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①、例子展示"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">①、例子展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②、构造函数和类的标识"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">②、构造函数和类的标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#③、constructor属性"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">③、constructor属性</span></a></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这一节我们的主题是：类和模块"><span class="toc-number">1.</span> <span class="toc-text">这一节我们的主题是：类和模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、类和原型"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1、类和原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类和构造函数"><span class="toc-number">1.0.1.</span> <span class="toc-text">2、类和构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①、例子展示"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">①、例子展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②、构造函数和类的标识"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">②、构造函数和类的标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#③、constructor属性"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">③、constructor属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、JavaScript中Java式的类继承"><span class="toc-number">1.0.2.</span> <span class="toc-text">3、JavaScript中Java式的类继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、类的扩充"><span class="toc-number">1.0.3.</span> <span class="toc-text">4、类的扩充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、类和类型"><span class="toc-number">1.0.4.</span> <span class="toc-text">5、类和类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、JavaScript中的面向对象技术"><span class="toc-number">1.0.5.</span> <span class="toc-text">6、JavaScript中的面向对象技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①、集合类"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">①、集合类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②、枚举类型"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">②、枚举类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#③、标准转换方法"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">③、标准转换方法</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
