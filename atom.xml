@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-07-07T09:55:14.839Z</updated>
+  <updated>2017-07-12T15:04:21.082Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RegExp</title>
+    <link href="http://maHouse.github.io/2017/07/12/RegExp/"/>
+    <id>http://maHouse.github.io/2017/07/12/RegExp/</id>
+    <published>2017-07-12T15:04:21.000Z</published>
+    <updated>2017-07-12T15:04:21.082Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式表达式的匹配模式</title>
+    <link href="http://maHouse.github.io/2017/07/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://maHouse.github.io/2017/07/10/正则表达式/</id>
+    <published>2017-07-10T10:06:09.000Z</published>
+    <updated>2017-07-13T14:31:06.649Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="我们的主题："><a href="#我们的主题：" class="headerlink" title="我们的主题："></a>我们的主题：</h2><p>正则表达式什么样子的？能用来做什么？怎么做？ok，一一揭示！</p>
+<h3 id="一、正则表达式简介"><a href="#一、正则表达式简介" class="headerlink" title="一、正则表达式简介"></a>一、正则表达式简介</h3><p>正则表达式是一个描述字符模式的对象，注意是对象，创建方式不用说了，有构造函数和直接量两种方式。描述字符模式的规则是由字符(数字、字母和其他)组成的。</p>
+<p>下面我们就把正则表达式的基本知识看一下：</p>
+<h4 id="1、直接量字符"><a href="#1、直接量字符" class="headerlink" title="1、直接量字符"></a>1、直接量字符</h4><p>用反斜线()作为前缀进行转义：</p>
+<pre><code>\o(NUL字符)等价于\u0000                 \t(制表符)等价于\u0009
+\n(换行符)等价于\u000A                   \v(垂直制表符)等价于\u000b
+\f(换页符)等价于\u000L                   \r(回车符)等价于\u000D
+\uxxxx(十六进制数指定的Unicode字符)，既有\u009等价于\t
+</code></pre><h4 id="2、字符类"><a href="#2、字符类" class="headerlink" title="2、字符类"></a>2、字符类</h4><p>将直接量字符单独放到方括号内就组成了字符类，一个字符类可以匹配它所包含的任意字符。</p>
+<pre><code>/[abc]/和字母&quot;a&quot;,&quot;b&quot;,&quot;c&quot;中的任意一个都匹配
+/[a-zA-Z0-9]/匹配拉丁字母表中的任意字母和数字
+</code></pre><p>尖括号“^”表示取反，注意它所在的位置是紧靠左边的方括号，/[^abc]/意思是匹配所有除三者之外的字符。</p>
+<p>正则表达式中的字符类：</p>
+<pre><code>[...] 方括号内的任意字符     [^...]  不在方括号内的所有字符
+.     除了换行符\n和其他表示终止符的Unicode字符
+\w    任何AS11码组成的单词，是数字和字母的组合[a-zA-Z0-9]是等价的
+\W    与上者是相反的
+\s    任何Unicode空白字符
+\S    任何非空字符的UNicode字符
+\d    任何AS11数字等价于[0-9]
+\D    等价于[^0-9]
+[\b]  表示退格直接量
+</code></pre><p>方括号内也可以写特殊转义字符，/[\s\d]/(任何空白符或数字)</p>
+<p>正则表达式里有个表示重复的字符语法：</p>
+<pre><code>{n,m}  匹配前一项的重复次数，比n大比m小，这个m可选，n为必填的，当然有更简单的表示方法
+</code></pre><p>比如：</p>
+<pre><code>？ 等价于{0,1}、+ 等价于{1，}、*等价于{0，}
+</code></pre><p>for example 1：</p>
+<pre><code>/\d{2,4}/     2--4个数字
+/\w{3}\d?/    精确匹配3个单词一个可选的数字
+/\s+java\s+/  前后各至少有一个空白符的字符串&quot;java&quot;
+/[^(]*/       匹配0个或多个非左括号的字符
+</code></pre><p>正则表达式的选择、分组和引用字符</p>
+<pre><code>|        有或者的意思
+(...)    将几个项组合为一个单元
+(?...)   只组合，不记忆
+</code></pre><p>for example 2：</p>
+<pre><code>/ab|cd|ef/         可以匹配字符串&quot;ab&quot;或者&quot;cd&quot;或者&quot;ef&quot;
+/\d{3}|[a-z]{4}/   匹配的是3个数字或者4个小写字母
+</code></pre><p>注意：这个模式一旦发现了我们所需要的匹配项，就立即停止，不再进行匹配</p>
+<pre><code>/java(script)?/  可以匹配字符串java，其后的script可有可无
+/(ab|cd)+|ef/     可以匹配字符串&quot;ef&quot;,也可以匹配字符串&quot;ab&quot;或者&quot;cd&quot;一次或者多次
+</code></pre><p>我们可以用/^…$/来表示开始和结束，就有表示指定位置的意思</p>
+<p>修饰符(放到/…/之后)有3个：<br>    i：表示模式不区分大小写<br>    g：表示进行全局搜索，找到所有的匹配项<br>    m:多行模式进行匹配，针对换行符</p>
+<h3 id="二、正则表达式的String方法"><a href="#二、正则表达式的String方法" class="headerlink" title="二、正则表达式的String方法"></a>二、正则表达式的String方法</h3><p>上面说了正则表达式的基础知识，这里我们就说说怎么运用正则表达式。</p>
+<h4 id="1、search"><a href="#1、search" class="headerlink" title="1、search()"></a>1、search()</h4><p>字面意思就是寻找什么，不错，他就是从字符串中寻找参数，有的话就返回开始的位置，没有的话就返回-1。参数如果不是正则表达式就会进行自动转换(调用RegExp()构造函数进行自动转换)</p>
+<p>for  example 4：</p>
+<pre><code>&quot;JavaScript&quot;.search(/script/i);
+</code></pre><h4 id="2、replace"><a href="#2、replace" class="headerlink" title="2、replace()"></a>2、replace()</h4><p>字面意思就是根据正则表达式寻找到相应的字符串，这是第一个要做的事情，第二个参数就是要写个替换字符串，同样，如果第一个参数不是正则表达式，就会进行自动转换</p>
+<p>for  example 5：</p>
+<pre><code>text.replace(/javascript/gi,&quot;JavaScript&quot;);
+</code></pre><h4 id="3、match"><a href="#3、match" class="headerlink" title="3、match()"></a>3、match()</h4><p>这个方法的参数是唯一的，如果不是全局搜索的话，就仅仅当匹配到第一个元素时就会停止，并同样会返回一个数组</p>
+<p>for example 6：</p>
+<pre><code>&quot;1 plus 2 equals 3&quot;.match(/\d+/g);//返回[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;],进行了全局搜索
+</code></pre><h4 id="4、split"><a href="#4、split" class="headerlink" title="4、split()"></a>4、split()</h4><p>这个方法不说了，之前有说到。</p>
+<h3 id="三、RegExp对象的属性和方法"><a href="#三、RegExp对象的属性和方法" class="headerlink" title="三、RegExp对象的属性和方法"></a>三、RegExp对象的属性和方法</h3><p>RegExp对象的属性有5个，前4个是只读的。分别为：source、global(g,布尔值)、ignorancase(i,布尔值)、multiline(布尔值)、lastIndex(可读写的)</p>
+<p>lastIndex，若匹配模式中有g修饰符，会发挥作用。有两个方法：test()和exec()</p>
+<p>for example 7:</p>
+<pre><code>var pattern = /java/i;
+pattern.test(&quot;JavaScript&quot;);//true,这个方法返回的是布尔值
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;我们的主题：&quot;&gt;&lt;a href=&quot;#我们的主题：&quot; class=&quot;headerlink&quot; title=&quot;我们的主题：&quot;&gt;&lt;/a&gt;我们的主题：&lt;/h2&gt;&lt;p&gt;正则表达式什么样子的？能用来做什么？怎么做？ok，一一揭示！&lt;/p&gt;
+&lt;h3 id=&quot;一、正则表达式简介&quot;&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>一键清理</title>
@@ -1737,71 +1830,6 @@ a(1,0);
       &lt;p&gt;sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/image/s.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo搭建博客（二）</title>
-    <link href="http://maHouse.github.io/2017/04/26/hexo2/"/>
-    <id>http://maHouse.github.io/2017/04/26/hexo2/</id>
-    <published>2017-04-26T07:54:43.000Z</published>
-    <updated>2017-04-26T09:37:00.198Z</updated>
-    
-    <content type="html"><![CDATA[<p>上次说到会用网址访问页面，细想了一下，你只要能按我发的那个链接走的话就能很好的出现效果，下面就说说一些必要的注意事项。</p>
-<p>1.下载Markdownpad,<a href="http://markdownpad.com/" target="_blank" rel="external">http://markdownpad.com/</a>，这里在windows10里会有个小问题，需要配置个什么小玩意，你自己去搞定啦！</p>
-<p>再有就是下载个Notepad++，<a href="https://notepad-plus-plus.org/" target="_blank" rel="external">https://notepad-plus-plus.org/</a>，目的是避免以后你编辑的东西会因为字符集的问题而不能正常使用</p>
-<p>2.下载完成后，就按链接里前辈的路子走吧！以下几个命令是常用的，它们执行后的样子是啥样的</p>
-<p><strong>hexo g</strong> ##目的是把你修改的东西变成静态文件，每次修改后都要在Git里执行一次这个命令，成功的样子是</p>
-<p><img src="/image/12.png" alt=""></p>
-<p><strong>hexo s</strong> ##启动服务器，当你想在把东西放到网页上前检查一下的时候用</p>
-<p><img src="/image/13.png" alt=""></p>
-<p>localhost:4000在这个时候使用，要执行其他的命令就要用Ctrl+C快捷键停止这一步</p>
-<p><strong>hexo d</strong> ##把文件部署到github,这一步有意思的东西多，部署成功的标志是，命令执行完后，成功标志</p>
-<p><img src="/image/14.png" alt=""></p>
-<p>其他的均属未成功，解决方案：重新登录github网站，能进去的话，就把你所遇到的问题粘贴到网上搜索答案，不能进去的话，一个方法就是等到能进去的时候在执行这个命令。</p>
-<p>3.主题的配置，当你把Hexo下载完后，是一个默认的主题，后面的主题，你就可以自己去选择了，你可以选择和前辈一样的主题，也可以自己寻找实验，找到更适合你的，安装方法就是去看主题制作者的Readme里面有详细的步骤</p>
-<p><strong>注：</strong>有什么不会的我们可以共同讨论，这个主题就先到这里了</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上次说到会用网址访问页面，细想了一下，你只要能按我发的那个链接走的话就能很好的出现效果，下面就说说一些必要的注意事项。&lt;/p&gt;
-&lt;p&gt;1.下载Markdownpad,&lt;a href=&quot;http://markdownpad.com/&quot; target=&quot;_blank&quot; rel=
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hexo搭建博客（一）</title>
-    <link href="http://maHouse.github.io/2017/04/23/myblog/"/>
-    <id>http://maHouse.github.io/2017/04/23/myblog/</id>
-    <published>2017-04-23T12:40:05.000Z</published>
-    <updated>2017-04-26T07:51:22.405Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
-<ol>
-<li>先下载必备的东西Git，通过它把文件托管到本地和github上，必须下载，<a href="https://git-scm.com" title="下载地址" target="_blank" rel="external">https://git-scm.com</a>。<br><img src="/image/g.png" alt="">,右下角的这个位置，注意：电脑系统版本</li>
-<li>下载Nodejs去，同样是官网<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>，<img src="/image/g2.png" alt="最好是最新版本的"></li>
-<li>工具已经准备完成，下面就开始操刀吧！</li>
-</ol>
-<p><strong>首先</strong>，安装Hexo，这里安装的时候可以在nodejs里安装，也可以在Git里安装：</p>
-<p>nodejs里：<strong>npm install -g hexo</strong> 或者<strong>npm install hexo-cli -g</strong></p>
-<p><img src="/image/nodejs.png" alt=""><br>检测安装成功与否，用<strong>hexo -v</strong> ,出现版本号说明成功</p>
-<p>Git里的执行命令是一样的，注意：应该在Git Bash Here里执行同样命令</p>
-<p><strong>第二步</strong>，在你建立的blog文件夹下，点击右键出现如下<img src="/image/git.png" alt=""> </p>
-<p>执行命令 <strong>hexo init</strong> 自动在目标文件夹建立网站所需要的所有文件。</p>
-<p>然后执行<strong>npm install</strong> 安装依赖包<br><strong>第三步</strong>，这一步就是验证以上的操作效果如何了，先执行<strong>hexo g</strong>,这是用于生成静态文件，再执行<strong>hexo s</strong>，这是启动服务器，<img src="img/dis.png" alt="">,执行之后就按图片去看看默认的效果吧！<img src="/image/re.png" alt="">,出现这个效果就完成了初步目的</p>
-<p>最后，我们应该知道我们访问的东西是用localhost:4000访问得到的，下一步我们就用域名来获得这个页面，明天见！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！&lt;/strong&gt;你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是&lt;a 
     
     </summary>
     

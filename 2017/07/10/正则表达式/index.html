@@ -1,0 +1,499 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>正则表达式表达式的匹配模式 | 浮游Bar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小码哥">
+    
+
+    
+    <meta name="description" content="我们的主题：正则表达式什么样子的？能用来做什么？怎么做？ok，一一揭示！ 一、正则表达式简介正则表达式是一个描述字符模式的对象，注意是对象，创建方式不用说了，有构造函数和直接量两种方式。描述字符模式的规则是由字符(数字、字母和其他)组成的。 下面我们就把正则表达式的基本知识看一下： 1、直接量字符用反斜线()作为前缀进行转义： \o(NUL字符)等价于\u0000">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式表达式的匹配模式">
+<meta property="og:url" content="http://maHouse.github.io/2017/07/10/正则表达式/index.html">
+<meta property="og:site_name" content="浮游Bar">
+<meta property="og:description" content="我们的主题：正则表达式什么样子的？能用来做什么？怎么做？ok，一一揭示！ 一、正则表达式简介正则表达式是一个描述字符模式的对象，注意是对象，创建方式不用说了，有构造函数和直接量两种方式。描述字符模式的规则是由字符(数字、字母和其他)组成的。 下面我们就把正则表达式的基本知识看一下： 1、直接量字符用反斜线()作为前缀进行转义： \o(NUL字符)等价于\u0000">
+<meta property="og:updated_time" content="2017-07-13T14:31:06.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式表达式的匹配模式">
+<meta name="twitter:description" content="我们的主题：正则表达式什么样子的？能用来做什么？怎么做？ok，一一揭示！ 一、正则表达式简介正则表达式是一个描述字符模式的对象，注意是对象，创建方式不用说了，有构造函数和直接量两种方式。描述字符模式的规则是由字符(数字、字母和其他)组成的。 下面我们就把正则表达式的基本知识看一下： 1、直接量字符用反斜线()作为前缀进行转义： \o(NUL字符)等价于\u0000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
+    
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="浮游Bar" title="浮游Bar"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="浮游Bar">浮游Bar</a></h1>
+				<h2 class="blog-motto">道之所向，虽千万人吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:maHouse.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/07/10/正则表达式/" title="正则表达式表达式的匹配模式" itemprop="url">正则表达式表达式的匹配模式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-10T10:06:09.000Z" itemprop="datePublished"> 发表于 2017-07-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我们的主题："><span class="toc-number">1.</span> <span class="toc-text">我们的主题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、正则表达式简介"><span class="toc-number">1.1.</span> <span class="toc-text">一、正则表达式简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、直接量字符"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、直接量字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、字符类"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、字符类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、正则表达式的String方法"><span class="toc-number">1.2.</span> <span class="toc-text">二、正则表达式的String方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、search"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、search()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、replace"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、replace()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、match"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、match()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、split"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、split()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、RegExp对象的属性和方法"><span class="toc-number">1.3.</span> <span class="toc-text">三、RegExp对象的属性和方法</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="我们的主题："><a href="#我们的主题：" class="headerlink" title="我们的主题："></a>我们的主题：</h2><p>正则表达式什么样子的？能用来做什么？怎么做？ok，一一揭示！</p>
+<h3 id="一、正则表达式简介"><a href="#一、正则表达式简介" class="headerlink" title="一、正则表达式简介"></a>一、正则表达式简介</h3><p>正则表达式是一个描述字符模式的对象，注意是对象，创建方式不用说了，有构造函数和直接量两种方式。描述字符模式的规则是由字符(数字、字母和其他)组成的。</p>
+<p>下面我们就把正则表达式的基本知识看一下：</p>
+<h4 id="1、直接量字符"><a href="#1、直接量字符" class="headerlink" title="1、直接量字符"></a>1、直接量字符</h4><p>用反斜线()作为前缀进行转义：</p>
+<pre><code>\o(NUL字符)等价于\u0000                 \t(制表符)等价于\u0009
+\n(换行符)等价于\u000A                   \v(垂直制表符)等价于\u000b
+\f(换页符)等价于\u000L                   \r(回车符)等价于\u000D
+\uxxxx(十六进制数指定的Unicode字符)，既有\u009等价于\t
+</code></pre><h4 id="2、字符类"><a href="#2、字符类" class="headerlink" title="2、字符类"></a>2、字符类</h4><p>将直接量字符单独放到方括号内就组成了字符类，一个字符类可以匹配它所包含的任意字符。</p>
+<pre><code>/[abc]/和字母&quot;a&quot;,&quot;b&quot;,&quot;c&quot;中的任意一个都匹配
+/[a-zA-Z0-9]/匹配拉丁字母表中的任意字母和数字
+</code></pre><p>尖括号“^”表示取反，注意它所在的位置是紧靠左边的方括号，/[^abc]/意思是匹配所有除三者之外的字符。</p>
+<p>正则表达式中的字符类：</p>
+<pre><code>[...] 方括号内的任意字符     [^...]  不在方括号内的所有字符
+.     除了换行符\n和其他表示终止符的Unicode字符
+\w    任何AS11码组成的单词，是数字和字母的组合[a-zA-Z0-9]是等价的
+\W    与上者是相反的
+\s    任何Unicode空白字符
+\S    任何非空字符的UNicode字符
+\d    任何AS11数字等价于[0-9]
+\D    等价于[^0-9]
+[\b]  表示退格直接量
+</code></pre><p>方括号内也可以写特殊转义字符，/[\s\d]/(任何空白符或数字)</p>
+<p>正则表达式里有个表示重复的字符语法：</p>
+<pre><code>{n,m}  匹配前一项的重复次数，比n大比m小，这个m可选，n为必填的，当然有更简单的表示方法
+</code></pre><p>比如：</p>
+<pre><code>？ 等价于{0,1}、+ 等价于{1，}、*等价于{0，}
+</code></pre><p>for example 1：</p>
+<pre><code>/\d{2,4}/     2--4个数字
+/\w{3}\d?/    精确匹配3个单词一个可选的数字
+/\s+java\s+/  前后各至少有一个空白符的字符串&quot;java&quot;
+/[^(]*/       匹配0个或多个非左括号的字符
+</code></pre><p>正则表达式的选择、分组和引用字符</p>
+<pre><code>|        有或者的意思
+(...)    将几个项组合为一个单元
+(?...)   只组合，不记忆
+</code></pre><p>for example 2：</p>
+<pre><code>/ab|cd|ef/         可以匹配字符串&quot;ab&quot;或者&quot;cd&quot;或者&quot;ef&quot;
+/\d{3}|[a-z]{4}/   匹配的是3个数字或者4个小写字母
+</code></pre><p>注意：这个模式一旦发现了我们所需要的匹配项，就立即停止，不再进行匹配</p>
+<pre><code>/java(script)?/  可以匹配字符串java，其后的script可有可无
+/(ab|cd)+|ef/     可以匹配字符串&quot;ef&quot;,也可以匹配字符串&quot;ab&quot;或者&quot;cd&quot;一次或者多次
+</code></pre><p>我们可以用/^…$/来表示开始和结束，就有表示指定位置的意思</p>
+<p>修饰符(放到/…/之后)有3个：<br>    i：表示模式不区分大小写<br>    g：表示进行全局搜索，找到所有的匹配项<br>    m:多行模式进行匹配，针对换行符</p>
+<h3 id="二、正则表达式的String方法"><a href="#二、正则表达式的String方法" class="headerlink" title="二、正则表达式的String方法"></a>二、正则表达式的String方法</h3><p>上面说了正则表达式的基础知识，这里我们就说说怎么运用正则表达式。</p>
+<h4 id="1、search"><a href="#1、search" class="headerlink" title="1、search()"></a>1、search()</h4><p>字面意思就是寻找什么，不错，他就是从字符串中寻找参数，有的话就返回开始的位置，没有的话就返回-1。参数如果不是正则表达式就会进行自动转换(调用RegExp()构造函数进行自动转换)</p>
+<p>for  example 4：</p>
+<pre><code>&quot;JavaScript&quot;.search(/script/i);
+</code></pre><h4 id="2、replace"><a href="#2、replace" class="headerlink" title="2、replace()"></a>2、replace()</h4><p>字面意思就是根据正则表达式寻找到相应的字符串，这是第一个要做的事情，第二个参数就是要写个替换字符串，同样，如果第一个参数不是正则表达式，就会进行自动转换</p>
+<p>for  example 5：</p>
+<pre><code>text.replace(/javascript/gi,&quot;JavaScript&quot;);
+</code></pre><h4 id="3、match"><a href="#3、match" class="headerlink" title="3、match()"></a>3、match()</h4><p>这个方法的参数是唯一的，如果不是全局搜索的话，就仅仅当匹配到第一个元素时就会停止，并同样会返回一个数组</p>
+<p>for example 6：</p>
+<pre><code>&quot;1 plus 2 equals 3&quot;.match(/\d+/g);//返回[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;],进行了全局搜索
+</code></pre><h4 id="4、split"><a href="#4、split" class="headerlink" title="4、split()"></a>4、split()</h4><p>这个方法不说了，之前有说到。</p>
+<h3 id="三、RegExp对象的属性和方法"><a href="#三、RegExp对象的属性和方法" class="headerlink" title="三、RegExp对象的属性和方法"></a>三、RegExp对象的属性和方法</h3><p>RegExp对象的属性有5个，前4个是只读的。分别为：source、global(g,布尔值)、ignorancase(i,布尔值)、multiline(布尔值)、lastIndex(可读写的)</p>
+<p>lastIndex，若匹配模式中有g修饰符，会发挥作用。有两个方法：test()和exec()</p>
+<p>for example 7:</p>
+<pre><code>var pattern = /java/i;
+pattern.test(&quot;JavaScript&quot;);//true,这个方法返回的是布尔值
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://maHouse.github.io/2017/07/10/正则表达式/" data-title="正则表达式表达式的匹配模式 | 浮游Bar" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/07/07/一键清理/" title="一键清理">
+  <strong>上一篇：</strong><br/>
+  <span>
+  一键清理</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/07/12/RegExp/"  title="RegExp">
+ <strong>下一篇：</strong><br/> 
+ <span>RegExp
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我们的主题："><span class="toc-number">1.</span> <span class="toc-text">我们的主题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、正则表达式简介"><span class="toc-number">1.1.</span> <span class="toc-text">一、正则表达式简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、直接量字符"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、直接量字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、字符类"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、字符类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、正则表达式的String方法"><span class="toc-number">1.2.</span> <span class="toc-text">二、正则表达式的String方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、search"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、search()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、replace"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、replace()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、match"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、match()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、split"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、split()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、RegExp对象的属性和方法"><span class="toc-number">1.3.</span> <span class="toc-text">三、RegExp对象的属性和方法</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="https://github.com/maHouse" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 兄弟姐妹们，你们好！ <br/>
+			This is my blog,it will be better and better，welcome to come here！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5309319763" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/https://github.com/maHouse" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:1037243021@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="小码哥">小码哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

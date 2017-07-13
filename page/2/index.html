@@ -79,6 +79,403 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/21/object/" title="对象" itemprop="url">对象</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-21T15:21:36.000Z" itemprop="datePublished"> 发表于 2017-05-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="一、综合概述"><a href="#一、综合概述" class="headerlink" title="一、综合概述"></a><strong>一、综合概述</strong></h2><p><strong>1.全局对象：</strong></p>
+<p>全局属性：undefined、NaN、infinity</p>
+<p>全局函数：isNaN()、parseInt()、eval()</p>
+<p>全局对象：Math、JSON</p>
+<p>构造函数：Date（）、RegExp()、String（）、Object（）、Array（）</p>
+<p><strong>2.包装对象</strong></p>
+<p>JavaScript里有些原始值如：字符串、数字、布尔值，它们是有自己的属性和方法的，那么它们不是对象，属性和方法又从何而来呢？</p>
+<p>那我们就先从说对象说起，对象是一系列属性名和属性值的集合体。对象要引用属性值就用”.”加上属性名来引用；对象里的方法是用函数表示的，引用的时候用o.m()来表示。</p>
+<p>不同的是，原始值里的字符串、数字和布尔值的属性和方法是不能被定义新的值的，而对象里面是能改变的。</p>
+<p>在例子中：</p>
+<pre><code>var s = &apos;test&apos;;
+s.len = 4;
+s.indexOf(&apos;t&apos;) = 0;
+</code></pre><p>在上面的例子中s是字符串，但是具有自己的属性和方法，它的实现方式是在s引用自己的属性和方法时，就会通过new String(s)创建一个临时对象，这个对象会继承s的特点。这个临时对象在用到的时候会被创建出来，一旦不用就会被销毁。</p>
+<p>例如：</p>
+<pre><code>var s = &apos;test&apos;;
+s.len = 4;//这里是设置的新的属性值
+var t = s.len;
+console.log(t);//undefined
+</code></pre><p>在s.len = 4;使用完后，这个属性就被销毁了，不会在往下传递了，所以打印的结果是undefined；不是length哟！代码测试如果用下面的代码：</p>
+<pre><code>var s = &apos;test&apos;;
+s.length = 4;
+var t = s.length;
+console.log(t);//这个结果就是4了
+</code></pre><p>可以运用构造函数来显示的创建包装对象，</p>
+<pre><code>var s = &apos;test&apos;,n = 1,b = true;
+var S = new String(s);
+var N = new Number(n);
+var B = new Boolean(b);
+</code></pre><p>如果我们用’ == ‘来判断s与S、n与N、b与B的话，结果是true；如果用’ === ‘恒等式来判断的话，就不是这个结果了。</p>
+<p>JavaScript中的值的类型会根据需要字型转变，无论进行什么运算，共同的值类型是每个单独的值都能转换过去的，转换的又隐式转换和显式转换</p>
+<p>for example： </p>
+<pre><code>&apos;5&apos; * &apos;6*;//30,//改变就是从字符串变化到了数字类型
+
+ 30 + &apos;object&apos;;//这里就只能转变为字符串了
+</code></pre><p>parseInt() =&gt;意思是把值转换为16进制的，目前就是这么多了！不足的话就再加补充。</p>
+<h2 id="二、对象的创建"><a href="#二、对象的创建" class="headerlink" title="二、对象的创建"></a>二、对象的创建</h2><p>ES5中创建对象有3中方式，对象直接量、new关键字和Object.create()，这3种方式。</p>
+<p>for example：</p>
+<p>①对象直接量，就是直接表示出对象里面的属性和方法：</p>
+<pre><code>var o = {x:1,y:2,z:function (){alert(1);}
+</code></pre><p>②new关键字，就是创建一个新的对象的意思：</p>
+<pre><code>var o = new Object();
+o.x = 1;
+o.y = 2;
+</code></pre><p>③第三种方式利用到了继承的性质，Object.create(<em>,</em>);这里面有两个参数，前面的是必须填写的，意思是某个对象继承了那个对象，当然也可以填写null，后面的第二个参数是个可选的参数：</p>
+<pre><code>var o1 = Object.create({x:1,y:2});//o1继承了{x:1,y:2}的属性
+
+var o2 = Object.create(null);
+</code></pre><p>在o1的情况中涉及到了继承，一会说。</p>
+<p>通过原型继承创建一个新对象</p>
+<pre><code>//inherit()返回一个继承原型对象p的属性的新对象
+function inherit(p){
+    if (p == null) throw TypeError();
+    if (Object.create) return Object.create(p);//如果存在就是用它
+    var t = typeof p;
+    if (t !== &apos;object&apos; &amp;&amp; t !== &apos;function&apos;) throw TypeError();
+    function f(){};
+    f.prototype = p;
+    return new f();
+}
+</code></pre><h2 id="三、属性的查询和设置"><a href="#三、属性的查询和设置" class="headerlink" title="三、属性的查询和设置"></a>三、属性的查询和设置</h2><p>我们要查询对象的属性时有两种方式：</p>
+<p>1.是通过”.”:例如，o.name或者o.m(),来寻找属性或者方法；</p>
+<p>2.通过[]来寻找或者设置：例如，o.[‘name’]，这里就要知道对象有时候也称为关联数组、散列或者字典；</p>
+<p><strong>注意：</strong>JavaScript里面我们是不能通过第一种方式来改变属性名字的，因为我们不能改变一个标识符，不过我们能改变数据类型里的数据，而后一种方式就是数据类型里的字符串，是可以改变的。</p>
+<p>既然谈到了属性那么我们得知道JavaScript的对象里面属性有自有属性和继承属性两种，继承属性则意味着这个属性不是自己独有的，是属于另外一个对象的，自己不过是使用了而已。</p>
+<p>这里就先捋清原型、原型链、继承、类、对象之间的关系，其中原型和类再加上可扩展性是对象的3个属性。</p>
+<p>我们先把一类东西，比如人给抽象出来，把人所具有的一般特征用属性和方法表示出来，意思就是一类人，对象的类属性用toString()返回的是一个字符串，表示的意思对象的类型信息。</p>
+<p>原型与继承相关，这里就有涉及到了原型链，我们在查询对象o的属性时首先是到<br>对象的自有属性里查询，如果没有的话就到对象的原型里查询，再没有的话就到对象原型的原型里查询，一直到null为止，这么看来就有了一个链条的感觉。</p>
+<p>如果是给属性赋值的话，失败的话，可能是属性为可读的但不可写，成功的话，就会有不同的答案了，要么创建一个属性，要么在原始对象中设置属性，例外的是如果o的属性是继承于属性x，而x属性是一个具有setter方法的accessor属性的话，就会有o直接调用setter方法，不会创建创建属性了，这个不会改变原型链。</p>
+<p><strong>再谈谈setter和getter方法。</strong></p>
+<p>对象是由属性名、属性值和一组特性组成，ES5中，属性值可以由一个或两个方法来代替，这两个方法就是getter方法和setter方法，由getter方法和setter方法定义的属性就是存取器属性（accessor property），不同于数据属性，存取器属性不具有可写性，要么是可读性要么是读/写性，也就是说如果只有setter方法的话，会返回的值是undefined。</p>
+<p><strong>注意：定义存取器最简单的方法是采用对象的直接量语法的一种扩展写法</strong></p>
+<p>形式：</p>
+<pre><code>var o = {
+    data_prop = value,
+    get accessor_prop(){},//返回，这里是以逗号结尾的 
+    set accessor_prop(value){}//设置
+}
+</code></pre><p>可用的地方是，我们可以传入一个值，然后返回一个不同的新值，这里就是数据双向绑定的最根本的开始喽！</p>
+<p>权威指南上有个例子，在这里展示一下：2D笛卡尔点坐标</p>
+<pre><code>var p = {
+    //x,y均为普通的可读写的数据属性
+    x：1.0，
+    y:1.0,
+    //r为可读写的存储器属性，它有setter和getter
+    //函数体结束后不要忘了带上逗号
+    get r(){
+        return Math.sqrt(this.x*this.x + this.y*this.y);},
+    set r(newValue){
+        var oldValue = Math.sqrt(this.x*this.x + this.y*this.y);
+        this.x *= ratio;
+        this.y *= ratio;
+    },
+    //theta是只读存取器属性，只有getter方法
+    get theta() { return Math.atan2(this.y,this.x);}
+}
+</code></pre><h2 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h2><p><strong>1.属性访问错误</strong></p>
+<p>同理既然是错误就是我们不想要的系统报错，两种方式：对象存在属性不在或者就是对象本身就不在</p>
+<p><strong>2.删除属性</strong></p>
+<p>只能删除自有属性，继承属性不能被删除，而delete运算符其实是断掉了属性与宿主的关系，对于属性中的属性则没有操作到，就是不是真正的删掉了属性，这个时候可能因为内存泄漏的原因，我们需要遍历属性中的属性，并删去</p>
+<p>大家可以试试这个例子：</p>
+<pre><code>var a = {p:{x:1}};
+b = a.p;
+delete a.p;
+console.log(b.x);//结果依旧是1
+//如果delete a.p.x来替代a.p的话，结果就是undefined了
+</code></pre><p><strong>3.检测属性</strong></p>
+<p>检测属性就用in运算符、hasOwnProperty()、propertyIsEnumerable(),这3种方式，in运算符返回的是布尔值，中间的大哥判断的是某个对象是否具有<strong>自有属性</strong>，最后的大哥是个加强版，自有属性还得可枚举性为真，这三者的返回值都是布尔值</p>
+<p>for example：</p>
+<pre><code>var o = { x:1 }
+&apos;x&apos; in o;  //true
+&apos;y&apos; in o;  //false
+&apos;toString&apos; in o;//true,o继承toString属性
+//看看用中间的大哥来检测的结果是什么
+o.hasOwnProperty(&apos;x&apos;);//true,是自有属性
+o.hasOwnProperty(&apos;y&apos;);//false,没有这个属性
+o.hasOwnProperty(&apos;toString&apos;);//false,这个属性是继承得来的，不是自有的
+
+//看看最后大哥的返回值及原因吧
+
+var o = inherit({ y:2 });
+o.x = 1;
+o.propertyIsEnumerable(&apos;x&apos;);//true,o有一个可枚举的自有属性x
+o.propertyIsEnumerable(&apos;y&apos;);//false,o的y属性是继承过来的
+</code></pre><p>除此之外还可以通过非恒等式( !== )来判断一个属性值是不是undefined</p>
+<pre><code>o.x !== undefined;//true
+o.y !== undefined;//false
+</code></pre><p>in运算符能区分不存在的属性和存在但值为undefined的属性</p>
+<p><strong>4.可枚举性</strong></p>
+<p>枚举属性，我们用到的是for/in，它可以枚举遍历对象中的自有属性和继承属性，但对象继承的内置方法不可枚举，添加的属性除非你转化为不可枚举，其他都是可枚举的。</p>
+<p>for example:<br>    var o = {x:1,y:2,z:3};//3个可枚举的自有属性<br>    o.propertyIsEnumerable(‘toString’);//false,不可枚举<br>    for(p in o)<br>    console.log(p);</p>
+<p>过滤的方法介绍：</p>
+<pre><code>for(p in o) {
+    if (!o.hasOwnProperty(p)) continue;//hasOwnProperty()是自有属性的检测，不是自有属性，那就是跳过继承的属性了
+}
+
+for(p in o) {
+    if(typeof o[p] === &apos;function&apos;) continue;} //跳过方法，用的是数据类型的判断
+</code></pre><p>用来枚举属性的对象的工具函数</p>
+<p>for example：</p>
+<p><strong>①.</strong></p>
+<pre><code>/*把p中的可枚举的属性复制到o中，并返回o
+ 如果o和p中含有同名属性，则覆盖o中的属性
+ 这个函数并不处理getter和setter以及复制属性*/
+
+function extend(o,p) {
+    for (prop in p) {   //遍历p中的所有属性
+        o[prop] = p[prop]; //将属性添加到o中
+    }
+    return o;
+}
+</code></pre><p><strong>②.</strong></p>
+<pre><code>/*把p中的可枚举的属性复制到o中，并返回o
+ 如果o和p中含有同名属性，o中的属性则不会受到影响
+ 这个函数并不处理getter和setter以及复制属性*/
+
+function merge(o,p) {
+    for(prop in p) {  //遍历p中的所有属性
+        if (o.hasOwnProperty[prop]) continue;//筛选掉p中已经存在的属性
+        o[prop] = p[prop];将属性添加至o中
+    }
+    return o;
+}
+</code></pre><p><strong>③.</strong></p>
+<pre><code>/*如果o中的属性和p中的属性没有同名的，则从o中删除这个属性
+返回o*/
+
+function restrict(o,p) {
+    for(prop in o) {//遍历o中的所有属性
+        if(!(prop in p)) delete o[prop];//如果在p中不存在，则删除它，这个删除还是遍历性的删除
+    }
+    return o;
+}
+</code></pre><p><strong>④.</strong></p>
+<pre><code>/*如果o中的属性和p中的属性有同名的，则从o中删除这个属性
+返回o*/
+
+function subtract(o,p) {
+    for (prop in p) {//遍历p中的所有属性
+        delete o[prop];//把它删掉
+    }
+    return o;
+}
+</code></pre><p><strong>⑤.</strong></p>
+<pre><code>/*返回一个数组，这个数组包含的是o中可枚举的自有属性的名字*/
+
+function keys(o) {
+    if(typeof o !== &apos;object&apos;) throw TypeError();//参数必须是对象
+    var result = [];//将要返回的数组
+    for (var prop in o) {//遍历所有的可枚举的属性
+        if(o.hasOwnProperty(prop))//判断是否是自有属性
+        result.push(prop);//将属性名添加到数组中
+    }
+    return result;//返回这个数组
+}
+</code></pre><p><strong>5.属性的特性</strong></p>
+<p>一个属性包括1个名字和4个特性，数据属性这四个特性是：值(value)、可写性(writable)、可枚举性(enumerable)和可配置性(configurable)。而存取器属性不具有值和可写性的属性，具备的是读取(get)、写入(set)、可枚举性和可配置性。</p>
+<p><strong>6.对象的三个属性</strong></p>
+<p>每一个对象都有与之相关的原型(property)、类(class)和可扩展性(extensible)。</p>
+<p><strong>①原型属性</strong></p>
+<p>原型是用来实现继承属性的，原型也是个对象，在实例创建之初就已经设置好了</p>
+<p>for example:</p>
+<pre><code>var p = {x:1};//定义一个原型对象
+var o = Object.create(p);//使用这个原型创建一个对象
+p.isPropertyOf(o);//true，o继承p
+Object.prototype.isPropertyOf(o);//true，p继承Object.prototype
+</code></pre><p><strong>②类属性</strong></p>
+<p>对象的类属性是一个字符串，用以表示对象的类型信息，我们只能通过间接的方式来查询它，默认的就是toString()方法，并返回字符串值。</p>
+<p>for example：</p>
+<pre><code>function classof(o) {
+    if (o === null) return &apos;Null&apos;;
+    if (o === undefined) return &apos;Undefined&apos;;
+    return Object.prototype.toString.call(0).slice(8,-1);
+}
+</code></pre><p>classof函数可以传入任何参数，数字、字符串乃至布尔值都可以直接调用toString()方法。内置构造函数创建的对象和宿主对象都具有有意义的类属性，通过对象直接量和Object.create创建的对象的类属性是‘Object’，自定义的构造函数创建的对象也是如此，对于自定义的类来说，没办法通过类属性来区分对象的类。</p>
+<p>for example：</p>
+<pre><code>classof(null);
+classof(1);
+classof(&quot;&quot;);
+classof(true);
+classof([]);
+classof(new Date());
+function f() {};
+classof(new f());//Object,这个是一定了
+</code></pre><p><strong>③可扩展性</strong></p>
+<p><strong>7.序列化对象</strong></p>
+<p>对象序列化是指将对象的状态转化为字符串，也可以将字符串还原为对象，ES5提供了内置函数JSON.stringfy()和JSON.parse()来实现。</p>
+<p>for example：</p>
+<pre><code>var o = {x：1，y:{z:[false,null,&apos;&apos;]}};
+s = JSON.stringfy(o);//o就成为了字符串
+p = JSON.parse(s);//p是o的深拷贝
+</code></pre><p><strong>8.对象方法</strong></p>
+<p><strong>①toString()方法</strong></p>
+<p>Array.toString()、Date.toString()等等，</p>
+<pre><code>var s = {x:1,y:2}.toString();
+</code></pre><p><strong>②toLocalString()方法</strong></p>
+<p><strong>③toJSON</strong></p>
+<p><strong>④valueOf()方法</strong></p>
+<p>与toString()方法类似，但往往当JavaScript需要将对象转化为某种原始值而非字符串时才会用它，尤其是转换为数字的时候。</p>
+<p>这一部分的知识就先到这里了，下一组是数组</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/18/JS-data-type/" title="JavaScript的数据类型" itemprop="url">JavaScript的数据类型</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-18T13:37:23.000Z" itemprop="datePublished"> 发表于 2017-05-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>JavaScript的数据是放在内存中的，而我们也知道数字、字符串等在内存中的存储方式、所占存储空间是不同的，分类就诞生了。JavaScript中的数据类型分为：基础数据类型（原始数据类型）、对象类型。</p>
+<p>原始数据类型：<strong>数字（number）</strong>、<strong>字符串（string）</strong>、<strong>布尔值（Boolean）</strong>、<strong>null</strong>和<strong>undefined</strong>。</p>
+<p>对象类型：<strong>Math（数字）</strong>、<strong>Date（日期）</strong>、<strong>Array（数组）</strong>、<strong>Function（函数）</strong>、<strong>RegExp（正则表达式）</strong>，这几种基础数据类型，先说第一个number吧！</p>
+<h2 id="1-数字（number）"><a href="#1-数字（number）" class="headerlink" title="1.数字（number）"></a>1.数字（number）</h2><p>没啥意思，这个表示的就是数字，而数字中又分为整型和浮点型，就是整数和小数或分数。不好意思的是，JavaScript中没有具体的再区分它们两个，而是就用浮点型表示数字：1 == 1.0，这个是成立的。</p>
+<p>运算符：+（加）、-（减）、*（乘）、/（除）、%（取余），运算也就是这个几个或者是几个的复合运算。</p>
+<p>JavaScript数字的几个概念</p>
+<p>无穷大（infinity），一个忒大的数字，出现了溢出（overflow），上溢出；</p>
+<p>负无穷（-infinity），一个忒小的数字，出现了下溢出（underflow）；</p>
+<p>除此之外，还有个中特别的存在就是非数字（not-a-number既NaN)，NaN是非数字的意思，情况有几种：无穷大除以无穷大、负数开平方、非数字或者不能获得数字的运算符进行了运算，这几种情况都是出现NaN。</p>
+<p>NaN是个孤独的游魂，他没有伙伴，我们只能证明一个值不是NaN，而不能证明一个值是NaN，表达式是：</p>
+<p> x != NaN,不能写作 x == NaN(后者是个错误的存在)。</p>
+<p>上面的仅仅是数字的相关知识，还有Math对象对于数字的操作运算，这个下次再做分析。</p>
+<h2 id="2-字符串（string）"><a href="#2-字符串（string）" class="headerlink" title="2.字符串（string）"></a>2.字符串（string）</h2><p>字符串就是个有次数的不可改变的16位值的序列，字符串的表现形式就是把值放到单引号’’或者双引号””里面，或者是个空值也可以。</p>
+<p>因为JavaScript是用UTF-16编码的Unicode字符集，所以JavaScript的所有字符都是16位的。次序就是在字符串中相同字符也是有不同的索引的，不可改变就从字符串的所有方法看吧！</p>
+<p>方法一是获取相关值</p>
+<p>s.charAt();//用数字获取相关位置的值，因此里面填的是数字</p>
+<p>s.substring(a,b);//两个数字，包前不包后</p>
+<p>s.slice(a,b)；//同上</p>
+<p>s.indexOf();//里面的字符串值，出现的就是这个字符的首次出现的位置的索引</p>
+<p>s.lastIndexOf();//方法类似于上面</p>
+<p>s.split();//以什么作为分割点</p>
+<p>s.replace();//两个字符，前面的用后面的值来代替</p>
+<p>s.toUpperCase();//变为大写</p>
+<p>下面就用代码来实现一下，证实一下原字符串是不是不可改变的：</p>
+<pre><code>var s = &quot;hello world&quot;;
+
+console.log(s.indexOf(&apos;o&apos;));
+console.log(s.lastIndexOf(&apos;o&apos;));
+console.log(s.charAt(2));
+console.log(s.toUpperCase());
+console.log(s.substring(0,3));//同样是包前不包后
+console.log(s.slice(2));//包前不包后，因为2后面没有结尾意思就是到最后
+console.log(s.replace(&apos;w&apos;,&apos;W&apos;));
+console.log(s.split(&apos;v&apos;));//这个就是字符串里没有的话，可以说是没有用的
+console.log(s.split(&apos; &apos;));
+</code></pre><h2 id="3-布尔值（boolean）"><a href="#3-布尔值（boolean）" class="headerlink" title="3.布尔值（boolean）"></a>3.布尔值（boolean）</h2><p>布尔值代表的意思是真或假、开或关、是或否，多用于控制结构的比较语句中，这个类型只有两个值：true、false。</p>
+<p>JavaScript中的任意值都能转换成布尔值，下面的这些值能转换成false：undefined、null、0、-0、””(空字符串)、NaN，所有其他值包括对象（数组）则被转换成true。</p>
+<p>用个例子：声明个变量o,<strong>if(o ！== null)</strong>再有一个<strong>if(o)</strong>,前个例子是证明变量o是不是null值，不是的话会执行下去，后一个变量是意思是为真（o不是false、null和undefined）的时候会执行下去。</p>
+<p>关于布尔值的在有的话就是运算符的运用了！AND（&amp;&amp;）、OR（||）、非（NOT既！）。</p>
+<h2 id="4-null和undefined"><a href="#4-null和undefined" class="headerlink" title="4.null和undefined"></a>4.null和undefined</h2><p>null就是程序级别的，不是系统报错报出来的，是我们可以写出来的，我们可以写作参数的；undefined是系统报错的，我们不期望遇到，遇到的原因大概有三：</p>
+<p>①我们声明了变量，但是没有给变量赋值</p>
+<p>如：    </p>
+<pre><code>var a;
+
+console.log(a);//这里打印出来的就是undefined
+</code></pre><p>②参数的形式参数的引用了却没有实参</p>
+<p>如：</p>
+<pre><code> function a (b,c,d){
+
+    console.log(b + c);
+
+    console.log(d);//这里打印出来的就是undefined
+  }
+
+a(1,0);
+</code></pre><p>好玩的是如果console.log(b + c + d);这里打印出来的值是NaN，你想想一个数字加undefined，结果就是NaN。</p>
+<p>③再有一个现象就是对象里，我们有3个值，你非要找第四个值，那是没有了，只会报出undefined。</p>
+<p>为了避免出现undefined的现象，我们一定要注意几个原因，声明变量的时候，</p>
+<p>如：newHtml = “”;//不要只声明了不初始化值。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/16/my-domain/" title="Hexo中域名的配置" itemprop="url">Hexo中域名的配置</a>
   </h1>
   <p class="article-author">By
@@ -635,135 +1032,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/26/hexo2/" title="Hexo搭建博客（二）" itemprop="url">Hexo搭建博客（二）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-26T07:54:43.000Z" itemprop="datePublished"> 发表于 2017-04-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>上次说到会用网址访问页面，细想了一下，你只要能按我发的那个链接走的话就能很好的出现效果，下面就说说一些必要的注意事项。</p>
-<p>1.下载Markdownpad,<a href="http://markdownpad.com/" target="_blank" rel="external">http://markdownpad.com/</a>，这里在windows10里会有个小问题，需要配置个什么小玩意，你自己去搞定啦！</p>
-<p>再有就是下载个Notepad++，<a href="https://notepad-plus-plus.org/" target="_blank" rel="external">https://notepad-plus-plus.org/</a>，目的是避免以后你编辑的东西会因为字符集的问题而不能正常使用</p>
-<p>2.下载完成后，就按链接里前辈的路子走吧！以下几个命令是常用的，它们执行后的样子是啥样的</p>
-<p><strong>hexo g</strong> ##目的是把你修改的东西变成静态文件，每次修改后都要在Git里执行一次这个命令，成功的样子是</p>
-<p><img src="/image/12.png" alt=""></p>
-<p><strong>hexo s</strong> ##启动服务器，当你想在把东西放到网页上前检查一下的时候用</p>
-<p><img src="/image/13.png" alt=""></p>
-<p>localhost:4000在这个时候使用，要执行其他的命令就要用Ctrl+C快捷键停止这一步</p>
-<p><strong>hexo d</strong> ##把文件部署到github,这一步有意思的东西多，部署成功的标志是，命令执行完后，成功标志</p>
-<p><img src="/image/14.png" alt=""></p>
-<p>其他的均属未成功，解决方案：重新登录github网站，能进去的话，就把你所遇到的问题粘贴到网上搜索答案，不能进去的话，一个方法就是等到能进去的时候在执行这个命令。</p>
-<p>3.主题的配置，当你把Hexo下载完后，是一个默认的主题，后面的主题，你就可以自己去选择了，你可以选择和前辈一样的主题，也可以自己寻找实验，找到更适合你的，安装方法就是去看主题制作者的Readme里面有详细的步骤</p>
-<p><strong>注：</strong>有什么不会的我们可以共同讨论，这个主题就先到这里了</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/23/myblog/" title="hexo搭建博客（一）" itemprop="url">hexo搭建博客（一）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-23T12:40:05.000Z" itemprop="datePublished"> 发表于 2017-04-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>你目前看到的这个博客就是我才搭建好的属于我自己的简易窝棚，搭建过程中虽然是看着前辈的流程走的，但不得不说我还是踩了很多坑的，好了接下来我向大家说说我的踩坑经历吧！</strong>你也可以参考其他前辈的过程，不过，记住一定要以一个的过程为主，我参考的是<a href="http://tengj.top/2016/02/22/hexo1/" target="_blank" rel="external">http://tengj.top/2016/02/22/hexo1/</a></p>
-<ol>
-<li>先下载必备的东西Git，通过它把文件托管到本地和github上，必须下载，<a href="https://git-scm.com" title="下载地址" target="_blank" rel="external">https://git-scm.com</a>。<br><img src="/image/g.png" alt="">,右下角的这个位置，注意：电脑系统版本</li>
-<li>下载Nodejs去，同样是官网<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>，<img src="/image/g2.png" alt="最好是最新版本的"></li>
-<li>工具已经准备完成，下面就开始操刀吧！</li>
-</ol>
-<p><strong>首先</strong>，安装Hexo，这里安装的时候可以在nodejs里安装，也可以在Git里安装：</p>
-<p>nodejs里：<strong>npm install -g hexo</strong> 或者<strong>npm install hexo-cli -g</strong></p>
-<p><img src="/image/nodejs.png" alt=""><br>检测安装成功与否，用<strong>hexo -v</strong> ,出现版本号说明成功</p>
-<p>Git里的执行命令是一样的，注意：应该在Git Bash Here里执行同样命令</p>
-<p><strong>第二步</strong>，在你建立的blog文件夹下，点击右键出现如下<img src="/image/git.png" alt=""> </p>
-<p>执行命令 <strong>hexo init</strong> 自动在目标文件夹建立网站所需要的所有文件。</p>
-<p>然后执行<strong>npm install</strong> 安装依赖包<br><strong>第三步</strong>，这一步就是验证以上的操作效果如何了，先执行<strong>hexo g</strong>,这是用于生成静态文件，再执行<strong>hexo s</strong>，这是启动服务器，<img src="img/dis.png" alt="">,执行之后就按图片去看看默认的效果吧！<img src="/image/re.png" alt="">,出现这个效果就完成了初步目的</p>
-<p>最后，我们应该知道我们访问的东西是用localhost:4000访问得到的，下一步我们就用域名来获得这个页面，明天见！</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
 </div>
