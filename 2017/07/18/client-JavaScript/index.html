@@ -1,0 +1,540 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Web浏览器中的JavaScript | 浮游Bar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小码哥">
+    
+
+    
+    <meta name="description" content="前一部分介绍了JavaScript语言核心，这一部分转向Web浏览器中JavaScript的实现。web浏览器是如何呈现页面的呢？一些呈现静态信息的页面叫做文档(加入JavaScript会有动态的效果但是信息本身是静态的，不过页面可以动态的载入信息)。下面会说到JavaScript代码是如何在HTML文档中嵌入并执行的，还会介绍兼容性、可访问性和安全性等问题。 一、客户端JavaScriptWin">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web浏览器中的JavaScript">
+<meta property="og:url" content="http://maHouse.github.io/2017/07/18/client-JavaScript/index.html">
+<meta property="og:site_name" content="浮游Bar">
+<meta property="og:description" content="前一部分介绍了JavaScript语言核心，这一部分转向Web浏览器中JavaScript的实现。web浏览器是如何呈现页面的呢？一些呈现静态信息的页面叫做文档(加入JavaScript会有动态的效果但是信息本身是静态的，不过页面可以动态的载入信息)。下面会说到JavaScript代码是如何在HTML文档中嵌入并执行的，还会介绍兼容性、可访问性和安全性等问题。 一、客户端JavaScriptWin">
+<meta property="og:updated_time" content="2017-07-18T14:50:58.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web浏览器中的JavaScript">
+<meta name="twitter:description" content="前一部分介绍了JavaScript语言核心，这一部分转向Web浏览器中JavaScript的实现。web浏览器是如何呈现页面的呢？一些呈现静态信息的页面叫做文档(加入JavaScript会有动态的效果但是信息本身是静态的，不过页面可以动态的载入信息)。下面会说到JavaScript代码是如何在HTML文档中嵌入并执行的，还会介绍兼容性、可访问性和安全性等问题。 一、客户端JavaScriptWin">
+
+    
+    <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
+    
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="浮游Bar" title="浮游Bar"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="浮游Bar">浮游Bar</a></h1>
+				<h2 class="blog-motto">道之所向，虽千万人吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:maHouse.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/07/18/client-JavaScript/" title="Web浏览器中的JavaScript" itemprop="url">Web浏览器中的JavaScript</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-18T13:01:24.000Z" itemprop="datePublished"> 发表于 2017-07-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、客户端JavaScript"><span class="toc-number">1.</span> <span class="toc-text">一、客户端JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、web文档里的JavaScript"><span class="toc-number">1.1.</span> <span class="toc-text">1、web文档里的JavaScript</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、在HTML里嵌入JavaScript"><span class="toc-number">2.</span> <span class="toc-text">二、在HTML里嵌入JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、JavaScript程序的执行"><span class="toc-number">3.</span> <span class="toc-text">三、JavaScript程序的执行</span></a></li></ol>
+		
+		</div>
+		
+		<p>前一部分介绍了JavaScript语言核心，这一部分转向Web浏览器中JavaScript的实现。web浏览器是如何呈现页面的呢？一些呈现静态信息的页面叫做文档(加入JavaScript会有动态的效果但是信息本身是静态的，不过页面可以动态的载入信息)。下面会说到JavaScript代码是如何在HTML文档中嵌入并执行的，还会介绍兼容性、可访问性和安全性等问题。</p>
+<h3 id="一、客户端JavaScript"><a href="#一、客户端JavaScript" class="headerlink" title="一、客户端JavaScript"></a>一、客户端JavaScript</h3><p>Window对象是所有客户端JavaScript特性和API的主要接入点。Window对象定义了一些属性，指代Location对象的location属性，Location对象指定当前显示在窗口里载入新的URL。</p>
+<pre><code>//设置location属性，从而跳转到新的web页面
+window.location = &quot;http://www.oreilly.com/&quot;;
+</code></pre><p>Window对象还定义了一些方法，比如alert()方法，还有setTimeout()，可以注册一个函数，在给定的一段时间后触发一个回调：</p>
+<pre><code>//等待两秒，然后说 hello
+setTimeout(function() {alert(&quot;hello JavaScript!&quot;);},2000);
+</code></pre><p>客户端JavaScript中，Window对象也是全局对象，Window对象处于作用域的顶端，它的属性和方法实际上是全局变量和全局函数。Window对象有一个引用自身属性叫做window。</p>
+<p>Window对象有一个最重要的属性是document，它引用Document对象，后者表示显示在窗口中的文档。Document对象有一些重要方法，比如getElementById(),可以基于元素id属性的值返回单一的文档元素：</p>
+<pre><code>//查找 id = &quot;timestamp&quot;的元素
+var timestamp = document.getElementById(&quot;timestamp&quot;);
+</code></pre><p>getElementById()返回的Element对象有其他重要的属性和方法，比如允许脚本获取它的内容，设置属性值等：</p>
+<pre><code>//如果元素为空，往里面插入当前的日期和时间
+if(timestamp.firstChild == null)
+    timestamp.appendChild(document.createTextNode(new Date().toString()));
+</code></pre><p>每个Element对象都有style和className属性，允许脚本指定文档元素的CSS样式，或者修改应用元素上的CSS类名。设置这些CSS相关属性会改变文档元素的呈现：</p>
+<pre><code>//显示修改目标元素的呈现
+timestamp.style.backgroundColor = &quot;yellow&quot;;
+
+//或者只改变类，让样式表指定具体内容
+timestamp.className = &quot;highlight&quot;;
+</code></pre><p>事件处理程序可以让JavaScript代码修改窗口、文档和组成文档的元素的行为。事件处理程序的属性名是以单词“on”开始的：</p>
+<pre><code>//当用户单机timestamp元素时，更新它的内容
+timestamp.onclick = function () {this .innerHTML = new Date().toString();}
+
+//显示内容的简单客户端JavaScript：
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.reveal*{display:none;}
+.reveal *.handle{display:block;}&lt;!...除了这个handle的元素...&gt;
+&lt;/style&gt;
+
+&lt;script&gt;
+window.onload = function() {
+    var elements = document.getElementsByName(&quot;reveal&quot;);
+    for (var i = 0;i &lt; elements.length;i++) {
+        var elt = elements[i];
+        var title = elt.getElementsByName(&quot;handle&quot;)[0];
+        addRevealHandler(title,elt);
+        function addRevealHandler(title,elt) {
+            title.onclick = function () {
+                if(elt.className == &quot;reveal&quot;)
+                    elt.calssName = &quot;ravealed&quot;;
+                else if (elt.className == &quot;revealed&quot;)
+                    elt.className = &quot;reveal&quot;;
+            }
+        }
+    }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;reveal&quot;&gt;
+&lt;h1 class=&quot;handle&quot;&gt; Click Here to Reveal Hidden Text&lt;/h1&gt;
+&lt;p&gt;This paragraph is hidden.It appears when you click on the title.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="1、web文档里的JavaScript"><a href="#1、web文档里的JavaScript" class="headerlink" title="1、web文档里的JavaScript"></a>1、web文档里的JavaScript</h4><p>用户的体验不应该依赖于JavaScript，但它却可以增强用户体验，通过如下的方式来实现：</p>
+<p>》创建动画和其他视觉效果，巧妙的引导和帮助用户进行页面导航。</p>
+<p>》对表格的列进行分组，让用户更容易找到所需要的。</p>
+<p>》隐藏某些内容，当用户“深入”到内容里时，在逐渐展示详细信息。</p>
+<p>Web浏览器是简单操作系统的概念，这样就可以把Web应用定义为用JavaScript访问更多浏览器提供的高级服务(比如网络、图像和数据存储)的页面。高级服务里最有名的是XMLHttpRequest对象，后者可以对HTTP请求编程来启用网络。Web应用使用这个服务从服务器获取新信息，而不用重新载入页面，达到局部刷新的效果。</p>
+<h3 id="二、在HTML里嵌入JavaScript"><a href="#二、在HTML里嵌入JavaScript" class="headerlink" title="二、在HTML里嵌入JavaScript"></a>二、在HTML里嵌入JavaScript</h3><p>嵌入到HTML文档里共有4种方式：</p>
+<p>《 内联，放置在<code>&lt;script&gt;&lt;/script&gt;</code>之间。</p>
+<p>《 放置在由<code>&lt;script&gt;</code>标签的src属性指定的外部文件中。</p>
+<p>《放置在HTML事件处理程序中，该事件处理程序由onclick或者onmouseover这样的HTML属性值指定。</p>
+<p>《放在一个URL里，这个URL使用特殊的“javascript”协议。</p>
+<p>嵌入到HTML文档里方法总共是这几种，但是我们常用的是第二种，达到了表现形式与行为的分离的目的。</p>
+<pre><code>//这是个简单的JavaScript数字时钟程序
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;
+Digital Clock
+&lt;/title&gt;
+&lt;script&gt;
+//定义一个函数用以显示当前的时间
+function displayTime() {
+    var elt = document.getElementById(&quot;clock&quot;);
+    var now = new Date();
+    elt.innerHTML = now.toLocaleTimeString();
+    setTimeout(displayTime,1000);
+}
+window.onload = displayTime;
+&lt;/script&gt;
+&lt;style&gt;
+#clock {
+    font:bold 24pt sans;
+    background:#ddf;
+    padding:10px;
+    border:solid black 2px;
+    border-radius:10px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Digital Clock&lt;/h1&gt;
+&lt;span id=&quot;clock&quot;&gt;&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>其他的引入方式这里不再做介绍，下面我们仅仅说一下外部文件中的脚本：</p>
+<pre><code>&lt;script src=&quot;../../scripts/util.js&quot;&gt;&lt;/script&gt;//相对路径
+</code></pre><h3 id="三、JavaScript程序的执行"><a href="#三、JavaScript程序的执行" class="headerlink" title="三、JavaScript程序的执行"></a>三、JavaScript程序的执行</h3><p>JavaScript程序的执行有2个阶段：</p>
+<p>第一阶段，载入文档内容，并执行<code>&lt;script&gt;</code>元素里的代码(包括内联的和外部脚本)。脚本通常会按它们在文档中出现的顺序执行。所有脚本里的JavaScript代码都是从上到下，按照它在条件、循环以及其他控制语句中的出现顺序执行。</p>
+<p>当文档载入完成，并且所有的脚本执行完成后，JavaScript就进入它的第二阶段。这个阶段是异步的，而且由事件驱动。在事件驱动阶段，Web浏览器调用事件处理程序函数(第一阶段里执行的脚本指定的HTML事件处理程序)，来响应异步发生的事件。</p>
+<p>事件驱动阶段发生的第一个事件是load事件</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://maHouse.github.io/2017/07/18/client-JavaScript/" data-title="Web浏览器中的JavaScript | 浮游Bar" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/07/12/RegExp/" title="RegExp">
+  <strong>上一篇：</strong><br/>
+  <span>
+  RegExp</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、客户端JavaScript"><span class="toc-number">1.</span> <span class="toc-text">一、客户端JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、web文档里的JavaScript"><span class="toc-number">1.1.</span> <span class="toc-text">1、web文档里的JavaScript</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、在HTML里嵌入JavaScript"><span class="toc-number">2.</span> <span class="toc-text">二、在HTML里嵌入JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、JavaScript程序的执行"><span class="toc-number">3.</span> <span class="toc-text">三、JavaScript程序的执行</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="https://github.com/maHouse" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 兄弟姐妹们，你们好！ <br/>
+			This is my blog,it will be better and better，welcome to come here！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5309319763" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/https://github.com/maHouse" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:1037243021@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="小码哥">小码哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -79,6 +79,97 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/04/26/sublime/" title="sublime设置自己的浏览器方法" itemprop="url">sublime设置自己的浏览器方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-26T10:04:00.000Z" itemprop="datePublished"> 发表于 2017-04-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 </p>
+<p><img src="/image/s.png" alt=""></p>
+<p>这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏览器是IE，当然我想在Chrome里看看效果，并调试一下，怎么设置呢？</p>
+<p>点击深绿色的Preferences栏</p>
+<p><img src="/image/s2.png" alt=""></p>
+<p>看到了Key Bindings 点进去进到如下界面：</p>
+<p><img src="/image/s3.png" alt=""></p>
+<p>你的是没有红色部分及下面的内容的，这里就是我自己设置的了，你就直接把我的代码放进去就可以了，你能 <strong>随意改</strong> 的是 keys这里的快捷键，再有就是application里的内容，你是要必须改的，换成你的浏览器位置的路径</p>
+<p><img src="/image/s4.png" alt=""></p>
+<p><strong>注意：</strong>这里的斜杠是怎么写的一定要注意</p>
+<p>你要用的代码：<br>//chorme</p>
+<p>{</p>
+<pre><code>&quot;keys&quot;:[&quot;f6&quot;],
+
+&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
+
+&quot;args&quot;:{
+
+    &quot;paths&quot;:[],
+
+    &quot;application&quot;:&quot;C:\\Users\\asus\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe&quot;,
+
+    &quot;extensions&quot;:&quot;.*&quot;
+</code></pre><p>}</p>
+<p>},<br>//Firefox</p>
+<p>{</p>
+<pre><code>&quot;keys&quot;:[&quot;f7&quot;],
+
+&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
+
+&quot;args&quot;:{
+
+    &quot;paths&quot;:[],
+
+    &quot;application&quot;:&quot;C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe&quot;,
+
+    &quot;extensions&quot;:&quot;.*&quot;
+</code></pre><p>}</p>
+<p>}</p>
+<p>到了这一步了，你可能会说，我怎么获得我的浏览器的位置呢，ok！在你的桌面上<strong>把鼠标悬浮到你要设置的浏览器上，并点击右键</strong>，会有# <strong>打开文件所在的位置</strong> #这个命令，点击进去，会到这个页面</p>
+<p><img src="/image/s5.png" alt=""></p>
+<p>找到了，点击上面红色的路径，粘贴到application里去，记得加上后面的chrome.exe，这样就设置好了，以后用的时候直接用快捷键就行了</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/04/26/hexo2/" title="Hexo搭建博客（二）" itemprop="url">Hexo搭建博客（二）</a>
   </h1>
   <p class="article-author">By

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-07-12T15:04:21.082Z</updated>
+  <updated>2017-07-18T14:50:58.978Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,133 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web浏览器中的JavaScript</title>
+    <link href="http://maHouse.github.io/2017/07/18/client-JavaScript/"/>
+    <id>http://maHouse.github.io/2017/07/18/client-JavaScript/</id>
+    <published>2017-07-18T13:01:24.000Z</published>
+    <updated>2017-07-18T14:50:58.978Z</updated>
+    
+    <content type="html"><![CDATA[<p>前一部分介绍了JavaScript语言核心，这一部分转向Web浏览器中JavaScript的实现。web浏览器是如何呈现页面的呢？一些呈现静态信息的页面叫做文档(加入JavaScript会有动态的效果但是信息本身是静态的，不过页面可以动态的载入信息)。下面会说到JavaScript代码是如何在HTML文档中嵌入并执行的，还会介绍兼容性、可访问性和安全性等问题。</p>
+<h3 id="一、客户端JavaScript"><a href="#一、客户端JavaScript" class="headerlink" title="一、客户端JavaScript"></a>一、客户端JavaScript</h3><p>Window对象是所有客户端JavaScript特性和API的主要接入点。Window对象定义了一些属性，指代Location对象的location属性，Location对象指定当前显示在窗口里载入新的URL。</p>
+<pre><code>//设置location属性，从而跳转到新的web页面
+window.location = &quot;http://www.oreilly.com/&quot;;
+</code></pre><p>Window对象还定义了一些方法，比如alert()方法，还有setTimeout()，可以注册一个函数，在给定的一段时间后触发一个回调：</p>
+<pre><code>//等待两秒，然后说 hello
+setTimeout(function() {alert(&quot;hello JavaScript!&quot;);},2000);
+</code></pre><p>客户端JavaScript中，Window对象也是全局对象，Window对象处于作用域的顶端，它的属性和方法实际上是全局变量和全局函数。Window对象有一个引用自身属性叫做window。</p>
+<p>Window对象有一个最重要的属性是document，它引用Document对象，后者表示显示在窗口中的文档。Document对象有一些重要方法，比如getElementById(),可以基于元素id属性的值返回单一的文档元素：</p>
+<pre><code>//查找 id = &quot;timestamp&quot;的元素
+var timestamp = document.getElementById(&quot;timestamp&quot;);
+</code></pre><p>getElementById()返回的Element对象有其他重要的属性和方法，比如允许脚本获取它的内容，设置属性值等：</p>
+<pre><code>//如果元素为空，往里面插入当前的日期和时间
+if(timestamp.firstChild == null)
+    timestamp.appendChild(document.createTextNode(new Date().toString()));
+</code></pre><p>每个Element对象都有style和className属性，允许脚本指定文档元素的CSS样式，或者修改应用元素上的CSS类名。设置这些CSS相关属性会改变文档元素的呈现：</p>
+<pre><code>//显示修改目标元素的呈现
+timestamp.style.backgroundColor = &quot;yellow&quot;;
+
+//或者只改变类，让样式表指定具体内容
+timestamp.className = &quot;highlight&quot;;
+</code></pre><p>事件处理程序可以让JavaScript代码修改窗口、文档和组成文档的元素的行为。事件处理程序的属性名是以单词“on”开始的：</p>
+<pre><code>//当用户单机timestamp元素时，更新它的内容
+timestamp.onclick = function () {this .innerHTML = new Date().toString();}
+
+//显示内容的简单客户端JavaScript：
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.reveal*{display:none;}
+.reveal *.handle{display:block;}&lt;!...除了这个handle的元素...&gt;
+&lt;/style&gt;
+
+&lt;script&gt;
+window.onload = function() {
+    var elements = document.getElementsByName(&quot;reveal&quot;);
+    for (var i = 0;i &lt; elements.length;i++) {
+        var elt = elements[i];
+        var title = elt.getElementsByName(&quot;handle&quot;)[0];
+        addRevealHandler(title,elt);
+        function addRevealHandler(title,elt) {
+            title.onclick = function () {
+                if(elt.className == &quot;reveal&quot;)
+                    elt.calssName = &quot;ravealed&quot;;
+                else if (elt.className == &quot;revealed&quot;)
+                    elt.className = &quot;reveal&quot;;
+            }
+        }
+    }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;reveal&quot;&gt;
+&lt;h1 class=&quot;handle&quot;&gt; Click Here to Reveal Hidden Text&lt;/h1&gt;
+&lt;p&gt;This paragraph is hidden.It appears when you click on the title.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="1、web文档里的JavaScript"><a href="#1、web文档里的JavaScript" class="headerlink" title="1、web文档里的JavaScript"></a>1、web文档里的JavaScript</h4><p>用户的体验不应该依赖于JavaScript，但它却可以增强用户体验，通过如下的方式来实现：</p>
+<p>》创建动画和其他视觉效果，巧妙的引导和帮助用户进行页面导航。</p>
+<p>》对表格的列进行分组，让用户更容易找到所需要的。</p>
+<p>》隐藏某些内容，当用户“深入”到内容里时，在逐渐展示详细信息。</p>
+<p>Web浏览器是简单操作系统的概念，这样就可以把Web应用定义为用JavaScript访问更多浏览器提供的高级服务(比如网络、图像和数据存储)的页面。高级服务里最有名的是XMLHttpRequest对象，后者可以对HTTP请求编程来启用网络。Web应用使用这个服务从服务器获取新信息，而不用重新载入页面，达到局部刷新的效果。</p>
+<h3 id="二、在HTML里嵌入JavaScript"><a href="#二、在HTML里嵌入JavaScript" class="headerlink" title="二、在HTML里嵌入JavaScript"></a>二、在HTML里嵌入JavaScript</h3><p>嵌入到HTML文档里共有4种方式：</p>
+<p>《 内联，放置在<code>&lt;script&gt;&lt;/script&gt;</code>之间。</p>
+<p>《 放置在由<code>&lt;script&gt;</code>标签的src属性指定的外部文件中。</p>
+<p>《放置在HTML事件处理程序中，该事件处理程序由onclick或者onmouseover这样的HTML属性值指定。</p>
+<p>《放在一个URL里，这个URL使用特殊的“javascript”协议。</p>
+<p>嵌入到HTML文档里方法总共是这几种，但是我们常用的是第二种，达到了表现形式与行为的分离的目的。</p>
+<pre><code>//这是个简单的JavaScript数字时钟程序
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;
+Digital Clock
+&lt;/title&gt;
+&lt;script&gt;
+//定义一个函数用以显示当前的时间
+function displayTime() {
+    var elt = document.getElementById(&quot;clock&quot;);
+    var now = new Date();
+    elt.innerHTML = now.toLocaleTimeString();
+    setTimeout(displayTime,1000);
+}
+window.onload = displayTime;
+&lt;/script&gt;
+&lt;style&gt;
+#clock {
+    font:bold 24pt sans;
+    background:#ddf;
+    padding:10px;
+    border:solid black 2px;
+    border-radius:10px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Digital Clock&lt;/h1&gt;
+&lt;span id=&quot;clock&quot;&gt;&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>其他的引入方式这里不再做介绍，下面我们仅仅说一下外部文件中的脚本：</p>
+<pre><code>&lt;script src=&quot;../../scripts/util.js&quot;&gt;&lt;/script&gt;//相对路径
+</code></pre><h3 id="三、JavaScript程序的执行"><a href="#三、JavaScript程序的执行" class="headerlink" title="三、JavaScript程序的执行"></a>三、JavaScript程序的执行</h3><p>JavaScript程序的执行有2个阶段：</p>
+<p>第一阶段，载入文档内容，并执行<code>&lt;script&gt;</code>元素里的代码(包括内联的和外部脚本)。脚本通常会按它们在文档中出现的顺序执行。所有脚本里的JavaScript代码都是从上到下，按照它在条件、循环以及其他控制语句中的出现顺序执行。</p>
+<p>当文档载入完成，并且所有的脚本执行完成后，JavaScript就进入它的第二阶段。这个阶段是异步的，而且由事件驱动。在事件驱动阶段，Web浏览器调用事件处理程序函数(第一阶段里执行的脚本指定的HTML事件处理程序)，来响应异步发生的事件。</p>
+<p>事件驱动阶段发生的第一个事件是load事件</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前一部分介绍了JavaScript语言核心，这一部分转向Web浏览器中JavaScript的实现。web浏览器是如何呈现页面的呢？一些呈现静态信息的页面叫做文档(加入JavaScript会有动态的效果但是信息本身是静态的，不过页面可以动态的载入信息)。下面会说到JavaSc
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>RegExp</title>
@@ -1768,68 +1895,6 @@ a(1,0);
 &lt;p&gt;&lt;strong&gt;籍贯：&lt;/strong&gt;河南商丘 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;职业：&lt;/strong&gt;人生工程师&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;技能：&lt;/strong&gt;精通HTML、CSS、JS
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>sublime设置自己的浏览器方法</title>
-    <link href="http://maHouse.github.io/2017/04/26/sublime/"/>
-    <id>http://maHouse.github.io/2017/04/26/sublime/</id>
-    <published>2017-04-26T10:04:00.000Z</published>
-    <updated>2017-04-26T10:44:59.175Z</updated>
-    
-    <content type="html"><![CDATA[<p>sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 </p>
-<p><img src="/image/s.png" alt=""></p>
-<p>这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏览器是IE，当然我想在Chrome里看看效果，并调试一下，怎么设置呢？</p>
-<p>点击深绿色的Preferences栏</p>
-<p><img src="/image/s2.png" alt=""></p>
-<p>看到了Key Bindings 点进去进到如下界面：</p>
-<p><img src="/image/s3.png" alt=""></p>
-<p>你的是没有红色部分及下面的内容的，这里就是我自己设置的了，你就直接把我的代码放进去就可以了，你能 <strong>随意改</strong> 的是 keys这里的快捷键，再有就是application里的内容，你是要必须改的，换成你的浏览器位置的路径</p>
-<p><img src="/image/s4.png" alt=""></p>
-<p><strong>注意：</strong>这里的斜杠是怎么写的一定要注意</p>
-<p>你要用的代码：<br>//chorme</p>
-<p>{</p>
-<pre><code>&quot;keys&quot;:[&quot;f6&quot;],
-
-&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
-
-&quot;args&quot;:{
-
-    &quot;paths&quot;:[],
-
-    &quot;application&quot;:&quot;C:\\Users\\asus\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe&quot;,
-
-    &quot;extensions&quot;:&quot;.*&quot;
-</code></pre><p>}</p>
-<p>},<br>//Firefox</p>
-<p>{</p>
-<pre><code>&quot;keys&quot;:[&quot;f7&quot;],
-
-&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
-
-&quot;args&quot;:{
-
-    &quot;paths&quot;:[],
-
-    &quot;application&quot;:&quot;C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe&quot;,
-
-    &quot;extensions&quot;:&quot;.*&quot;
-</code></pre><p>}</p>
-<p>}</p>
-<p>到了这一步了，你可能会说，我怎么获得我的浏览器的位置呢，ok！在你的桌面上<strong>把鼠标悬浮到你要设置的浏览器上，并点击右键</strong>，会有# <strong>打开文件所在的位置</strong> #这个命令，点击进去，会到这个页面</p>
-<p><img src="/image/s5.png" alt=""></p>
-<p>找到了，点击上面红色的路径，粘贴到application里去，记得加上后面的chrome.exe，这样就设置好了，以后用的时候直接用快捷键就行了</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/s.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏
     
     </summary>
     

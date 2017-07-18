@@ -79,6 +79,61 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/22/variable-key/" title="变量声明及作用域" itemprop="url">变量声明及作用域</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-22T14:32:52.000Z" itemprop="datePublished"> 发表于 2017-05-22</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>变量声明有两种方式一是用<strong>var</strong>关键词再有就是用<strong>function</strong>关键词，声明使代码具有了语义。</p>
+<p>var关键词声明变量在函数体内是局部变量在函数体外是全局变量，不用var声明变量无论在函数体内还是函数体外都是全局变量，后种方式声明的变量是可以用运算符delete删除掉声明的变量的，var关键词声明的变量不能被删除掉。</p>
+<p>作用域就是变量能发生作用的范围，JavaScript不像C那样：变量在声明它们的代码块之外是不可见的，C是块级作用域。而JavaScript的作用域是全局作用域和局部作用域，变量在声明他们的函数体内及函数体的嵌套函数体内都是可见的。</p>
+<p>变量在未声明之前是可以使用的，变量的生命提前使得变量的声明提前到函数体的顶部。</p>
+<p>下面说说作用域链，作用域链从把变量的声明当作对象的属性看待说起，作用域链就是个查找的过程了。在《JavaScript权威指南》里的原话放在这里，当定义一个函数时，它实际上保存一个<strong>作用域链</strong>，当调用这个函数时，他创建一个新的对象来存储他的<strong>局部变量</strong>，并将这个对象添加至保存的那个作用域链上，同时创建一个新的更长的表示函数调用作用的“链”。对于嵌套函数来说，事情变得更加有趣，每次<strong>调用外部函数</strong>时，<strong>内部函数又会重新定义一遍</strong>。因为每次<strong>调用外部函数的时候，作用域链都是不同的</strong>。内部函数在每次定义的时候都有微妙差别—在每次调用外部函数，内部函数的代码都是相同的，而关联这段代码的作用域不相同。</p>
+<p>调用外部函数的时候，内部函数重新定义，这是由于作用域链的不同。大致理解了它的原理。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/21/object/" title="对象" itemprop="url">对象</a>
   </h1>
   <p class="article-author">By
@@ -911,97 +966,6 @@ a(1,0);
 <p><strong>职业：</strong>人生工程师</p>
 <p><strong>技能：</strong>精通HTML、CSS、JS 等</p>
 <p><strong>座右铭：</strong>爱计算机的工商管理专业兄弟！没事咱们也可以一起聊聊马刺或者一起来个长途骑行！  </p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/26/sublime/" title="sublime设置自己的浏览器方法" itemprop="url">sublime设置自己的浏览器方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-26T10:04:00.000Z" itemprop="datePublished"> 发表于 2017-04-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>sublime 中，有个默认的浏览器，就是你鼠标右键点击后出现的，我的是sublime Text 3 </p>
-<p><img src="/image/s.png" alt=""></p>
-<p>这里的红色部分的Open in brower 就是你的默认浏览器，我的事默认浏览器是IE，当然我想在Chrome里看看效果，并调试一下，怎么设置呢？</p>
-<p>点击深绿色的Preferences栏</p>
-<p><img src="/image/s2.png" alt=""></p>
-<p>看到了Key Bindings 点进去进到如下界面：</p>
-<p><img src="/image/s3.png" alt=""></p>
-<p>你的是没有红色部分及下面的内容的，这里就是我自己设置的了，你就直接把我的代码放进去就可以了，你能 <strong>随意改</strong> 的是 keys这里的快捷键，再有就是application里的内容，你是要必须改的，换成你的浏览器位置的路径</p>
-<p><img src="/image/s4.png" alt=""></p>
-<p><strong>注意：</strong>这里的斜杠是怎么写的一定要注意</p>
-<p>你要用的代码：<br>//chorme</p>
-<p>{</p>
-<pre><code>&quot;keys&quot;:[&quot;f6&quot;],
-
-&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
-
-&quot;args&quot;:{
-
-    &quot;paths&quot;:[],
-
-    &quot;application&quot;:&quot;C:\\Users\\asus\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe&quot;,
-
-    &quot;extensions&quot;:&quot;.*&quot;
-</code></pre><p>}</p>
-<p>},<br>//Firefox</p>
-<p>{</p>
-<pre><code>&quot;keys&quot;:[&quot;f7&quot;],
-
-&quot;command&quot;:&quot;side_bar_files_open_with&quot;,
-
-&quot;args&quot;:{
-
-    &quot;paths&quot;:[],
-
-    &quot;application&quot;:&quot;C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe&quot;,
-
-    &quot;extensions&quot;:&quot;.*&quot;
-</code></pre><p>}</p>
-<p>}</p>
-<p>到了这一步了，你可能会说，我怎么获得我的浏览器的位置呢，ok！在你的桌面上<strong>把鼠标悬浮到你要设置的浏览器上，并点击右键</strong>，会有# <strong>打开文件所在的位置</strong> #这个命令，点击进去，会到这个页面</p>
-<p><img src="/image/s5.png" alt=""></p>
-<p>找到了，点击上面红色的路径，粘贴到application里去，记得加上后面的chrome.exe，这样就设置好了，以后用的时候直接用快捷键就行了</p>
 
         
         
