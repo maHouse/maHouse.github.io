@@ -79,6 +79,62 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/07/29/dom/" title="脚本化文档（一）" itemprop="url">脚本化文档（一）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-29T14:35:28.000Z" itemprop="datePublished"> 发表于 2017-07-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>客户端JavaScript是静态的文档变得交互式的web应用。JavaScript是web页面应用内容的核心，脚本化web文档是它的核心目标，因此本章的主题就是阐述它是如何做到的。本章会分为几个章节进行，至于分为几个章节，以每个章节的字数为标准。</p>
+<p>每个Window对象有个document属性引用了Document对象。这个对象表示窗口的内容，它是本章的主题，Document对象是一个巨大的API中的核心对象，叫做文档对象模型（Document Object Model，DOM），代表和操作文档的内容。</p>
+<p>我们会涉及的内容：</p>
+<h4 id="一、如何在文档中查询或选取单独的元素。"><a href="#一、如何在文档中查询或选取单独的元素。" class="headerlink" title="一、如何在文档中查询或选取单独的元素。"></a>一、如何在文档中查询或选取单独的元素。</h4><h4 id="二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。"><a href="#二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。" class="headerlink" title="二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。"></a>二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。</h4><h4 id="三、如何查询和设置文档元素的属性。"><a href="#三、如何查询和设置文档元素的属性。" class="headerlink" title="三、如何查询和设置文档元素的属性。"></a>三、如何查询和设置文档元素的属性。</h4><h4 id="四、如何查询、设置和修改文档内容。"><a href="#四、如何查询、设置和修改文档内容。" class="headerlink" title="四、如何查询、设置和修改文档内容。"></a>四、如何查询、设置和修改文档内容。</h4><h4 id="五、如何通过创建、插入和修改节点来修改文档结构。"><a href="#五、如何通过创建、插入和修改节点来修改文档结构。" class="headerlink" title="五、如何通过创建、插入和修改节点来修改文档结构。"></a>五、如何通过创建、插入和修改节点来修改文档结构。</h4><h4 id="六、如何与HTML表一起工作。"><a href="#六、如何与HTML表一起工作。" class="headerlink" title="六、如何与HTML表一起工作。"></a>六、如何与HTML表一起工作。</h4><h4 id="七、其他"><a href="#七、其他" class="headerlink" title="七、其他"></a>七、其他</h4><p>###一、DOM概览 ###<br>文档对象模型（DOM）是表示和操作HTML和XML文档内容的基础API。API不是不复杂但是细节很多。首先应该了解HTML或者XML文档的嵌套元素在DOM树对象中的表示。HTML文档的树状结构包含表示HTML标签或元素和表示文本字符串的节点，它也可能表示包含表示HTML注释的节点。常见的DOM文档节点树的树状图<br><img src="./image/dom1.jpg" alt=""></p>
+<p>图中的每个方框是文档的一个节点，它表示一个Node对象,对于Node对象的属性和方法，我们稍后讨论，树形的根部是Document节点，它代表整个文档。代表HTML元素的节点是Element节点，代表文本的是Text节点。Document、Element和Text是Node的子类。前两者是两个重要的DOM类，我们本章主要讨论的就只这两个家伙的属性和方法。</p>
+<p>下面的图片展示了Node及其类型层次结构中的子类型。注意的是Document和Element类型与HTMLDocument和HTMLElement类型之间是有严格区别的。Document类型代表一个HTML或者XML文档，Element类型代表该文档中的一个元素。HTMLDocument和HTMLElement子类只是针对于HTML文档和元素。前两者我们经常使用。<br><img src="./image/dom2.jpg" alt=""></p>
+<p>至于HTMLElement内容以后再说，而上面图片中的Comment节点代表HTML或XML的注释。由于注释基本上是字符串，因此很像文档，CharacterData通常是Text和Comment的祖先。Attr节点类型代表XML或HTML属性，但几乎不用，因为和文档节点不同，Element类型定义了将属性当作“名/值”对使用的方法。DocumentFragment类在实际文档中并不存在的一种节点：代表没有常规父节点的节点。有时很有用，有时候没用。</p>
+<h3 id="二、选取文档元素"><a href="#二、选取文档元素" class="headerlink" title="二、选取文档元素"></a>二、选取文档元素</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/07/28/new/" title="Window 对象" itemprop="url">Window 对象</a>
   </h1>
   <p class="article-author">By
@@ -1735,88 +1791,6 @@ Array.isArray({});//false
 </code></pre><h4 id="2-instanceOf运算符"><a href="#2-instanceOf运算符" class="headerlink" title="2.instanceOf运算符"></a>2.instanceOf运算符</h4><pre><code>[] instanceOf Array;//true
 ({}) instanceOf Array;//false
 </code></pre><h1 id="告一段落，下次看函数"><a href="#告一段落，下次看函数" class="headerlink" title="告一段落，下次看函数"></a>告一段落，下次看函数</h1>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/05/26/循环和严格模式/" title="语句" itemprop="url">语句</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-05-26T01:57:14.000Z" itemprop="datePublished"> 发表于 2017-05-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>一、表达式语句</strong></p>
-<p>表达式语句常见的就是两类：赋值语句和函数调用，声明语句有var声明和function声明。</p>
-<p><strong>二、条件语句</strong></p>
-<p>条件语句两种if语句和switch语句，这里就说说switch语句：</p>
-<pre><code>switch(n){
-case ①;
-//代码块
-break；
-case ②；
-//代码块
-break;
-default;
-//代码块
-break;
-}
-</code></pre><p>传进来参数与①、②、③进行匹配，如果n与某个值恒等时，就执行相应的代码块。</p>
-<p><strong>三、use strict（严格模式）与非严格模式的比较</strong></p>
-<p>use strict语句的目的是说明脚本或者函数体的后续代码将会解析为严格代码。如果放在顶层了，那么就是严格代码。</p>
-<p>use strict和普通语句的区别：</p>
-<p>1.不包含任何语言的关键字，对于JavaScript解释器来说，它只是一条没有副作用的表达式语句，什么也没有做。</p>
-<p>2.use strict只能出现在脚本代码的开始或者函数体的开始、任何实体语句之前。并不一定是出现在首行。</p>
-<p>严格模式与非严格模式的区别</p>
-<p>1.严格模式中禁止使用with语句；</p>
-<p>2.所有的变量都要先声明；</p>
-<p>3.严格模式中，调用的函数中的一个this值是undefined，非严格模式中调用的函数中的this值总是全局对象；</p>
-<p>4.严格模式中，通过call（）或者apply（）来调用函数时，其中的this值就是通过call（）或者apply()传入的第一个参数（非严格模式中，null和undefined值被全局对象和转换为对象的非对象所代替）；</p>
-<p>5.严格模式中，给只读属性赋值和给不可扩展的对象创建新成员时，会抛出一个类型错误的异常，在非中仅仅是操作失败；</p>
-<p>6.严格模式中，函数的arguments对象拥有传入函数值的静态副本，非中arguments的数组和函数都是指向同一个值的引用；</p>
-<p>7.严格模式中，当delete运算符后跟随非法的标识符（变量、函数、函数参数）时，会抛出语法错误，非严格模式中，delete什么也没有做，返回false；</p>
-<p>8.严格模式中，在一个函数直接量中定义两个或多个同名属性将产生一个语法错误；</p>
-<p>9.严格模式中，函数声明中存在两个或多个同名参数将产生一个语法错误，非中不会报错；</p>
-<p>10.严格模式中，标识符eval和arguments当作关键字，它们的值是不能更改的。不能赋值、声明为变量、用作函数名、用作函数参数或者用作catch块的标识符；</p>
-<p>11.严格模式中限制了对调用栈的检测能力，arguments.caller和arguments.callee都会抛出一个类型错误异常。</p>
-
         
         
         <p class="article-more-link">

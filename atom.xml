@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-07-29T14:31:05.850Z</updated>
+  <updated>2017-08-03T15:50:04.964Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>脚本化文档（一）</title>
+    <link href="http://maHouse.github.io/2017/07/29/dom/"/>
+    <id>http://maHouse.github.io/2017/07/29/dom/</id>
+    <published>2017-07-29T14:35:28.000Z</published>
+    <updated>2017-08-03T15:50:04.964Z</updated>
+    
+    <content type="html"><![CDATA[<p>客户端JavaScript是静态的文档变得交互式的web应用。JavaScript是web页面应用内容的核心，脚本化web文档是它的核心目标，因此本章的主题就是阐述它是如何做到的。本章会分为几个章节进行，至于分为几个章节，以每个章节的字数为标准。</p>
+<p>每个Window对象有个document属性引用了Document对象。这个对象表示窗口的内容，它是本章的主题，Document对象是一个巨大的API中的核心对象，叫做文档对象模型（Document Object Model，DOM），代表和操作文档的内容。</p>
+<p>我们会涉及的内容：</p>
+<h4 id="一、如何在文档中查询或选取单独的元素。"><a href="#一、如何在文档中查询或选取单独的元素。" class="headerlink" title="一、如何在文档中查询或选取单独的元素。"></a>一、如何在文档中查询或选取单独的元素。</h4><h4 id="二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。"><a href="#二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。" class="headerlink" title="二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。"></a>二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。</h4><h4 id="三、如何查询和设置文档元素的属性。"><a href="#三、如何查询和设置文档元素的属性。" class="headerlink" title="三、如何查询和设置文档元素的属性。"></a>三、如何查询和设置文档元素的属性。</h4><h4 id="四、如何查询、设置和修改文档内容。"><a href="#四、如何查询、设置和修改文档内容。" class="headerlink" title="四、如何查询、设置和修改文档内容。"></a>四、如何查询、设置和修改文档内容。</h4><h4 id="五、如何通过创建、插入和修改节点来修改文档结构。"><a href="#五、如何通过创建、插入和修改节点来修改文档结构。" class="headerlink" title="五、如何通过创建、插入和修改节点来修改文档结构。"></a>五、如何通过创建、插入和修改节点来修改文档结构。</h4><h4 id="六、如何与HTML表一起工作。"><a href="#六、如何与HTML表一起工作。" class="headerlink" title="六、如何与HTML表一起工作。"></a>六、如何与HTML表一起工作。</h4><h4 id="七、其他"><a href="#七、其他" class="headerlink" title="七、其他"></a>七、其他</h4><p>###一、DOM概览 ###<br>文档对象模型（DOM）是表示和操作HTML和XML文档内容的基础API。API不是不复杂但是细节很多。首先应该了解HTML或者XML文档的嵌套元素在DOM树对象中的表示。HTML文档的树状结构包含表示HTML标签或元素和表示文本字符串的节点，它也可能表示包含表示HTML注释的节点。常见的DOM文档节点树的树状图<br><img src="./image/dom1.jpg" alt=""></p>
+<p>图中的每个方框是文档的一个节点，它表示一个Node对象,对于Node对象的属性和方法，我们稍后讨论，树形的根部是Document节点，它代表整个文档。代表HTML元素的节点是Element节点，代表文本的是Text节点。Document、Element和Text是Node的子类。前两者是两个重要的DOM类，我们本章主要讨论的就只这两个家伙的属性和方法。</p>
+<p>下面的图片展示了Node及其类型层次结构中的子类型。注意的是Document和Element类型与HTMLDocument和HTMLElement类型之间是有严格区别的。Document类型代表一个HTML或者XML文档，Element类型代表该文档中的一个元素。HTMLDocument和HTMLElement子类只是针对于HTML文档和元素。前两者我们经常使用。<br><img src="./image/dom2.jpg" alt=""></p>
+<p>至于HTMLElement内容以后再说，而上面图片中的Comment节点代表HTML或XML的注释。由于注释基本上是字符串，因此很像文档，CharacterData通常是Text和Comment的祖先。Attr节点类型代表XML或HTML属性，但几乎不用，因为和文档节点不同，Element类型定义了将属性当作“名/值”对使用的方法。DocumentFragment类在实际文档中并不存在的一种节点：代表没有常规父节点的节点。有时很有用，有时候没用。</p>
+<h3 id="二、选取文档元素"><a href="#二、选取文档元素" class="headerlink" title="二、选取文档元素"></a>二、选取文档元素</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;客户端JavaScript是静态的文档变得交互式的web应用。JavaScript是web页面应用内容的核心，脚本化web文档是它的核心目标，因此本章的主题就是阐述它是如何做到的。本章会分为几个章节进行，至于分为几个章节，以每个章节的字数为标准。&lt;/p&gt;
+&lt;p&gt;每个Wind
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Window 对象</title>
@@ -2081,36 +2107,6 @@ a(1,0);
     
       &lt;p&gt;在开发阶段里总体设计的过程中，我们必须明确系统是“怎么做事情”的了。在软件的设计过程中有些原理和概念是我们必须遵循的，这就是与&lt;strong&gt;模块&lt;/strong&gt;有关的知识了！&lt;/p&gt;
 &lt;h1 id=&quot;1-模块化&quot;&gt;&lt;a href=&quot;#1-模块化&quot; class=&quot;head
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>软件工程方法学（番外篇）</title>
-    <link href="http://maHouse.github.io/2017/04/27/module-knowlage1/"/>
-    <id>http://maHouse.github.io/2017/04/27/module-knowlage1/</id>
-    <published>2017-04-27T13:17:31.000Z</published>
-    <updated>2017-04-28T14:38:26.164Z</updated>
-    
-    <content type="html"><![CDATA[<p>本篇的主题讲述的是<a href="module-1.md"><strong>模块</strong></a>和<a href="oop.md"><strong>面向对象方法学</strong></a>，这篇番外篇讲的就是“主人公”的生活大环境，内容是下面3方面，“主人公”出现在软件工程的哪个位置、出现的原因、解决了什么问题，主要是这几个方面。</p>
-<p>在计算机系统发展历史中，开发软件的错误方法和观念导致了软件危机的出现。为了计算机系统的进一步发展，就逐步发展和完善了软件工程学科。</p>
-<p>软件工程方法是软件工程的技术方面的内容，软件工程使用的最广泛的是：<strong>传统方法</strong>和<strong>面向对象方法</strong>。</p>
-<p><strong>一、传统方法</strong></p>
-<p>又叫做生命周期方法学或者结构化范型，它是把软件生命周期的全过程依次划分为若干阶段，然后顺序的完成每个阶段的任务。OK！你看到了生命周期，它的意思是一个软件从定义、开发、使用和维护，直到被废弃，经历的漫长时期，就类似于一个人的出生、婴儿、童年、青年、中年和老年，直到死亡的漫长期限。</p>
-<p>它的阶段有哪些呢？</p>
-<p><img src="/image/tra.jpg" alt=""></p>
-<p>看到了<a href="module-1.md"><strong>模块</strong></a>思想开始应用的阶段（开发阶段里的总体设计）了吧！当然既然是思想，可以用到的地方必然很多了，在模块化专章里我们具体的讲讲关于它的知识。</p>
-<p><strong>二、面向对象方法</strong></p>
-<p>对于面向对象方法学，这次就说一个方程就行了：</p>
-<h1 id="OO-objects-classes-inheritance-communication-with-messages"><a href="#OO-objects-classes-inheritance-communication-with-messages" class="headerlink" title="OO = objects + classes + inheritance + communication with messages"></a>OO = objects + classes + inheritance + communication with messages</h1><p>意思就是：面向对象就是既使用对象又使用类和继承等机制，而且对象之间仅能通过传递消息实现彼此通信。</p>
-<p>OK！下次细细讲解模块化和面向对象方法。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇的主题讲述的是&lt;a href=&quot;module-1.md&quot;&gt;&lt;strong&gt;模块&lt;/strong&gt;&lt;/a&gt;和&lt;a href=&quot;oop.md&quot;&gt;&lt;strong&gt;面向对象方法学&lt;/strong&gt;&lt;/a&gt;，这篇番外篇讲的就是“主人公”的生活大环境，内容是下面3方面，“主人公”出
     
     </summary>
     

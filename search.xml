@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title><![CDATA[脚本化文档（一）]]></title>
+      <url>/2017/07/29/dom/</url>
+      <content type="html"><![CDATA[<p>客户端JavaScript是静态的文档变得交互式的web应用。JavaScript是web页面应用内容的核心，脚本化web文档是它的核心目标，因此本章的主题就是阐述它是如何做到的。本章会分为几个章节进行，至于分为几个章节，以每个章节的字数为标准。</p>
+<p>每个Window对象有个document属性引用了Document对象。这个对象表示窗口的内容，它是本章的主题，Document对象是一个巨大的API中的核心对象，叫做文档对象模型（Document Object Model，DOM），代表和操作文档的内容。</p>
+<p>我们会涉及的内容：</p>
+<h4 id="一、如何在文档中查询或选取单独的元素。"><a href="#一、如何在文档中查询或选取单独的元素。" class="headerlink" title="一、如何在文档中查询或选取单独的元素。"></a>一、如何在文档中查询或选取单独的元素。</h4><h4 id="二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。"><a href="#二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。" class="headerlink" title="二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。"></a>二、如何将文档作为节点树来遍历，如何找到任何文档元素的祖先、兄弟和后代元素。</h4><h4 id="三、如何查询和设置文档元素的属性。"><a href="#三、如何查询和设置文档元素的属性。" class="headerlink" title="三、如何查询和设置文档元素的属性。"></a>三、如何查询和设置文档元素的属性。</h4><h4 id="四、如何查询、设置和修改文档内容。"><a href="#四、如何查询、设置和修改文档内容。" class="headerlink" title="四、如何查询、设置和修改文档内容。"></a>四、如何查询、设置和修改文档内容。</h4><h4 id="五、如何通过创建、插入和修改节点来修改文档结构。"><a href="#五、如何通过创建、插入和修改节点来修改文档结构。" class="headerlink" title="五、如何通过创建、插入和修改节点来修改文档结构。"></a>五、如何通过创建、插入和修改节点来修改文档结构。</h4><h4 id="六、如何与HTML表一起工作。"><a href="#六、如何与HTML表一起工作。" class="headerlink" title="六、如何与HTML表一起工作。"></a>六、如何与HTML表一起工作。</h4><h4 id="七、其他"><a href="#七、其他" class="headerlink" title="七、其他"></a>七、其他</h4><p>###一、DOM概览 ###<br>文档对象模型（DOM）是表示和操作HTML和XML文档内容的基础API。API不是不复杂但是细节很多。首先应该了解HTML或者XML文档的嵌套元素在DOM树对象中的表示。HTML文档的树状结构包含表示HTML标签或元素和表示文本字符串的节点，它也可能表示包含表示HTML注释的节点。常见的DOM文档节点树的树状图<br><img src="./image/dom1.jpg" alt=""></p>
+<p>图中的每个方框是文档的一个节点，它表示一个Node对象,对于Node对象的属性和方法，我们稍后讨论，树形的根部是Document节点，它代表整个文档。代表HTML元素的节点是Element节点，代表文本的是Text节点。Document、Element和Text是Node的子类。前两者是两个重要的DOM类，我们本章主要讨论的就只这两个家伙的属性和方法。</p>
+<p>下面的图片展示了Node及其类型层次结构中的子类型。注意的是Document和Element类型与HTMLDocument和HTMLElement类型之间是有严格区别的。Document类型代表一个HTML或者XML文档，Element类型代表该文档中的一个元素。HTMLDocument和HTMLElement子类只是针对于HTML文档和元素。前两者我们经常使用。<br><img src="./image/dom2.jpg" alt=""></p>
+<p>至于HTMLElement内容以后再说，而上面图片中的Comment节点代表HTML或XML的注释。由于注释基本上是字符串，因此很像文档，CharacterData通常是Text和Comment的祖先。Attr节点类型代表XML或HTML属性，但几乎不用，因为和文档节点不同，Element类型定义了将属性当作“名/值”对使用的方法。DocumentFragment类在实际文档中并不存在的一种节点：代表没有常规父节点的节点。有时很有用，有时候没用。</p>
+<h3 id="二、选取文档元素"><a href="#二、选取文档元素" class="headerlink" title="二、选取文档元素"></a>二、选取文档元素</h3>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Window 对象]]></title>
       <url>/2017/07/28/new/</url>
       <content type="html"><![CDATA[<p>本章介绍Window对象的属性和方法，Window对象是以窗口命名的，本章介绍的知识点如下：</p>
