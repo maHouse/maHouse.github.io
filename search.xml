@@ -12,7 +12,76 @@
 <p>图中的每个方框是文档的一个节点，它表示一个Node对象,对于Node对象的属性和方法，我们稍后讨论，树形的根部是Document节点，它代表整个文档。代表HTML元素的节点是Element节点，代表文本的是Text节点。Document、Element和Text是Node的子类。前两者是两个重要的DOM类，我们本章主要讨论的就只这两个家伙的属性和方法。</p>
 <p>下面的图片展示了Node及其类型层次结构中的子类型。注意的是Document和Element类型与HTMLDocument和HTMLElement类型之间是有严格区别的。Document类型代表一个HTML或者XML文档，Element类型代表该文档中的一个元素。HTMLDocument和HTMLElement子类只是针对于HTML文档和元素。前两者我们经常使用。<br><img src="./image/dom2.jpg" alt=""></p>
 <p>至于HTMLElement内容以后再说，而上面图片中的Comment节点代表HTML或XML的注释。由于注释基本上是字符串，因此很像文档，CharacterData通常是Text和Comment的祖先。Attr节点类型代表XML或HTML属性，但几乎不用，因为和文档节点不同，Element类型定义了将属性当作“名/值”对使用的方法。DocumentFragment类在实际文档中并不存在的一种节点：代表没有常规父节点的节点。有时很有用，有时候没用。</p>
-<h3 id="二、选取文档元素"><a href="#二、选取文档元素" class="headerlink" title="二、选取文档元素"></a>二、选取文档元素</h3>]]></content>
+<h3 id="二、选取文档元素"><a href="#二、选取文档元素" class="headerlink" title="二、选取文档元素"></a>二、选取文档元素</h3><p>JavaScript程序运行时总是在操作一个或者多个文档元素，这些程序启动时可以使用全局变量document来引用Document对象。但我们必须通过某种方式获得或者选取这些文档中的Element元素，方法有如下几种：</p>
+<p>a、用指定的id属性；</p>
+<p>b、指定的name属性；</p>
+<p>c、指定的标签名字；</p>
+<p>d、指定的CSS类；</p>
+<p>e、匹配指定的CSS选择器。</p>
+<h4 id="1、id选择器"><a href="#1、id选择器" class="headerlink" title="1、id选择器"></a>1、id选择器</h4><p>选择一个基于唯一id的元素，</p>
+<pre><code>var section = document.getElementById(&quot;section&quot;);
+</code></pre><p>for example 1:</p>
+<pre><code>//通过id查找多个元素
+//函数接受任意多个的字符串参数
+//每个参数将当作元素的id传给document.getElementById()
+//返回一个对象，它把这些id映射到对应Element对象
+//如任何一个id对应的元素未定义，则抛出一个Error对象
+
+function getElement(ids) {
+    var elements = {};                        //开始是一个空map映射对象
+    for (var i = 0;i &lt; arguments.length;i++) {//循环每个参数
+        var id = arguments[i];                //参数是元素的id
+        var elt = document.getElementById(id);//查找元素
+        if(elt == null)                       //如果没有给出定义
+            throw new Error(&quot;No element with id :&quot; + id);//抛出异常
+        elements[i] = elt;//id和元素之间映射
+    }
+    return elements;//对于元素映射返回id
+}
+</code></pre><h4 id="2、通过name属性选取元素"><a href="#2、通过name属性选取元素" class="headerlink" title="2、通过name属性选取元素"></a>2、通过name属性选取元素</h4><p>元素的名字并不是唯一的，可能有多个元素具有同一个名字，但是和id属性不同的是，name属性只在少数HTML元素中有效，包括表单、表单元素、<code>&lt;iframe&gt;</code>和<code>&lt;img&gt;</code>元素。</p>
+<pre><code>var radiobuttons = document.getElementsByName(&quot;favorite_color&quot;);
+</code></pre><p>本方法定义在HTMLDocument类中，不对XML有效。它返回的是一个NOdelist对象，是一个数组。</p>
+<h4 id="3、用标签名字来获取元素"><a href="#3、用标签名字来获取元素" class="headerlink" title="3、用标签名字来获取元素"></a>3、用标签名字来获取元素</h4><p>Document对象的getElementByTagName()方法可用来获取指定类型标签名字的所有HTML或XML元素。</p>
+<p>for example 2:</p>
+<pre><code>var spans = document.getElementsByTagName(&quot;span&quot;);//得到的就是文档中所有的`&lt;span&gt;`元素的只读的类数组
+</code></pre><p>这个方法得到的同样是个Nodelist对象。在Nodelist对象返回的元素中按照在文档中的顺序排序的，所以可以用下面的代码获取文档中的第一个<code>&lt;p&gt;</code>元素。</p>
+<pre><code>var firstpara = document.getElementsByTagName(&apos;p&apos;)[0];
+</code></pre><p>套用也是没有问题的：</p>
+<pre><code>var firstpara = document.getElementsByTagName(&quot;p&quot;)[0];
+var firstparaSpans = firstpara.getElementsByTagName(&quot;span&quot;);
+</code></pre><h4 id="节点列表和HTML集合"><a href="#节点列表和HTML集合" class="headerlink" title="节点列表和HTML集合"></a>节点列表和HTML集合</h4><p>通过name属性和标签名字获得元素的方法返回的都是Nodelist对象，这些都是只读的类数组对象，都有length属性，也有真正的数组一样的索引。可以对Nodelist或HTMLCollection的内容用标准的循环来迭代：</p>
+<pre><code>for(var i = 0;i &lt; document.images.length;i++) //循环所有的照片
+    document.images[i].style.display = &quot;none&quot;;//隐藏他们
+</code></pre><p>不能直接在Nodelist和HTML集合上直接调用Array方法，但是可以间接使用：</p>
+<pre><code>var content = Array.prototype.map.call(document.getElementsByTagName(&quot;p&quot;),function (e) { return e.innerHTML; });
+</code></pre><p>HTMLCollection对象也有额外的命令属性，也可以通过数字和字符串来索引。通常，Nodelist和HTMLCollection的实时性非常有用。但是如果在迭代一个Nodelist对象时，在文档中添加或者删除的元素，首先会需要对Nodelist对象生成一个静态的副本。</p>
+<pre><code>var snapshot = Array.prototype.slice.call(nodelist,0);
+</code></pre><h4 id="4、通过CSS类获取元素"><a href="#4、通过CSS类获取元素" class="headerlink" title="4、通过CSS类获取元素"></a>4、通过CSS类获取元素</h4><p>class属性与CSS样式通常一起使用，对某组内的所有元素应用同样的样式，HTML定义了getElementsByClassName()方法，它是基于其class属性值中的标识符选取成组的文档元素。它接受的是一个字符串，多个字符串自建用空格隔开。返回的值是Nodelist对象，包含文档或元素所有匹配的后代节点。</p>
+<pre><code>//查找其class属性值中包含“warning”的所有元素
+var wranings = document.getElementsByClassName(&quot;warning&quot;);
+
+//查找以“log”命名并且有“error”和“fatal”类的元素的所有后代
+var log = document.getElementById(&quot;log&quot;);
+var fatal = log.getElementsByClassName(&quot;fatal error&quot;);    
+</code></pre><p>注意：本方法适用于高于IE8的版本，低于此版本的用querySelectorAll()实现。</p>
+<h4 id="5、用CSS选择器获取元素"><a href="#5、用CSS选择器获取元素" class="headerlink" title="5、用CSS选择器获取元素"></a>5、用CSS选择器获取元素</h4><p>这里先说说CSS的选择器：</p>
+<pre><code>#nav       //id=&quot;nav&quot;的元素
+div       //所有&lt;div&gt;元素
+.warning  //所有在class属性中包含这个名称的元素
+p[lang=&quot;fr&quot;] //所有使用法语的段落，如：&lt;p lang=&quot;fr&quot;&gt;
+*[name=&quot;x&quot;]  //所有包含name=&quot;x&quot;的属性
+</code></pre><p>组合使用：</p>
+<pre><code>span.fatal.error//其class中包含fatal和error的所有的span元素
+span[lang=&quot;fr&quot;].warning //所有使用法语的且其class类名称为warning的span元素
+#log span #log&gt;span body&gt;h1:first-child div,#log
+</code></pre><p>以上就是CSS的选择器的介绍，这个选择器搭配着谁来用呢，就是querySelectorAll()或querySelector()来使用，这是一个强大的方法，也是一个终极的选取元素的方法。这两者接受的就是个CSS选择器的字符串参数，返回的则是个Nodelist对象，不过不同于前面介绍的获取方法的是，此方法包含在调用时时刻选择器所匹配的元素，并不更新后续文档的变化，这个在jQuery中有所应用。</p>
+<h4 id="6、document-all"><a href="#6、document-all" class="headerlink" title="6、document.all[]"></a>6、document.all[]</h4><p>已经被弃用，不过仍然能见到：</p>
+<pre><code>document.all[0];//文档中的第一个元素
+document.all[&quot;navbar&quot;];/id或name为navbar的元素
+document.all.navbar;//同上
+document.all.tags(&quot;div&quot;);//文档中所有的div元素
+document.all.tags(&quot;p&quot;)[0];//文档中的第一个p元素
+</code></pre>]]></content>
       
         
     </entry>
