@@ -81,7 +81,108 @@ document.all[&quot;navbar&quot;];/id或name为navbar的元素
 document.all.navbar;//同上
 document.all.tags(&quot;div&quot;);//文档中所有的div元素
 document.all.tags(&quot;p&quot;)[0];//文档中的第一个p元素
-</code></pre>]]></content>
+</code></pre><h3 id="三、文档结构与遍历"><a href="#三、文档结构与遍历" class="headerlink" title="三、文档结构与遍历"></a>三、文档结构与遍历</h3><p>有时候我们找到了某个元素，需要找到元素结构上与之相关的部分，包括该元素的父亲、兄弟和子女。从概念上看做是一个节点对象树。节点类型定义了遍历该树所需要的属性。</p>
+<h4 id="1、作为节点树的文档"><a href="#1、作为节点树的文档" class="headerlink" title="1、作为节点树的文档"></a>1、作为节点树的文档</h4><p>我们知道Document对象、它的Element对象和文档中表示的Text对象都是Node对象。Node定义了一些重要的属性：</p>
+<p>parentNode</p>
+<p>该节点的父节点，或者针对类似Document对象应该是null，因为它没有父节点</p>
+<p>childNodes</p>
+<p>只读的类数组对象（Node list对象），它是该节点的子节点的实时表示</p>
+<p>firstChild、lastChild</p>
+<p>该节点的子节点中的第一个和最后一个，如果该节点没有子节点则为null</p>
+<p>nextSibling、previousSibling</p>
+<p>该节点的兄弟节点的前一个和后一个。具有相同的父节点。</p>
+<p>节点的顺序反映了它们在文档中出现的顺序。这两个属性将节点之间以双向链表的形式连接起来。</p>
+<p>nodeType</p>
+<p>该节点的类型。9代表Document节点，1代表Element节点，3代表Text节点，8代表Comment节点，11代表DocumentFragment节点。</p>
+<p>nodeValue</p>
+<p>Text节点或Comment节点的文本内容</p>
+<pre><code>document.childNodes[0].childNodes[1];
+document.firstChild.firstChild.nextSibling;
+</code></pre><p>这里的节点说的既有Element对象的节点同样有Text的节点，接下来就说说仅仅是Element对象的文档元素。</p>
+<h4 id="2、作为元素树的文档"><a href="#2、作为元素树的文档" class="headerlink" title="2、作为元素树的文档"></a>2、作为元素树的文档</h4><p>我们的兴趣在文档的元素上而不是它们之间的文本的时候，没有Text和Comment，只看Element对象树。</p>
+<p>我们首先就是看到Element对象的属性children，这属性的眼里只有Element对象里的元素，虽然这家伙的存在并不是标准的，但却得到了大家的一致认可。我们还要知道的是上述的parentNode和children属性的世界里只有Element对象的元素，没有什么Text和Comment对象元素的。它们无论怎么追述，到最后仅仅会跑到Document或DocumentFragment节点。</p>
+<p>下面就是一些只针对Element对象元素的属性：</p>
+<p>firstElementChild、lastElementChild、nextElementSibling、previousElementSibling、childElementCount（它返回的值和children.length是一样的）</p>
+<p>for example 4：</p>
+<pre><code>//可移植的文档遍历树
+//返回元素e的第n层祖先元素，如果不存在此类祖先或祖先不是Element，
+//（例如Document或DocumentFragment），则返回null
+//如果n为0，则返回e本身。如果为1的话，则返回其父元素
+//如果为2的话，则返回其祖父元素，以此类推
+
+function parent (e,n) {
+    if (n === undefined) n = 1;
+    while(n-- &amp;&amp; e) e = e.parentNode;
+    if(!e || e.nodeType !== 1) return null;
+    return e;
+}
+
+
+//返回元素e的第n个兄弟元素
+//如果n为正，则返回后续的第n个兄弟元素
+//如果n为负，则返回前面的第n个兄弟元素
+//如果n为0，则返回e本身
+
+function sibling(e,n) {
+    while(e &amp;&amp; n !==0) {
+        if(n &gt; 0) {
+            if (e.nextElementSibling) e = e.nextElementSibling;
+            else {
+                for(e = e.nextSibling;e &amp;&amp; e.nodeType !==1;e = e.nextSibling)
+                }
+                n--;
+        }
+        else {
+            if (e.previousElementSibling) e = e.previousElementSibling;
+            else {
+                for (e = e.previousSibling;e &amp;&amp; e.nodeType !== 1;e = e.previousSibling)
+            }
+            n++;
+        }
+    }
+    return e;
+}
+</code></pre><h3 id="四、属性"><a href="#四、属性" class="headerlink" title="四、属性"></a>四、属性</h3><p>HTML元素是由一个标签和一组称为属性的名/值对组成，例如<code>&lt;a&gt;</code>元素定义了一个超链接，它的href属性值作为超链接的目的地址。HTML元素的属性值在代表这些元素的HTMLElement对象的属性中是可用的。DOM还定义了另外的API来获取或设置XML属性值和非标准的HTML属性。</p>
+<h4 id="1、HTML属性作为Element的属性"><a href="#1、HTML属性作为Element的属性" class="headerlink" title="1、HTML属性作为Element的属性"></a>1、HTML属性作为Element的属性</h4><p>HTMLElement定义了通用的HTTP属性的属性，以及事件处理程序。特定的Element子类型为其定义了特定的属性。例如一张图片的URL，可以使用表示<code>&lt;img&gt;</code>元素的HTMLElement对象的src属性。</p>
+<pre><code>var image = document.getElementById(&quot;myimage&quot;);
+var imgurl = image.src;
+image.id === &quot;myimage&quot;;
+</code></pre><p>同样</p>
+<pre><code>var f = document.forms[0];//文档中的第一个&lt;form&gt;
+f.action = &quot;http://www.example.com/submit.php&quot;;//设置提交的URL
+f.method = &quot;POST&quot;;//HTTP请求类型
+</code></pre><h4 id="2、获取和设置非标准的HTML属性"><a href="#2、获取和设置非标准的HTML属性" class="headerlink" title="2、获取和设置非标准的HTML属性"></a>2、获取和设置非标准的HTML属性</h4><p>Element类型定义了getAttribute()和setAttribute()方法来查询和设置非标准的HTML属性，也可以用来查询和设置XML文档中的元素的属性。</p>
+<pre><code>var image = document.images[0];
+var width = parseInt(image.getAttribute(&quot;WIDTH&quot;));
+image.setAttribute(&quot;class&quot;,&quot;thumbnail&quot;);
+</code></pre><p>对于HTML属性，属性名字不区分大小写。Element类型还定义了两个相关的方法，hasAttribute()和removeAttribute(),他们用来检测命名属性是否存在和完全删除属性。使用这两个方法来读和写非标准属性的值，为此付出的代价是文档不再是合法有效的HTML。</p>
+<p>HTML5提供了一个解决方案，文档中以“data-”为前缀的小写的属性名字都是合法的。这些”数据集属性“将不会对其元素的表现产生影响，他们还定义了一种标准的、附加额外数据的方法，并不是在文档合法性上做出让步。</p>
+<p>HTML5还在Element对象上定义了dataset属性，该属性代指一个对象，他的各个属性对应于去掉data-属性，dataset.x应该保存data-x属性的值。连带字符的属性对应于驼峰命名法属性名：data-jquery-test属性就变成了dataset.jqueryTest属性。</p>
+<p>for example 5：</p>
+<pre><code>&lt;span class=&quot;sparkline&quot; data-ymin=&quot;0&quot; data-ymax=&quot;10&quot;&gt;
+1 1 1 2 3 4 5 5 4 3 5 6 7 7 4 2 1
+&lt;/span&gt;
+</code></pre><p>为了设计生成一条火花线，可以同如下代码提取上述dataset属性的值：</p>
+<pre><code>var sparklines = document.getElementsByClassName(&quot;sparkline&quot;);
+for(var i = 0;i &lt; sparkline.length;i++) {
+    var dataset = sparkline[i].dataset;
+    var ymin = parseFloat(dataset.ymin);
+    var ymax = paseFloat(dataset.ymax);
+    var data = sparklines[i].textContent.split(&quot; &quot;).map(parseFloat);
+    drawSparkline(sparklines[i],ymin,ymax,data);
+}
+</code></pre><h3 id="五、元素的内容"><a href="#五、元素的内容" class="headerlink" title="五、元素的内容"></a>五、元素的内容</h3><p>元素的内容有三种：</p>
+<p>一是HTML字符串，如：“This is a <code>&lt;i&gt;</code>simple<code>&lt;/i&gt;</code>document”</p>
+<p>二是纯文本，没有其他节点</p>
+<p>三是什么都有了，Text节点里面包括Text节点还有Element节点</p>
+<h4 id="1、作为HTML的元素内容"><a href="#1、作为HTML的元素内容" class="headerlink" title="1、作为HTML的元素内容"></a>1、作为HTML的元素内容</h4><p>这里就用innerHTML属性作为字符串标记返回那个元素的内容，这个解析蛮快的，不过加上“+=”的话就慢多了，因为既要序列化又要解析。</p>
+<h4 id="2、纯文本的就用textContent属性吧"><a href="#2、纯文本的就用textContent属性吧" class="headerlink" title="2、纯文本的就用textContent属性吧"></a>2、纯文本的就用textContent属性吧</h4><p>在除了IE浏览器的所有浏览器中都支持，IE中就用Element对象的innerText来替代着用吧。</p>
+<p>for example 6：</p>
+<pre><code>var para = document.getElementByTagName(&quot;p&quot;)[0];//文档中的第一个&lt;p&gt;元素
+var text = para.textContent;//文本是原来的
+para.textContent = &quot;Hello World&quot;;
+</code></pre><h4 id="3、作为Text节点的元素内容"><a href="#3、作为Text节点的元素内容" class="headerlink" title="3、作为Text节点的元素内容"></a>3、作为Text节点的元素内容</h4><p>这个就是有子节点、父节点和兄弟节点的说到了，，下节有相关的，就在下节说。</p>
+]]></content>
       
         
     </entry>
