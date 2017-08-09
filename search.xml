@@ -3,6 +3,40 @@
   
     
     <entry>
+      <title><![CDATA[脚本话文档（二）]]></title>
+      <url>/2017/08/09/arraysec/</url>
+      <content type="html"><![CDATA[<h3 id="六、创建、插入和删除节点"><a href="#六、创建、插入和删除节点" class="headerlink" title="六、创建、插入和删除节点"></a>六、创建、插入和删除节点</h3><p>我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容，已经看到我们能够遍历Document来检查组成Document的每个Element和Text节点。每个节点级别的修改文档也是可能的。Document类型定义了创建Element和Text对象的方法，Node类型定义了在节点树中插入、删除和替换的方法，例子中节点的创建和插入：</p>
+<p>for example 6：</p>
+<pre><code>//从指定的URL，异步加载和执行文档
+
+function loadasync(url) {
+    var head = document.getElementsByTagName(&quot;head&quot;)[0];//查找文档的&lt;head&gt;标签
+    var s = document.createElement(&quot;script&quot;);//创建一个&lt;script&gt;元素
+    s.src = url;//设置它的src属性值
+    head.appendChild(s);//将&lt;script&gt;插入到head中
+}
+</code></pre><p>创作多个节点时的捷径：使用DocumentFragment</p>
+<h4 id="1、创建节点"><a href="#1、创建节点" class="headerlink" title="1、创建节点"></a>1、创建节点</h4><p>创建新的Element节点可以使用Document对象的createElement()方法，对于HTML文档来说改名字不区分大小写，对于XML文档则区分。</p>
+<p>Text节点用类似的方法创建：</p>
+<pre><code>var newnode = document.createTextNode(&quot;text node content&quot;);
+</code></pre><p>Document也定义了一些其他的工厂方法，像不经常使用createComment()。可以使用createDocumentFragment()方法。在有一种就是复制已经存在的节点。每个节点有一个cloneNode()方法来返回该节点的全新副本。给方法传递参数 true是深复制，复制其所有的后代节点，用false的话仅仅执行一个浅复制。</p>
+<h4 id="2、插入节点"><a href="#2、插入节点" class="headerlink" title="2、插入节点"></a>2、插入节点</h4><p>插入节点有两种Node的方法：appendChild()或者insertBefore()。</p>
+<p>appendChild()需要在插入的Element节点上调用，它插入指定节点使其成为那个节点的最后一个子节点。</p>
+<p>insertBefore()就像appendChild()，除了接受两个参数。第一个参数就是待插入的节点，第二个是已经存在的节点，新节点在插入在该节点的前面。这个方法在新节点的父节点上调用，方法的第二个参数必须是该父节点的子节点。</p>
+<p>for example 7：</p>
+<pre><code>//将child节点插入到parent中，使其成为第n个子节点
+
+function insertAt(parent,child,n) {
+    if(n &lt; 0 || n &gt; parent.childNodes.length) throw new Error(&quot;invalid index&quot;);
+    else if(n == parent.childNodes.length) parent.appendChild(child);
+    else parent.insertBefore(child,parent.childNodes[n]);
+}
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[脚本化文档（一）]]></title>
       <url>/2017/07/29/dom/</url>
       <content type="html"><![CDATA[<p>客户端JavaScript是静态的文档变得交互式的web应用。JavaScript是web页面应用内容的核心，脚本化web文档是它的核心目标，因此本章的主题就是阐述它是如何做到的。本章会分为几个章节进行，至于分为几个章节，以每个章节的字数为标准。</p>

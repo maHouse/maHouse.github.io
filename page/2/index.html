@@ -79,6 +79,224 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/06/23/Array/" title="数组基础知识" itemprop="url">数组基础知识</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-23T12:57:30.000Z" itemprop="datePublished"> 发表于 2017-06-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="我们得知道这节的主题是什么："><a href="#我们得知道这节的主题是什么：" class="headerlink" title="我们得知道这节的主题是什么："></a>我们得知道这节的主题是什么：</h1><p><strong>一是数组是什么，长什么样子，我们看到了就能一眼认出来这个是不是数组；</strong></p>
+<p><strong>二我们怎么创建数组，讲解的是数组的声明方式；</strong></p>
+<p><strong>三是我们须知数组的一些属性和方法，因为数组不是你想怎么来就怎么来的，你必须按一定的套路走才是可行的；</strong></p>
+<p><strong>四是我们要知道数组与对象和字符串的关系，因为是近亲所以有更多有意思的事情。</strong></p>
+<p><strong>好了接下来一一说。</strong></p>
+<h3 id="一、数组的定义"><a href="#一、数组的定义" class="headerlink" title="一、数组的定义"></a>一、数组的定义</h3><p><strong>数组是一系列值（元素）的有序集合体。</strong>从这里我们来解读一下。</p>
+<p>①数组既然是个集合体，那么就有一个范围，来表示这就是一个数组单元，数组的开始和结束标识符就是”[]”,双引号里面的中括号就是一个数组的最基本的构成；</p>
+<p>for example1：</p>
+<pre><code>var a = [];
+var b = [,1,2,7,true,&apos;ww&apos;,{x:1},1];
+</code></pre><p>②数组里面的元素是什么，可以使任意数据类型的值的杂合，当然有时候杂合的东西的不容易操作。比如例子1里面的b数组就是个各种数据类型都有的杂合体，JSON无疑就是个数组里面加对象；</p>
+<p>③有序，数组里面的元素是有顺序的，顺序是从整数0开始排序的（也就是每个数组的元素都有个索引值，这个索引值就是从0开始的），因此数组b中的两个元素数字1，他们的索引是不一样的，明显的是第一个索引值小，第二个大。</p>
+<p>现在我们知道了数组的长相，能辨认数组了，那么接下来我们就看看怎么声明一个数组：</p>
+<h3 id="二、数组的声明"><a href="#二、数组的声明" class="headerlink" title="二、数组的声明"></a>二、数组的声明</h3><p>声明数组的方式总的来说有两种：</p>
+<p>①仿照对象的声明，通过数组直接量的形式，例子就是例子1；</p>
+<p>②就是用个关键字new 来声明：</p>
+<p>for example2：</p>
+<pre><code>var a = new Array(1,2,3,true,&apos;test&apos;);
+</code></pre><p>综合老看推荐的是使用数组直接量的方式来声明一个数组。</p>
+<p>这里我们在稍微的说点，稀松数组就是数组里存在一个空的元素，而多维数组就是几个数组的嵌套了，因为数组的元素不是固定的，所以可以有这效果。</p>
+<h3 id="三、数组的属性和方法"><a href="#三、数组的属性和方法" class="headerlink" title="三、数组的属性和方法"></a>三、数组的属性和方法</h3><p>数组知识的重点，就是这个数组的属性和方法，再有个重点就是数组与对象和字符串的关系。这次我们就先谈谈这个，分增、删、改、查4个方面来说。</p>
+<h4 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h4><p>增的意思是数组的元素增多了，这个增多可以是原来数组的值的增加，也可以是形成了一个新的数组，这就意味着数组的length是变大了。好！开始介绍方法。</p>
+<p>①、先来个不改变原来数组的:concat(),他的意思是把两个数组的元素给拼接起来,或者就是把元素添加到数组的元素中去：<br>for example4：</p>
+<pre><code>var d = [1,3];
+var dd = d.concat(&apos;1&apos;,2,4);//不改变原来的数组[1,3,&apos;1&apos;,2,4]
+var ddd = d.concat([1,3,5],[4,7]);//[1,3,1,3,5,4,7]
+</code></pre><p>②、通过索引为数组增加值，变化的是原来的数组：</p>
+<p>for example3：</p>
+<pre><code>var c = [];
+c[0] = 1;//c = [0]
+c[1] = 2;//c = [0,2]
+c[3] = &apos;test&apos;;//c = [0,2,&apos;test&apos;]
+</code></pre><p>③、push(),改变了原来的数组，意思是往原来的数组的末尾加一个或多个元素,这个和pop()组成了类似于栈的先进后出的感觉：</p>
+<p>for example4：</p>
+<pre><code>var pushes = [&apos;hello&apos;,&apos;2&apos;,22];
+    pushes.push(11,77);//这样既可[&apos;hello&apos;,&apos;2&apos;,22,11,77]
+</code></pre><p>④、unshift(),类似于push()，不过unshift()是把元素添加到了原数组元素的第一个位置：</p>
+<p>for example4：</p>
+<pre><code>var unshifted = [&apos;hello&apos;,&apos;2&apos;,22];
+    unshifted.unshift(11,77);//这样既可[11,77,&apos;hello&apos;,&apos;2&apos;,22]
+</code></pre><p>⑤、splice(),这个比较特殊，因为他能增加也能减少，同样的是他改变的也是原来的数组,splice()方法里有三个参数，第一个为必填的，后两个为可选的，第一个参数是数组的索引值，是个整数，第二个意思是从第一个索引值的位置开始要去掉几个元素,这个值可以为负值，最后一个参数意思是去掉了参数，我们用什么来填补，是我们要填补的元素,返回的值是删除元素组成的数组：</p>
+<p>for example5：</p>
+<pre><code>var s = [&apos;hello&apos;,&apos;2&apos;,22,11,77];
+    s.splice(0,3);//返回[&apos;hello&apos;,&apos;2&apos;,22]
+    s.splice(0,3，&apos;world&apos;,33);//返回[&apos;hello&apos;,&apos;2&apos;,22]
+</code></pre><p>以上就是增，下面说说删。</p>
+<h4 id="2-删"><a href="#2-删" class="headerlink" title="2.删"></a>2.删</h4><p>因为说过了增，删的部分大部分是对应的，所以我们就把那些不对应的讲解一下：</p>
+<p>①、delete，这是个运算符，他删除的是元素的值，至于数组的length是不变的，去掉的是数组的元素值，去不掉的是数组的属性。</p>
+<p>for example6：</p>
+<pre><code>var del = [1,2,3];
+delete del[2];//在原数组中就没有了元素3，但是数组的length仍旧是3
+</code></pre><p>②、pop(),对比push()去吧！</p>
+<p>③、shift(),对比unshift()去吧！</p>
+<p>④、splice()</p>
+<h4 id="3-改和查"><a href="#3-改和查" class="headerlink" title="3.改和查"></a>3.改和查</h4><p>把改和查放在一起，因为我们会感觉到他们是一体的。</p>
+<p>①、slice(),能接收两个参数，第一个参数是必须的，为整数值，第二个参数为可选的，为整数值，都可为负值，不改变原有的数组,截取的值包前不包后：</p>
+<p>for example7：</p>
+<pre><code>var sl = [1,2,3];
+sl.slice(0,1);//返回[1]
+</code></pre><p>②、reverse(),把数组的元素值给倒过来排序，改变了原来的数组元素的排序：</p>
+<p>for example7：</p>
+<pre><code>var revers = [1,2,3];
+revers.reverse();//返回[3,2,1]
+</code></pre><p>③、sort(),把数组的元素按英文字母的顺序进行排序，也就是ASC11的顺序，这个可以接受一个比较函数，进行更好运算：</p>
+<p>for example7：</p>
+<pre><code>var revers = [1,2,3,10];
+revers.sort();//返回[1,10,2,3]
+revers.sort(function(x,y) {
+        return x-y;
+    });//返回的就是按数字大小比较后的顺序的数组了
+</code></pre><p>对一个字符串数组执行不区分大小写的字符表排序，比较函数首先将参数转化为小写字符串，再开始比较：</p>
+<p>for example8：</p>
+<pre><code>var a = [&apos;ant&apos;,&apos;Bug&apos;,&apos;cat&apos;,&apos;Dog&apos;];
+a.sort();//返回[&apos;Bug&apos;,&apos;Dog&apos;,&apos;ant&apos;,&apos;cat&apos;]
+a.sort(function(x,y) {
+        var a = x.toLowerCase();
+        var b = y.toLowerCase();
+        if (a &lt; b) return -1;
+        if (a &gt; b) return 1;
+        return 0;
+    });//返回[&apos;ant&apos;,&apos;Bug&apos;,&apos;cat&apos;,&apos;Dog&apos;]
+</code></pre><p>这里我们再简单的说说例子7和例子8中，比较函数的工作原理，我们传进去的是两个参数，所以这个比较函数每次的比较是两个两个进行比较的，每次比较后就进行一次两个元素位置的调换，而如果前(n-1)个元素没有排好序的话（说的就是最后一个元素前的元素如果已经排好序，那就直接进行第n-1个元素与最后一个元素的比较就可以了），正常情况下，我们是要用前面n-1个元素来与第n个元素进行比较的。如果想自己看看操作的话，就用chrome自己打个断点，自己看看他的工作流程。</p>
+<p>④、遍历：for循环和forEach(),都是遍历数组内的每个元素，不同的是前者有个break可以跳出，后者想要终止的话，则必须把forEach()放到try()块中,里面传进去的是个函数：</p>
+<p>for example8：</p>
+<pre><code>function foreach(a,f,t) {
+    try {a.forEach(f,t);}
+    catch(e) {
+        if (e === foreach.break) return;
+        else throw e;
+    }
+}
+foreach.break = new Error(&quot;StopIteration&quot;);
+</code></pre><p>⑤、映射，这里就是用map()，就是数学函数里映射，一对一，里面包括一个函数：</p>
+<p>for example9：</p>
+<pre><code>var a = [1,3,4];
+b = a.map(function(x) {
+return x*x;});//返回的就是[1,9,16],返回的是新的数组，不修改原来的数组
+</code></pre><p>⑥、过滤，就是用某个条件作为筛选，用到的是filter(),这个方法会过滤掉undefined和null，他返回的总是稠密数组不会是稀疏数组：</p>
+<p>for example10：</p>
+<pre><code>var a = [5,4,3,2,1];
+smallValues = a.filter(function(x) { return x &lt; 3;});
+other = a.filter(function(x) { return x%2 == 0;});//参数可以多个
+
+a = a.filter(function(x) { return x !== undefined &amp;&amp; x !== null;});//过滤掉undefined和null元素
+</code></pre><p>⑦、every()和some()，这里返回的是个boolean值：</p>
+<p>for example11：</p>
+<pre><code>var a = [1,2,3,4,5];
+a.every(function(x) {return x &lt; 10;});//返回的就是true
+a.every(function(x) { return x % 2 == 0;});//返回false
+</code></pre><p>而如果用some()来代替every()的话，就全是true了，因为some()意思是存在而every()是全部的意思。</p>
+<p>⑧、reduce()和reduceRight()，他们的意思就是通过某个函数把数组的元素整合为单个值，需要传进去两个参数，不过以数值和对象为主，前者是从低索引开始后者从高索引开始：</p>
+<p>for example 12：</p>
+<pre><code>var a = [1,2,3,4,5];
+var sum = a.reduce(function(x,y) {
+    return x+y;},0);//0是初始值，可以不要，返回15
+var max = a.reduce(function(x,y) {
+    return (x &gt; y) ? x :y;});//求最大值
+var product = a.reduce(function(x,y) {
+    return x * y;},1);//乘积
+</code></pre><p>下面说说对象的形式吧！</p>
+<p>for example 13:</p>
+<pre><code>var objects = [{x:1},{y:2},{z:3}];
+var merged = objects.reduce(union);//返回{x:1,y:2,z:3}，是对象的集合
+
+var objects = [{x:1,a:1},{y:2,a:2},{z:3,a:3}];
+var leftUnion = objects.reduce(union);//返回{x:1,a:1,y:2,z:3}
+var rightUnion = objects.reduceRight(union);//返回{x:1,y:2,z:3,a:3}
+</code></pre><p>⑨、indexOf()和lastIndexOf()，里面填写的是元素，返回的是这个元素的位置的索引，如果元素重复，返回的是第一个元素的位置的索引值，这两个方法方向相反，如果没有的话就返回-1,有两个参数，第二个参数可选，意思是要从哪个索引开始：</p>
+<p>for example 14:</p>
+<pre><code>var a = [0,1,2,1,0];
+a.indexOf(1);//1
+a.indexOf(3);//-1，因为没有这个值
+a.lastIndexOf(1);//3
+</code></pre><p>for example 15:</p>
+<pre><code>//在数组中查找所有出现的x,并返回一个匹配数组索引的数组
+function findAll(a,x) {
+    var results = [],
+        len = a.length,
+        pos = 0;
+    while(pos &lt; len) {
+        pos = a.indexOf(x,pos);
+        if (pos === -1) break;
+        results.push(pos);
+        pos +=1;
+    }
+    return results;
+}
+</code></pre><h3 id="四、数组的亲密关系"><a href="#四、数组的亲密关系" class="headerlink" title="四、数组的亲密关系"></a>四、数组的亲密关系</h3><p>数组的亲密关系牵扯到两个：一是字符串；二是对象，无论哪个都可以有数组的一些特性，如:自动更新length、设置length来获取一段数组、从Array.prototype来继承有用的方法、其类属性为Array：</p>
+<h4 id="1-与字符串的关系"><a href="#1-与字符串的关系" class="headerlink" title="1.与字符串的关系"></a>1.与字符串的关系</h4><p>①、join()和split()这是一对，前者把数组元素以某种方式拼接起来并输出一个字符串，后者是把字符串以某个元素为分界线分为数组，不再举例子；</p>
+<p>②、toString()和toLocalString(),与join()类似，把数组元素转化为字符串，后者是以本地化分隔符连接元素生成字符串；</p>
+<p>③、说说继承Array.prototype的方法：</p>
+<p>for example 16:</p>
+<pre><code>var s = &quot;JavaScript&quot;;
+Array.prototype.join.call(s,&quot; &quot;);//&quot;J a v a S c r i p t&quot;,继承了join()方法
+Array.prototype.filter.call(s,function(x) {
+        return x.match(/[^aeiou]/);}).join(&quot;&quot;);//筛选掉了元音字母，&quot;JvScrpt&quot;
+</code></pre><p>切记，字符串不能改变的，他们是只读的，对于那些push()、sort()、reverse()、splice()这些方法是不能使用的。</p>
+<h4 id="2-类数组对象"><a href="#2-类数组对象" class="headerlink" title="2.类数组对象"></a>2.类数组对象</h4><p>这个我们还是能经常碰到的，譬如用document.getElementsByName()这个方法时得到的就是个类数组。</p>
+<p>for example 17：</p>
+<pre><code>var a = {&quot;0&quot;:&quot;a&quot;,&quot;1&quot;:&quot;b&quot;,&quot;2&quot;:&quot;c&quot;,length:3};//类数组对象
+Array.prototype.join.call(a,&apos;+&apos;);//&apos;a+b+c&apos;
+Array.prototype.slice.call(a,0);//[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;],真正的数组副本
+Array.prototype.map.call(a,function(x) {
+        return x.toUpperCase();});//[&apos;A&apos;,&apos;B&apos;,&apos;C&apos;]
+</code></pre><h3 id="五、其他：数组类型"><a href="#五、其他：数组类型" class="headerlink" title="五、其他：数组类型"></a>五、其他：数组类型</h3><p>判断是不是数组我们用两个方式：</p>
+<h4 id="1-Array-isArray"><a href="#1-Array-isArray" class="headerlink" title="1.Array.isArray()"></a>1.Array.isArray()</h4><pre><code>Array.isArray([]);//true
+Array.isArray({});//false
+</code></pre><h4 id="2-instanceOf运算符"><a href="#2-instanceOf运算符" class="headerlink" title="2.instanceOf运算符"></a>2.instanceOf运算符</h4><pre><code>[] instanceOf Array;//true
+({}) instanceOf Array;//false
+</code></pre><h1 id="告一段落，下次看函数"><a href="#告一段落，下次看函数" class="headerlink" title="告一段落，下次看函数"></a>告一段落，下次看函数</h1>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/26/循环和严格模式/" title="语句" itemprop="url">语句</a>
   </h1>
   <p class="article-author">By
@@ -929,76 +1147,6 @@ a(1,0);
 <p>⑦继承（inheritance）</p>
 <p>广义地说，继承就是直接使用已有的性质和特征，而不必重复定义他们。一个类可以有自己的父类和子类，这就一定具有继承的特性，一个类直接继承其父类的全部描述（数据和操作）。</p>
 <p>OK！基本知识就到此了，不充足的会再补充。。。。。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/27/module-1/" title="模块" itemprop="url">模块</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-27T13:54:06.000Z" itemprop="datePublished"> 发表于 2017-04-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在开发阶段里总体设计的过程中，我们必须明确系统是“怎么做事情”的了。在软件的设计过程中有些原理和概念是我们必须遵循的，这就是与<strong>模块</strong>有关的知识了！</p>
-<h1 id="1-模块化"><a href="#1-模块化" class="headerlink" title="1.模块化"></a>1.模块化</h1><p>先说个有意思的规律：C(x) 定义问题X的复杂程度，函数E(x)定义解决X问题所需要的工作量。对于问题P1和P2，如果</p>
-<pre><code>C(P1) &gt; C(P2)
-</code></pre><p> 显然       </p>
-<pre><code>E(P1) &gt; E(P2)
-</code></pre><p>根据人类解决问题的一般经验，一个有意思的规律就是</p>
-<pre><code>C(P1+P2) &gt; C(P1)+C(P2)
-</code></pre><p>因此也就有了</p>
-<pre><code>E(P1+P2) &gt; E(P1)+E(P2)
-</code></pre><p>结论是什么呢？就是把复杂的问题给分解成容易解决的小问题，那么大问题就迎刃而解，这是模块化的根据。</p>
-<p>这就有个有意思的问题了，无限的分割软件，最后开发软件的工作量确实小的很多了。但模块间的接口的设计就在增多，你去脑洞吧，一个在减少工作量，一个在增加工作量，那模块量多少才是合适？（既是设计模块和模块接口的工作量合适，成本也合适），这个问题再说了！</p>
-<h1 id="2-抽象"><a href="#2-抽象" class="headerlink" title="2.抽象"></a>2.抽象</h1><p>抽象是现实世界的事物、状态、过程等相似方面的集中和概括，暂时忽略他们之间的差异，模块就是把抽象出来的某个层次用一定的方式描述出来。因为抽象是一层一层的，因此模块也是有其特点的。</p>
-<h1 id="3-逐步求精"><a href="#3-逐步求精" class="headerlink" title="3.逐步求精"></a>3.逐步求精</h1><p>人类认知过程中遵循个Miller法则：一个人在任何时候都只能把注意力集中到[5 9]个知识块上。</p>
-<p>因此，在抽象的过程中，有了不同的层次，不同的模块，那么就有了模块的不断地精化。</p>
-<h1 id="4-信息隐藏和局部化"><a href="#4-信息隐藏和局部化" class="headerlink" title="4.信息隐藏和局部化"></a>4.信息隐藏和局部化</h1><p>这里隐藏的不是有关模块的所有信息，而是模块之间还要交换那些为了完成系统功能而必须交换的信息，当然是仅仅交换这些信息。模块本身就体现了这一特质。</p>
-<h1 id="5-模块独立"><a href="#5-模块独立" class="headerlink" title="5.模块独立"></a>5.模块独立</h1><p>模块的独立是模块化、抽象、信息隐藏和局部化的直接结果。既容易开发又容易测试是模块独立的好处，然而模块之间还是要通信的，那评价模块独立的标准又是是什么呢？<strong>内聚</strong> 和<strong>耦合</strong>。</p>
-<p><strong>内聚</strong></p>
-<p>内聚说的是一个模块内的事情，从一个最底层的模块说会更容易理解，既然“大家伙”（模块内的各个元素）都是一个“团队”（模块）了，那么我们就要力向一处使（做好一件事情），也就是说模块里的兄弟姐妹们都是与这件事情极其相关的。所以说内聚就是说模块内的元素关系密切，不然放一块干嘛！同理就是模块的设计时，尽量做到模块内的元素关系密切，这才符合模块间的信息隐藏和局部化。</p>
-<p><strong>耦合</strong></p>
-<p>有了内聚做参考就知道了既然能做同一件事或者相关事情的元素都放到一块去了（成为了一个模块），那么模块之间的关系就是松散的耦合关系喽！因为模块之间不可能做到一点关系都没有，是吧？做到松散耦合就OK了！</p>
-<p>好了！以上就是关于模块的理论知识，以后在碰到关于模块的问题时不至于会一脸懵逼吧，，，</p>
 
         
         

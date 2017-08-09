@@ -79,6 +79,76 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/04/27/module-1/" title="模块" itemprop="url">模块</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-27T13:54:06.000Z" itemprop="datePublished"> 发表于 2017-04-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在开发阶段里总体设计的过程中，我们必须明确系统是“怎么做事情”的了。在软件的设计过程中有些原理和概念是我们必须遵循的，这就是与<strong>模块</strong>有关的知识了！</p>
+<h1 id="1-模块化"><a href="#1-模块化" class="headerlink" title="1.模块化"></a>1.模块化</h1><p>先说个有意思的规律：C(x) 定义问题X的复杂程度，函数E(x)定义解决X问题所需要的工作量。对于问题P1和P2，如果</p>
+<pre><code>C(P1) &gt; C(P2)
+</code></pre><p> 显然       </p>
+<pre><code>E(P1) &gt; E(P2)
+</code></pre><p>根据人类解决问题的一般经验，一个有意思的规律就是</p>
+<pre><code>C(P1+P2) &gt; C(P1)+C(P2)
+</code></pre><p>因此也就有了</p>
+<pre><code>E(P1+P2) &gt; E(P1)+E(P2)
+</code></pre><p>结论是什么呢？就是把复杂的问题给分解成容易解决的小问题，那么大问题就迎刃而解，这是模块化的根据。</p>
+<p>这就有个有意思的问题了，无限的分割软件，最后开发软件的工作量确实小的很多了。但模块间的接口的设计就在增多，你去脑洞吧，一个在减少工作量，一个在增加工作量，那模块量多少才是合适？（既是设计模块和模块接口的工作量合适，成本也合适），这个问题再说了！</p>
+<h1 id="2-抽象"><a href="#2-抽象" class="headerlink" title="2.抽象"></a>2.抽象</h1><p>抽象是现实世界的事物、状态、过程等相似方面的集中和概括，暂时忽略他们之间的差异，模块就是把抽象出来的某个层次用一定的方式描述出来。因为抽象是一层一层的，因此模块也是有其特点的。</p>
+<h1 id="3-逐步求精"><a href="#3-逐步求精" class="headerlink" title="3.逐步求精"></a>3.逐步求精</h1><p>人类认知过程中遵循个Miller法则：一个人在任何时候都只能把注意力集中到[5 9]个知识块上。</p>
+<p>因此，在抽象的过程中，有了不同的层次，不同的模块，那么就有了模块的不断地精化。</p>
+<h1 id="4-信息隐藏和局部化"><a href="#4-信息隐藏和局部化" class="headerlink" title="4.信息隐藏和局部化"></a>4.信息隐藏和局部化</h1><p>这里隐藏的不是有关模块的所有信息，而是模块之间还要交换那些为了完成系统功能而必须交换的信息，当然是仅仅交换这些信息。模块本身就体现了这一特质。</p>
+<h1 id="5-模块独立"><a href="#5-模块独立" class="headerlink" title="5.模块独立"></a>5.模块独立</h1><p>模块的独立是模块化、抽象、信息隐藏和局部化的直接结果。既容易开发又容易测试是模块独立的好处，然而模块之间还是要通信的，那评价模块独立的标准又是是什么呢？<strong>内聚</strong> 和<strong>耦合</strong>。</p>
+<p><strong>内聚</strong></p>
+<p>内聚说的是一个模块内的事情，从一个最底层的模块说会更容易理解，既然“大家伙”（模块内的各个元素）都是一个“团队”（模块）了，那么我们就要力向一处使（做好一件事情），也就是说模块里的兄弟姐妹们都是与这件事情极其相关的。所以说内聚就是说模块内的元素关系密切，不然放一块干嘛！同理就是模块的设计时，尽量做到模块内的元素关系密切，这才符合模块间的信息隐藏和局部化。</p>
+<p><strong>耦合</strong></p>
+<p>有了内聚做参考就知道了既然能做同一件事或者相关事情的元素都放到一块去了（成为了一个模块），那么模块之间的关系就是松散的耦合关系喽！因为模块之间不可能做到一点关系都没有，是吧？做到松散耦合就OK了！</p>
+<p>好了！以上就是关于模块的理论知识，以后在碰到关于模块的问题时不至于会一脸懵逼吧，，，</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/04/27/module-knowlage1/" title="软件工程方法学（番外篇）" itemprop="url">软件工程方法学（番外篇）</a>
   </h1>
   <p class="article-author">By

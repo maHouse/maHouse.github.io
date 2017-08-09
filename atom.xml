@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maHouse.github.io/"/>
-  <updated>2017-08-06T14:56:40.750Z</updated>
+  <updated>2017-08-09T15:41:41.039Z</updated>
   <id>http://maHouse.github.io/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>脚本话文档（二）</title>
+    <link href="http://maHouse.github.io/2017/08/09/arraysec/"/>
+    <id>http://maHouse.github.io/2017/08/09/arraysec/</id>
+    <published>2017-08-09T15:02:10.000Z</published>
+    <updated>2017-08-09T15:41:41.039Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="六、创建、插入和删除节点"><a href="#六、创建、插入和删除节点" class="headerlink" title="六、创建、插入和删除节点"></a>六、创建、插入和删除节点</h3><p>我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容，已经看到我们能够遍历Document来检查组成Document的每个Element和Text节点。每个节点级别的修改文档也是可能的。Document类型定义了创建Element和Text对象的方法，Node类型定义了在节点树中插入、删除和替换的方法，例子中节点的创建和插入：</p>
+<p>for example 6：</p>
+<pre><code>//从指定的URL，异步加载和执行文档
+
+function loadasync(url) {
+    var head = document.getElementsByTagName(&quot;head&quot;)[0];//查找文档的&lt;head&gt;标签
+    var s = document.createElement(&quot;script&quot;);//创建一个&lt;script&gt;元素
+    s.src = url;//设置它的src属性值
+    head.appendChild(s);//将&lt;script&gt;插入到head中
+}
+</code></pre><p>创作多个节点时的捷径：使用DocumentFragment</p>
+<h4 id="1、创建节点"><a href="#1、创建节点" class="headerlink" title="1、创建节点"></a>1、创建节点</h4><p>创建新的Element节点可以使用Document对象的createElement()方法，对于HTML文档来说改名字不区分大小写，对于XML文档则区分。</p>
+<p>Text节点用类似的方法创建：</p>
+<pre><code>var newnode = document.createTextNode(&quot;text node content&quot;);
+</code></pre><p>Document也定义了一些其他的工厂方法，像不经常使用createComment()。可以使用createDocumentFragment()方法。在有一种就是复制已经存在的节点。每个节点有一个cloneNode()方法来返回该节点的全新副本。给方法传递参数 true是深复制，复制其所有的后代节点，用false的话仅仅执行一个浅复制。</p>
+<h4 id="2、插入节点"><a href="#2、插入节点" class="headerlink" title="2、插入节点"></a>2、插入节点</h4><p>插入节点有两种Node的方法：appendChild()或者insertBefore()。</p>
+<p>appendChild()需要在插入的Element节点上调用，它插入指定节点使其成为那个节点的最后一个子节点。</p>
+<p>insertBefore()就像appendChild()，除了接受两个参数。第一个参数就是待插入的节点，第二个是已经存在的节点，新节点在插入在该节点的前面。这个方法在新节点的父节点上调用，方法的第二个参数必须是该父节点的子节点。</p>
+<p>for example 7：</p>
+<pre><code>//将child节点插入到parent中，使其成为第n个子节点
+
+function insertAt(parent,child,n) {
+    if(n &lt; 0 || n &gt; parent.childNodes.length) throw new Error(&quot;invalid index&quot;);
+    else if(n == parent.childNodes.length) parent.appendChild(child);
+    else parent.insertBefore(child,parent.childNodes[n]);
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;六、创建、插入和删除节点&quot;&gt;&lt;a href=&quot;#六、创建、插入和删除节点&quot; class=&quot;headerlink&quot; title=&quot;六、创建、插入和删除节点&quot;&gt;&lt;/a&gt;六、创建、插入和删除节点&lt;/h3&gt;&lt;p&gt;我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>脚本化文档（一）</title>
@@ -2237,46 +2281,6 @@ a(1,0);
     <summary type="html">
     
       &lt;h2 id=&quot;一、-面向对象方法出现的原因&quot;&gt;&lt;a href=&quot;#一、-面向对象方法出现的原因&quot; class=&quot;headerlink&quot; title=&quot;一、 面向对象方法出现的原因&quot;&gt;&lt;/a&gt;一、 面向对象方法出现的原因&lt;/h2&gt;&lt;p&gt;传统软件工程方法的确给软件产业带来了巨大进步
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>模块</title>
-    <link href="http://maHouse.github.io/2017/04/27/module-1/"/>
-    <id>http://maHouse.github.io/2017/04/27/module-1/</id>
-    <published>2017-04-27T13:54:06.000Z</published>
-    <updated>2017-04-28T15:59:03.165Z</updated>
-    
-    <content type="html"><![CDATA[<p>在开发阶段里总体设计的过程中，我们必须明确系统是“怎么做事情”的了。在软件的设计过程中有些原理和概念是我们必须遵循的，这就是与<strong>模块</strong>有关的知识了！</p>
-<h1 id="1-模块化"><a href="#1-模块化" class="headerlink" title="1.模块化"></a>1.模块化</h1><p>先说个有意思的规律：C(x) 定义问题X的复杂程度，函数E(x)定义解决X问题所需要的工作量。对于问题P1和P2，如果</p>
-<pre><code>C(P1) &gt; C(P2)
-</code></pre><p> 显然       </p>
-<pre><code>E(P1) &gt; E(P2)
-</code></pre><p>根据人类解决问题的一般经验，一个有意思的规律就是</p>
-<pre><code>C(P1+P2) &gt; C(P1)+C(P2)
-</code></pre><p>因此也就有了</p>
-<pre><code>E(P1+P2) &gt; E(P1)+E(P2)
-</code></pre><p>结论是什么呢？就是把复杂的问题给分解成容易解决的小问题，那么大问题就迎刃而解，这是模块化的根据。</p>
-<p>这就有个有意思的问题了，无限的分割软件，最后开发软件的工作量确实小的很多了。但模块间的接口的设计就在增多，你去脑洞吧，一个在减少工作量，一个在增加工作量，那模块量多少才是合适？（既是设计模块和模块接口的工作量合适，成本也合适），这个问题再说了！</p>
-<h1 id="2-抽象"><a href="#2-抽象" class="headerlink" title="2.抽象"></a>2.抽象</h1><p>抽象是现实世界的事物、状态、过程等相似方面的集中和概括，暂时忽略他们之间的差异，模块就是把抽象出来的某个层次用一定的方式描述出来。因为抽象是一层一层的，因此模块也是有其特点的。</p>
-<h1 id="3-逐步求精"><a href="#3-逐步求精" class="headerlink" title="3.逐步求精"></a>3.逐步求精</h1><p>人类认知过程中遵循个Miller法则：一个人在任何时候都只能把注意力集中到[5 9]个知识块上。</p>
-<p>因此，在抽象的过程中，有了不同的层次，不同的模块，那么就有了模块的不断地精化。</p>
-<h1 id="4-信息隐藏和局部化"><a href="#4-信息隐藏和局部化" class="headerlink" title="4.信息隐藏和局部化"></a>4.信息隐藏和局部化</h1><p>这里隐藏的不是有关模块的所有信息，而是模块之间还要交换那些为了完成系统功能而必须交换的信息，当然是仅仅交换这些信息。模块本身就体现了这一特质。</p>
-<h1 id="5-模块独立"><a href="#5-模块独立" class="headerlink" title="5.模块独立"></a>5.模块独立</h1><p>模块的独立是模块化、抽象、信息隐藏和局部化的直接结果。既容易开发又容易测试是模块独立的好处，然而模块之间还是要通信的，那评价模块独立的标准又是是什么呢？<strong>内聚</strong> 和<strong>耦合</strong>。</p>
-<p><strong>内聚</strong></p>
-<p>内聚说的是一个模块内的事情，从一个最底层的模块说会更容易理解，既然“大家伙”（模块内的各个元素）都是一个“团队”（模块）了，那么我们就要力向一处使（做好一件事情），也就是说模块里的兄弟姐妹们都是与这件事情极其相关的。所以说内聚就是说模块内的元素关系密切，不然放一块干嘛！同理就是模块的设计时，尽量做到模块内的元素关系密切，这才符合模块间的信息隐藏和局部化。</p>
-<p><strong>耦合</strong></p>
-<p>有了内聚做参考就知道了既然能做同一件事或者相关事情的元素都放到一块去了（成为了一个模块），那么模块之间的关系就是松散的耦合关系喽！因为模块之间不可能做到一点关系都没有，是吧？做到松散耦合就OK了！</p>
-<p>好了！以上就是关于模块的理论知识，以后在碰到关于模块的问题时不至于会一脸懵逼吧，，，</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在开发阶段里总体设计的过程中，我们必须明确系统是“怎么做事情”的了。在软件的设计过程中有些原理和概念是我们必须遵循的，这就是与&lt;strong&gt;模块&lt;/strong&gt;有关的知识了！&lt;/p&gt;
-&lt;h1 id=&quot;1-模块化&quot;&gt;&lt;a href=&quot;#1-模块化&quot; class=&quot;head
     
     </summary>
     

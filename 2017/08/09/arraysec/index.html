@@ -1,0 +1,457 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脚本话文档（二） | 浮游Bar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小码哥">
+    
+
+    
+    <meta name="description" content="六、创建、插入和删除节点我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容，已经看到我们能够遍历Document来检查组成Document的每个Element和Text节点。每个节点级别的修改文档也是可能的。Document类型定义了创建Element和Text对象的方法，Node类型定义了在节点树中插入、删除和替换的方法，例子中节点的创建和插入： for example 6： //从指">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="脚本话文档（二）">
+<meta property="og:url" content="http://maHouse.github.io/2017/08/09/arraysec/index.html">
+<meta property="og:site_name" content="浮游Bar">
+<meta property="og:description" content="六、创建、插入和删除节点我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容，已经看到我们能够遍历Document来检查组成Document的每个Element和Text节点。每个节点级别的修改文档也是可能的。Document类型定义了创建Element和Text对象的方法，Node类型定义了在节点树中插入、删除和替换的方法，例子中节点的创建和插入： for example 6： //从指">
+<meta property="og:updated_time" content="2017-08-09T15:41:41.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="脚本话文档（二）">
+<meta name="twitter:description" content="六、创建、插入和删除节点我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容，已经看到我们能够遍历Document来检查组成Document的每个Element和Text节点。每个节点级别的修改文档也是可能的。Document类型定义了创建Element和Text对象的方法，Node类型定义了在节点树中插入、删除和替换的方法，例子中节点的创建和插入： for example 6： //从指">
+
+    
+    <link rel="alternative" href="/atom.xml" title="浮游Bar" type="application/atom+xml">
+    
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="浮游Bar" title="浮游Bar"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="浮游Bar">浮游Bar</a></h1>
+				<h2 class="blog-motto">道之所向，虽千万人吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:maHouse.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/09/arraysec/" title="脚本话文档（二）" itemprop="url">脚本话文档（二）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小码哥" target="_blank" itemprop="author">小码哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-09T15:02:10.000Z" itemprop="datePublished"> 发表于 2017-08-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#六、创建、插入和删除节点"><span class="toc-number">1.</span> <span class="toc-text">六、创建、插入和删除节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、创建节点"><span class="toc-number">1.1.</span> <span class="toc-text">1、创建节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、插入节点"><span class="toc-number">1.2.</span> <span class="toc-text">2、插入节点</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="六、创建、插入和删除节点"><a href="#六、创建、插入和删除节点" class="headerlink" title="六、创建、插入和删除节点"></a>六、创建、插入和删除节点</h3><p>我们已经看到用HTML和纯文本字符串如何来查询和修改文档内容，已经看到我们能够遍历Document来检查组成Document的每个Element和Text节点。每个节点级别的修改文档也是可能的。Document类型定义了创建Element和Text对象的方法，Node类型定义了在节点树中插入、删除和替换的方法，例子中节点的创建和插入：</p>
+<p>for example 6：</p>
+<pre><code>//从指定的URL，异步加载和执行文档
+
+function loadasync(url) {
+    var head = document.getElementsByTagName(&quot;head&quot;)[0];//查找文档的&lt;head&gt;标签
+    var s = document.createElement(&quot;script&quot;);//创建一个&lt;script&gt;元素
+    s.src = url;//设置它的src属性值
+    head.appendChild(s);//将&lt;script&gt;插入到head中
+}
+</code></pre><p>创作多个节点时的捷径：使用DocumentFragment</p>
+<h4 id="1、创建节点"><a href="#1、创建节点" class="headerlink" title="1、创建节点"></a>1、创建节点</h4><p>创建新的Element节点可以使用Document对象的createElement()方法，对于HTML文档来说改名字不区分大小写，对于XML文档则区分。</p>
+<p>Text节点用类似的方法创建：</p>
+<pre><code>var newnode = document.createTextNode(&quot;text node content&quot;);
+</code></pre><p>Document也定义了一些其他的工厂方法，像不经常使用createComment()。可以使用createDocumentFragment()方法。在有一种就是复制已经存在的节点。每个节点有一个cloneNode()方法来返回该节点的全新副本。给方法传递参数 true是深复制，复制其所有的后代节点，用false的话仅仅执行一个浅复制。</p>
+<h4 id="2、插入节点"><a href="#2、插入节点" class="headerlink" title="2、插入节点"></a>2、插入节点</h4><p>插入节点有两种Node的方法：appendChild()或者insertBefore()。</p>
+<p>appendChild()需要在插入的Element节点上调用，它插入指定节点使其成为那个节点的最后一个子节点。</p>
+<p>insertBefore()就像appendChild()，除了接受两个参数。第一个参数就是待插入的节点，第二个是已经存在的节点，新节点在插入在该节点的前面。这个方法在新节点的父节点上调用，方法的第二个参数必须是该父节点的子节点。</p>
+<p>for example 7：</p>
+<pre><code>//将child节点插入到parent中，使其成为第n个子节点
+
+function insertAt(parent,child,n) {
+    if(n &lt; 0 || n &gt; parent.childNodes.length) throw new Error(&quot;invalid index&quot;);
+    else if(n == parent.childNodes.length) parent.appendChild(child);
+    else parent.insertBefore(child,parent.childNodes[n]);
+}
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://maHouse.github.io/2017/08/09/arraysec/" data-title="脚本话文档（二） | 浮游Bar" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/07/29/dom/" title="脚本化文档（一）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  脚本化文档（一）</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#六、创建、插入和删除节点"><span class="toc-number">1.</span> <span class="toc-text">六、创建、插入和删除节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、创建节点"><span class="toc-number">1.1.</span> <span class="toc-text">1、创建节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、插入节点"><span class="toc-number">1.2.</span> <span class="toc-text">2、插入节点</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="https://github.com/maHouse" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 兄弟姐妹们，你们好！ <br/>
+			This is my blog,it will be better and better，welcome to come here！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5309319763" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/https://github.com/maHouse" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:1037243021@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="小码哥">小码哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
